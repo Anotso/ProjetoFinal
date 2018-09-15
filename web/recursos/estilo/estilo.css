@@ -1,0 +1,44 @@
+@charset UTF-8;
+/*  ESPAÇAMENTO */
+.esp15{
+    padding: 15px;
+}
+.esp25{
+    padding: 25px;
+}
+.esp50{
+    padding: 50px;
+}
+.esp100{
+    padding: 100px;
+}
+/*  NAVBAR - PERSONALIZADA  */
+#barra{
+    padding: 30px;
+    height: 100px;
+}
+.nav1 a:hover{
+    text-decoration: none;
+}
+.nav2 a:hover{
+    text-decoration: none;
+}
+/*  RESPONSIVO  */
+@media screen and (min-width: 768px){
+    .nav1{
+        display: block;
+        text-align: center;
+    }
+    .nav2{
+        display: none;
+    }
+}
+@media screen and (max-width: 767px){
+    .nav1{
+        display: none;
+    }
+    .nav2{
+        display: block;
+        text-align: center;
+    }
+}

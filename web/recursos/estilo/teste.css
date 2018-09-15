@@ -1,0 +1,10 @@
+.container-flex{
+    display: flex;
+}
+.quadrado{
+    padding: 25px;
+    margin: 25px;
+    width: 250px;
+    height: 250px;
+    background-color: blue;
+}

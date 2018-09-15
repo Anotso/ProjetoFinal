@@ -1,0 +1,373 @@
+@charset "utf-8";
+.bd{
+
+width: 80%;
+padding-left: 10%;
+
+
+}
+body{
+margin:0px;
+padding:0px;
+
+
+}
+
+
+/* header */
+
+header {
+font-size: 20px;
+font-style: normal;
+font-weight: 400px;
+ }
+
+/**/
+
+
+/*       Nav Bar               */
+
+.nmenu{
+width: 100%;
+background-color:#ffffff;/* cor de fundo */
+margin-top: -20px;
+}
+
+.nmenu li{
+position: relative;
+float: left;/* obter elemento para deslizar de um lado para o outro*/
+padding-left: 10px;
+}
+
+/* link da nav bar*/
+.nmenu a {
+	font-size: 20px;
+	color: black ;
+	text-decoration:none;
+	padding: 0 10px;/* elemento do bloco ocupam toda largura disponivel eles nao pode flutuar de um lado para o outro  */
+	width: 100%; /* elementos ocupam toda largura por padrao */
+	display: block;/* tona a area de link clicavel nao apenas a largura mais a area te texto*/
+} 
+
+
+.nmenu li a:hover{
+	color: #fff;
+	background-color:black;
+	justify-content: center;
+	display: flex;
+
+
+}
+
+/*fim*/
+.nmenu ul{
+list-style-type: none;/* Remover as bolas  */
+margin: 0;
+padding: 0;
+top;
+justify-content: center;
+display: flex;
+}
+
+/*dropdown*/
+
+.nmenu li ul{
+	overflow: hidden; /* quando o conteúdo de um elemento é grande demais para caber em uma área especificada.*/
+  	display: none;
+  	position: absolute;
+
+
+
+}
+
+.nmenu li:hover ul , .menu li ul li:hover ul, .menu li.over ul, .menu li ul li.over ul{
+display: block;
+}
+
+.nmenu	li ul li {
+display: block;
+width:100%;
+height:40px;
+line-height:18px;
+background-color:#ffffff;
+}
+
+/*fim*/
+
+/*letra da oferta*/
+#of{
+color: grey;
+text-align: center;
+
+
+}
+
+
+
+.slide{
+background-color:#bfbfbf;
+
+
+
+
+
+width:100%;
+height: 250px;
+
+
+}
+
+/*botao de bem vindo*/
+#bem {
+color: red;
+justify-content: center;
+
+}
+
+
+/*link da parte de cima*/
+.lc {
+font-size: 13px;
+display: block;
+position: left;
+padding-left: 75%;
+background:#FAFAFA ;
+
+}
+
+
+.lc a {
+text-decoration:;
+color: black;
+padding-left: 3px;
+
+}
+
+/*--------------------------------------------------------------*/
+#background{
+	background-color:;
+    padding-top: 54px;
+    padding-bottom:2px;
+    width: 100%;
+
+}
+
+#car1 {
+margin-left:100%;
+padding: 0px 70px 80px;
+margin-top: 50px;
+
+
+}
+/*Logo do site  */
+#logo,.inbusca,.btnbusca{
+
+background-color:red;
+position: relative;
+width: 100%;
+width: 165px;
+height: 52px;/*trocado por auto */
+top: -35px;
+}
+
+
+
+/* busca*/
+.inbusca,.btnbusca {
+	background: #fff;
+	width:400% ;
+	height:38px;
+	margin-left:210px;
+	margin-top: 22px;
+	outline: none;
+
+}
+/*.btnbusca {
+	background: #fff;
+	width:30px;
+	height: 16px;
+	margin-top: 26px;
+	box-sizing: 10px;
+}*/
+/*iput*/
+.inbusca[type=search]{
+font-family: inherit;
+font-size: 100%;
+background: #fff url(serach.png) no-repeat 2px center;/*icone de pesquisa*/
+padding: 7px 12px 15px 34px;
+border-color:rgba(123, 123, 123, 0.1);
+
+}
+
+
+/*  Botao de subir ate  o topo*/
+.btopo{
+position: fixed;/*fixando posiçao do botao */
+bottom: 2em;
+right: 2em;
+text-decoration: none;/*tirar sublinhado*/
+color: black;/* Cor da letra dentro do botao */
+font-size: 12px;
+padding: 1em;
+border-radius: 10px;/*a expessura da borda*/
+background-color:rgb(140, 140, 140) ; /*cor do botao*/
+}
+.btopo:hover{
+background:rgb(191, 191, 191) ;/*usado para o efeito no botao*/
+}
+
+/*fim*/
+
+/*     Rodapé          */
+.rodape{
+	background-color:#A4A4A4;
+	height:120px;
+ 	width:100%;
+
+}
+.pezin{
+	margin-left: 100px;
+
+
+}
+
+
+/*linhas do catalogo */
+.conteudo {
+
+overflow: auto;
+padding-top: 29px;
+clear: both;
+}
+
+/*informaçao do produto no catalogo*/
+.conteudo .Produto1 .informaçaop{
+float: left;
+text-align: center;
+padding-left: 5%;
+padding-right: 5%;
+width: 15%;
+
+
+}
+
+/*preço do produto no catalogo*/
+.Produto1 .informaçaop .valor{
+top:-28px;
+font-size: 18px;
+position:relative;
+color: #BDBDBD;
+
+}
+
+/*zoom ao passar o mouse na imagem */
+.zoom{
+overflow: hidden; /*Imagem não criar barras quando fazer o zoom  */
+} 
+
+
+.zoom img { 
+	max-width: 100%;
+	-moz-transition:all 0.3s;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+	opacity: 0.8;/*parte do efeito fade*/
+}
+
+.zoom:hover img{
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+	opacity: 1;/*parte do efeitofade*/
+
+}
+/*fim*/
+.hr{
+color: red;
+
+}
+
+
+
+/*produto   */
+
+.Produto1 .informaçaop .cp{
+position: relative;
+top: -10px;
+color: #E6E6E6; 
+font-size:14px;
+font-weight: 200px; 
+
+}
+
+/*butÃo da Compra - ñ existe mais*/
+.Produto1 .informaçaop .butonn{
+background: #E6E6E6; /* cor do botão negativo*/
+border-style: none;/* estilo da borda negativo*/ 
+color: #FFFFFF;/* corda das letras */
+font-size:14px;/* tamanho da fonte das letras*/
+height: 39px;
+margin-top: 7px;
+position: relative;
+width: 70%;
+text-transform:uppercase;
+top:-50px;
+border-radius: 10px;
+
+}
+
+
+/*  responsividade   */ 
+@media screen and (max-width: 480px)  {
+.conteudo .Produto1 .informaçaop{
+width: 43%;/*109*//*ou100%*/
+height: 20%;
+display:block;
+padding-left: 1px;
+padding-right: 10px;
+position: relative;
+left: -5;
+font-size: 100%;
+
+}
+
+.cp{
+color: red;
+	font-size:100%;
+}
+
+
+.nmenu{
+display: none;
+
+
+}
+
+.inbusca{
+	width: 100px;
+	display: none;
+
+}
+.rodape{
+	visibility: none;
+}
+
+.lc {
+font-size:30%;
+display: none;
+
+}
+.btopo{
+display: none;
+}
+
+#logo {
+background:blue;
+
+
+}
+.slide{
+	display: none;
+}
+
+}
