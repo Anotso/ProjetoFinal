@@ -1,4 +1,4 @@
-@charset UTF-8;
+@charset "UTF-8";
 /*  ESPAÇAMENTO */
 .esp15{
     padding: 15px;
@@ -13,9 +13,14 @@
     padding: 100px;
 }
 /*  NAVBAR - PERSONALIZADA  */
-#barra{
+.barra{
     padding: 30px;
     height: 100px;
+    color: white;
+    background-color: blue;
+}
+.barra div a{
+    color: white;
 }
 .nav1 a:hover{
     text-decoration: none;
@@ -40,5 +45,8 @@
     .nav2{
         display: block;
         text-align: center;
+    }
+    .barra{
+        height: 150px;
     }
 }
