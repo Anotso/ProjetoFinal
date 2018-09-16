@@ -1,0 +1,200 @@
+@charset "utf-8";
+*{
+margin: 0 px ;
+padding: 0 px;
+}
+/*  papel de parede */
+body{
+    background:url("../gamer.jpg") no-repeat  center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -khtml-background-size: cover;
+    -moz-background-size: cover;
+     min-height:100% !important;
+
+}
+#text12 {display:none;color:red}
+
+/*   quadradinho  */
+.quadradodologin{
+    width:300px;
+	height: 300px;
+    border: 2px #e6e6e6; /* borda*/ 
+	text-align:center;/* alinhamento do texto*/
+    margin: 0 auto;  /* margem*/
+    background-color:rgba(77, 77, 77,0.5) ;  /* cor do black groud por dentro  */ 
+	box-shadow: 1px -1px 5px #000; /* sompra na borda  */
+	border-radius:6px; /*borda da arredondada*/
+    padding: 20px 3px 10px 7px;
+ 
+    
+
+}
+
+
+
+
+
+/*  conteudo  */
+.conteudo{
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    margin-top:100px;
+}
+
+
+
+.senha,.login{
+  border:none;
+  border-bottom:1px solid #fff;
+  background:transparent;
+  outline:none;
+  height: 40px;
+  color:fff;
+  margin-bottom: 5px;
+  position: relative;
+    }
+
+/*#ou{
+border: #000;
+float: right;
+outline:none;
+position: relative;
+width:100%;
+	height:20px;
+    }
+    */
+
+#icones{
+    width:32px;
+    height:32px;
+    margin-top:-5px;
+
+}
+
+
+
+
+
+h1{
+margin: 0;
+padding: 0 10px;
+text-align: center;
+
+}
+#bem{
+color: #fff;
+
+
+}
+.coluan2{
+text-align:center; 
+position: relative;
+margin: 5px;
+
+}
+#esq{
+font-size: 15px;
+text-decoration: none;
+margin: 18px;
+color: #e6e6e6;
+}
+#esq:hover{
+    text-decoration: underline;
+}
+
+/*Botao*/
+.btn{
+    outline: none;
+    width: 250px;
+    height: 30px;
+    background: green;
+    border: none;
+   border-radius: 1px;
+   padding: 10px;
+   margin-top:20px;
+   box-shadow: 0 5px 0 #006000;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background: #006000;
+    box-shadow: 0 5px 0 #006000;
+}
+
+.btn:active{
+    position:relative;
+    top:5px;
+    box-shadow:none;
+}
+
+.btn2{
+    outline: none;
+    width: 250px;
+    height: 30px;
+    background: black;
+    border: none;
+   border-radius: 1px;
+   padding: 10px;
+   margin-top:20px;
+   box-shadow: 0 5px 0 #404040;
+   color: white;
+}
+
+.btn2:hover{
+    cursor: pointer;
+    background: #404040;
+    box-shadow: 0 5px 0 #404040;
+}
+
+.btn2:active{
+    position:relative;
+    top:5px;
+    box-shadow:none;
+}
+
+
+
+
+
+/*  responsivo */
+@media screen   and (min-device-width: 800px)  and (max-device-width: 801px)    {
+   h1{
+font-size: 5px;
+
+   }
+
+   body{
+    background:url("../gamer.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.quadradodologin{
+    width:	100px;
+	height: 100px;
+    border: 2px #e6e6e6; /* borda*/ 
+	text-align:center;/* alinhamento do texto*/
+    margin: 0 auto;  /* margem*/
+    background-color:rgba(6, 2, 253); /* cor do black groud por dentro  */ 
+	box-shadow: 1px -1px 5px #000; /* sompra na borda  */
+	border-radius:6px; /*borda da arredondada*/
+    padding: 20px 3px 10px 7px;
+    display: none;
+}
+
+@media screen and (max-width: 600px)and  (min-width: 600px) {
+    h1{
+        font-size: 10px;
+    }
+    body{
+        background:url("../gamer.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: none;
+    }
+}
