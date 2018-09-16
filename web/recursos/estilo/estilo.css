@@ -17,7 +17,8 @@
     padding: 30px;
     height: 100px;
     color: white;
-    background-color: blue;
+    background-color: rgb(187, 0, 0);
+    /*background-color: rgb(84, 117, 161);*/
 }
 .barra div a{
     color: white;
@@ -27,6 +28,19 @@
 }
 .nav2 a:hover{
     text-decoration: none;
+}
+/*  CODIFICAÇÃO EXTRA   */
+.corpo{
+    width: auto;
+    min-height: 600px;
+}
+.rodape{
+    text-align: center;
+    padding: 30px;
+    height: 350px;
+    color: white;
+    background-color: rgb(187, 0, 0);
+    /*background-color: rgb(84, 117, 161);*/
 }
 /*  RESPONSIVO  */
 @media screen and (min-width: 768px){

@@ -30,13 +30,18 @@
             <%@include file="include/menuprod.html"%>
         </nav>
         <div class="esp50"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3"><center>TESTE 01</center></div>
-                <div class="col-md-3"><center>TESTE 02</center></div>
-                <div class="col-md-3"><center>TESTE 03</center></div>
+        <div class="corpo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3"><center>TESTE 01</center></div>
+                    <div class="col-md-3"><center>TESTE 02</center></div>
+                    <div class="col-md-3"><center>TESTE 03</center></div>
+                </div>
+                <%@include file="include/teste.html"%>
             </div>
-            <%@include file="include/teste.html"%>
         </div>
+        <footer>
+            <%@include file="include/rodape.html"%>
+        </footer>
     </body>
 </html>
