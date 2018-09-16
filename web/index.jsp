@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <link rel="stylesheet" type="text/css" href="recursos/estilo/reset.css"/>
             <link rel="stylesheet" type="text/css" href="recursos/estilo/estilo.css"/>
@@ -13,7 +13,7 @@
                 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
             <!--	Font Awesome -->
                 <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
-        <title>Insert title here</title>
+        <title>JSP Page</title>
     </head>
     <body>
         <nav>
@@ -40,6 +40,7 @@
                 <%@include file="include/teste.html"%>
             </div>
         </div>
+            <a href="cadfornecedor.jsp">TESTE DO FORMULÁRIO - Cadastrar Fornecedor</a>
         <footer>
             <%@include file="include/rodape.html"%>
         </footer>
