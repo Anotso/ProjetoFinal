@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /*  ESPAÇAMENTO */
-.esp5{padding: 15px;}
-.esp15{padding: 15px;}
-.esp25{padding: 25px;}
-.esp50{padding: 50px;}
-.esp100{padding: 100px;}
+.esp5{padding-top: 5px;}
+.esp15{padding-top: 15px;}
+.esp25{padding-top: 25px;}
+.esp50{padding-top: 50px;}
+.esp100{padding-top: 100px;}
 /*  NAVBAR - PERSONALIZADA  */
 .barra{
     padding: 30px;
@@ -15,6 +15,7 @@
 }
 .barra div a{
     color: white;
+    text-decoration: none;
 }
 .nav1 a:hover{
     text-decoration: none;

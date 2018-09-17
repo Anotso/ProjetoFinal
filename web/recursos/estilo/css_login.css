@@ -5,7 +5,7 @@ padding: 0 px;
 }
 /*  papel de parede */
 body{
-    background:url("../gamer.jpg") no-repeat  center fixed;
+    background:url("../imagens/gamer.jpg") no-repeat  center fixed;
     background-size: cover;
     height: 100%;
     overflow: hidden;
@@ -14,14 +14,14 @@ body{
     -khtml-background-size: cover;
     -moz-background-size: cover;
      min-height:100% !important;
-
+    
 }
 #text12 {display:none;color:red}
 
 /*   quadradinho  */
 .quadradodologin{
-    width:300px;
-	height: 300px;
+    width:280px;
+	height: 280px;
     border: 2px #e6e6e6; /* borda*/ 
 	text-align:center;/* alinhamento do texto*/
     margin: 0 auto;  /* margem*/
@@ -29,24 +29,16 @@ body{
 	box-shadow: 1px -1px 5px #000; /* sompra na borda  */
 	border-radius:6px; /*borda da arredondada*/
     padding: 20px 3px 10px 7px;
- 
-    
-
 }
-
-
-
-
 
 /*  conteudo  */
 .conteudo{
     width: 300px;
+    height: 500px;
     margin: 0 auto;
     display: flex;
     margin-top:100px;
 }
-
-
 
 .senha,.login{
   border:none;
@@ -75,10 +67,6 @@ width:100%;
     margin-top:-5px;
 
 }
-
-
-
-
 
 h1{
 margin: 0;
@@ -114,10 +102,10 @@ color: #e6e6e6;
     height: 30px;
     background: green;
     border: none;
-   border-radius: 1px;
-   padding: 10px;
-   margin-top:20px;
-   box-shadow: 0 5px 0 #006000;
+    border-radius: 1px;
+    padding: 10px;
+    margin-top:20px;
+    box-shadow: 0 5px 0 #006000;
 }
 
 .btn:hover{
@@ -157,44 +145,11 @@ color: #e6e6e6;
     box-shadow:none;
 }
 
-
-
-
-
-/*  responsivo */
-@media screen   and (min-device-width: 800px)  and (max-device-width: 801px)    {
-   h1{
-font-size: 5px;
-
-   }
-
-   body{
-    background:url("../gamer.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.quadradodologin{
-    width:	100px;
-	height: 100px;
-    border: 2px #e6e6e6; /* borda*/ 
-	text-align:center;/* alinhamento do texto*/
-    margin: 0 auto;  /* margem*/
-    background-color:rgba(6, 2, 253); /* cor do black groud por dentro  */ 
-	box-shadow: 1px -1px 5px #000; /* sompra na borda  */
-	border-radius:6px; /*borda da arredondada*/
-    padding: 20px 3px 10px 7px;
-    display: none;
-}
-
-@media screen and (max-width: 600px)and  (min-width: 600px) {
+@media screen and (max-width: 767px)    {
     h1{
-        font-size: 10px;
+        font-size: 15px;
     }
     body{
-        background:url("../gamer.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        display: none;
+        overflow: auto;
     }
 }
