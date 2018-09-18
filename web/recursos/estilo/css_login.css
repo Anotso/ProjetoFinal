@@ -14,6 +14,7 @@ body{
     -khtml-background-size: cover;
     -moz-background-size: cover;
      min-height:100% !important;
+     overflow:hidden;
     
 }
 #text12 {display:none;color:red}
@@ -29,6 +30,7 @@ body{
 	box-shadow: 1px -1px 5px #000; /* sompra na borda  */
 	border-radius:6px; /*borda da arredondada*/
     padding: 20px 3px 10px 7px;
+    position: static;
 }
 
 /*  conteudo  */
@@ -39,8 +41,9 @@ body{
     display: flex;
     margin-top:100px;
 }
-
-.senha,.login{
+/*versao1.0*/
+/*.login{
+    width: 100%;
   border:none;
   border-bottom:1px solid #fff;
   background:transparent;
@@ -49,7 +52,98 @@ body{
   color:fff;
   margin-bottom: 5px;
   position: relative;
+ z-index: 2;
+    }*/
+    
+    /* versao 2.0  */ 
+   .input-nomee{
+       	width: 100%;
+	position: relative;
+	font-size: 16px;
+	color: #fff;
+        border: 1px solid #fff ;
+        padding: 8px 3px 3px 0px;
+        box-sizing: content-box;
+        z-index: 2;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background:transparent;
+        margin-bottom: 5px;
+   }
+    
+   .input-nomee:focus{
+         outline: none;
     }
+    ::-webkit-input-placeholder {
+   color: white;
+}
+
+
+/*
+    
+label{
+    display: inline-block;
+    position: relative;
+    
+}
+label span{
+    position: absolute;
+  left: 20px;
+  top: -2em;
+  font-size: .75em;
+  cursor: text;
+  color: dodgerblue;
+  transition: all 150ms ease;
+}
+.input-nomee.empty{
+    border-color: #d9d9d9;
+}.input-nomee.empty + span {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1em;
+  background: none;
+  color: #cccccc;
+}
+*/
+
+/*.input-nomee 
+{
+    width: 100%;
+	position: relative;
+	font-size: 16px;
+	color: #5b5b5b;
+	border: 1px  solid #fff ;
+	padding: 3px 3px 3px 0px;
+	box-sizing: content-box;
+	z-index: 2;
+         border-top: none;
+        border-left: none;
+         border-right: none;
+         background:transparent;
+         margin-bottom: 5px;
+         text-align: center;
+}
+
+.label-nome
+{
+    width: 100%;
+    position: absolute;
+    color: Goldenrod;
+  font-weight: bold;
+    top: 170px; bottom: 0; left: 0; right: 0;
+    transition: 0.5s;                
+}
+
+.input-nomee:focus + .label-nome
+{
+    margin-top: 0px;
+    top: -50%;
+    z-index: 2;
+    transition: 0.2s;  
+
+}
+*/
 
 /*#ou{
 border: #000;
@@ -76,19 +170,21 @@ text-align: center;
 }
 #bem{
 color: #fff;
+font-size: 30px;
+text-align: center;
 
 
 }
 .coluan2{
 text-align:center; 
 position: relative;
-margin: 5px;
+margin: 10px;
 
 }
 #esq{
 font-size: 15px;
 text-decoration: none;
-margin: 18px;
+margin: 8px;
 color: #e6e6e6;
 }
 #esq:hover{
@@ -145,11 +241,15 @@ color: #e6e6e6;
     box-shadow:none;
 }
 
-@media screen and (max-width: 767px)    {
+@media screen and (max-width: 640px)    {
     h1{
         font-size: 15px;
     }
     body{
         overflow: auto;
+    }
+    .quadradodologin{
+        position: static;
+     width: 100%;   
     }
 }
