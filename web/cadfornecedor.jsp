@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,18 +23,26 @@
             <%
                 String usuario = (String) session.getAttribute("usuario");
                 if(usuario == null){
-                        %><%@include file="include/navlogin.html"%>
+                        %><c:import url="include/navlogin.jsp"/>
             <%
                 }else{
-                        %><%@include file="include/navlogout.html"%>
+                        %><c:import url="include/navlogout.jsp"/>
             <%
                 }
             %>
-            <%@include file="include/menuprod.html"%>
+            <c:import url="include/menuprod.jsp"/>
         </nav>
         <div class="esp50"></div>
         <div class="corpo">
             <div class="container">
+                <div class="esp15"></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <center><h3>Cadastro de Fornecedores</h3></center>
+                        <hr>
+                    </div>
+                </div>
+                <div class="esp15"></div>
                 <form action="" method="POST">
                     <div class="form-group row">
                         <label for="nfor" class="col-md-4 col-form-label">Nome do Fornecedor:</label>
@@ -55,6 +64,7 @@
                     </div>
                     <div class="esp5"></div>
                     <hr/>
+                        <!--    DADOS DO BUSCA CEP  -->
                     <div class="esp5"></div>
                     <div class="form-group row">
                         <label for="cepfor" class="col-md-4 col-form-label">Informe o CEP do Fornecedor:</label>
@@ -112,7 +122,7 @@
             </div>
         </div>
         <footer>
-            <%@include file="include/rodape.html"%>
+            <c:import url="include/rodape.jsp"/>
         </footer>
     </body>
 </html>
