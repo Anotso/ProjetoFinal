@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -22,14 +22,14 @@
             <%
                 String usuario = (String) session.getAttribute("usuario");
                 if(usuario == null){
-                        %><c:import url="include/navlogin.html"/>
+                        %><c:import url="include/navlogin.jsp"/>
             <%
                 }else{
-                        %><c:import url="include/navlogout.html"/>
+                        %><c:import url="include/navlogout.jsp"/>
             <%
                 }
             %>
-            <c:import url="include/menuprod.html"/>
+            <c:import url="include/menuprod.jsp"/>
         </nav>
         <div class="esp50"></div>
         <div class="corpo">
@@ -39,12 +39,12 @@
                     <div class="col-md-3"><center>TESTE 02</center></div>
                     <div class="col-md-3"><center>TESTE 03</center></div>
                 </div>
-                <c:import url="include/teste.html"/>
+                <c:import url="include/teste.jsp"/>
             </div>
         </div>
             <a href="cadfornecedor.jsp">TESTE DO FORMULÁRIO - Cadastrar Fornecedor</a>
         <footer>
-            <c:import url="include/rodape.html"/>
+            <c:import url="include/rodape.jsp"/>
         </footer>
     </body>
 </html>
