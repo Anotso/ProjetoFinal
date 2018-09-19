@@ -1,8 +1,10 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+        <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <link rel="stylesheet" type="text/css" href="recursos/estilo/reset.css"/>
             <link rel="stylesheet" type="text/css" href="recursos/estilo/estilo.css"/>
@@ -20,14 +22,14 @@
             <%
                 String usuario = (String) session.getAttribute("usuario");
                 if(usuario == null){
-                        %><%@include file="include/navlogin.html"%>
+                        %><c:import url="include/navlogin.html"/>
             <%
                 }else{
-                        %><%@include file="include/navlogout.html"%>
+                        %><c:import url="include/navlogout.html"/>
             <%
                 }
             %>
-            <%@include file="include/menuprod.html"%>
+            <c:import url="include/menuprod.html"/>
         </nav>
         <div class="esp50"></div>
         <div class="corpo">
@@ -37,12 +39,12 @@
                     <div class="col-md-3"><center>TESTE 02</center></div>
                     <div class="col-md-3"><center>TESTE 03</center></div>
                 </div>
-                <%@include file="include/teste.html"%>
+                <c:import url="include/teste.html"/>
             </div>
         </div>
             <a href="cadfornecedor.jsp">TESTE DO FORMULÁRIO - Cadastrar Fornecedor</a>
         <footer>
-            <%@include file="include/rodape.html"%>
+            <c:import url="include/rodape.html"/>
         </footer>
     </body>
 </html>
