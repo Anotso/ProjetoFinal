@@ -41,40 +41,40 @@
                 <div class="esp15"></div>
                 <div class="row">
                     <div class="col-md-12">
-                        <center><h3>Cadastro de Fornecedores</h3></center>
+                        <center><h3>Cadastro de Funcionário</h3></center>
                         <hr>
                     </div>
                 </div>
                 <div class="esp15"></div>
-                <form action="cadfornecedor.html" method="POST">
+                <form action="cadfuncionario.html" method="POST">
                     <div class="form-group row">
-                        <label for="nfor" class="col-md-4 col-form-label">Nome do Fornecedor:</label>
+                        <label for="nfu" class="col-md-4 col-form-label">Nome do Funcionário:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="nfor" name="nfor" placeholder="Informe o nome do fornecedor"/>
+                            <input type="text" class="form-control" id="nfu" name="nfu" placeholder="Informe o nome do fornecedor"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="emailfor" class="col-md-4 col-form-label">E-mail do Fornecedor:</label>
+                        <label for="emailfu" class="col-md-4 col-form-label">E-mail do Funcionário:</label>
                         <div class="col-md-8">
-                            <input type="email" class="form-control" id="emailfor" name="emailfor" placeholder="Ex.: exemplo@exemplo.com"/>
+                            <input type="email" class="form-control" id="emailfu" name="emailfu" placeholder="Ex.: exemplo@exemplo.com"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="sitefor" class="col-md-4 col-form-label">Site do Fornecedor:</label>
+                        <label for="telfu" class="col-md-4 col-form-label">Telefone do Funcionário:</label>
                         <div class="col-md-8">
-                            <input type="url" class="form-control" id="sitefor" name="sitefor" placeholder="Ex.: http://www.exemplo.com"/>
+                            <input type="text" class="form-control" id="telfu" name="telfu" placeholder="Ex.: (xx) xxxx-xxxx"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="telfor" class="col-md-4 col-form-label">Telefone do Fornecedor:</label>
+                        <label for="celfu" class="col-md-4 col-form-label">Celular do Funcionário:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="telfor" name="telfor" placeholder="Ex.: (xx) xxxx-xxxx"/>
+                            <input type="text" class="form-control" id="celfu" name="celfu" placeholder="Ex.: (xx) xxxx-xxxx"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="cnpjfor" class="col-md-4 col-form-label">CNPJ do Fornecedor:</label>
+                        <label for="cpffu" class="col-md-4 col-form-label">CPF do Funcionário:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="cnpjfor" name="cnpjfor"/>
+                            <input type="text" class="form-control" id="cpffu" name="cpffu"/>
                         </div>
                     </div>
                     <div class="esp5"></div>
@@ -82,50 +82,50 @@
                         <!--    DADOS DO BUSCA CEP  -->
                     <div class="esp5"></div>
                     <div class="form-group row">
-                        <label for="cepfor" class="col-md-4 col-form-label">Informe o CEP do Fornecedor:</label>
+                        <label for="cepfu" class="col-md-4 col-form-label">Informe o CEP do Fornecedor:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="cepfor" name="cepfor" onblur="pesquisacep(this.value)"/>
+                            <input type="text" class="form-control" id="cepfu" name="cepfu" onblur="pesquisacep(this.value)"/>
                         </div>
                     </div>
                     <div class="esp5"></div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="endfor" class="col-md-4 col-form-label">Endereço:</label>
+                                <label for="endfu" class="col-md-4 col-form-label">Endereço:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="endfor" name="endfor" readonly/>
+                                    <input type="text" class="form-control" id="endfu" name="endfu" readonly/>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="numfor" class="col-md-4 col-form-label">Número:</label>
+                                <label for="numfu" class="col-md-4 col-form-label">Número:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="numfor" name="numfor"/>
+                                    <input type="text" class="form-control" id="numfu" name="numfu"/>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="compfor" class="col-md-4 col-form-label">Complemento:</label>
+                                <label for="compfu" class="col-md-4 col-form-label">Complemento:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="compfor" name="compfor"/>
+                                    <input type="text" class="form-control" id="compfu" name="compfu"/>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="barfor" class="col-md-4 col-form-label">Bairro:</label>
+                                <label for="barfu" class="col-md-4 col-form-label">Bairro:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="barfor" name="barfor" readonly/>
+                                    <input type="text" class="form-control" id="barfu" name="barfu" readonly/>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="cidfor" class="col-md-4 col-form-label">Cidade:</label>
+                                <label for="cidfu" class="col-md-4 col-form-label">Cidade:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="cidfor" name="cidfor" readonly/>
+                                    <input type="text" class="form-control" id="cidfu" name="cidfu" readonly/>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="estfor" class="col-md-4 col-form-label">Estado:</label>
+                                <label for="estfu" class="col-md-4 col-form-label">Estado:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="estfor" name="estfor" readonly/>
+                                    <input type="text" class="form-control" id="estfu" name="estfu" readonly/>
                                 </div>
                             </div>
                         </div>
