@@ -103,17 +103,17 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="compfor" class="col-md-4 col-form-label">Complemento:</label>
+                                <label for="complfor" class="col-md-4 col-form-label">Complemento:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="compfor" name="compfor"/>
+                                    <input type="text" class="form-control" id="complfor" name="complfor"/>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="barfor" class="col-md-4 col-form-label">Bairro:</label>
+                                <label for="bairrofor" class="col-md-4 col-form-label">Bairro:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="barfor" name="barfor" readonly/>
+                                    <input type="text" class="form-control" id="bairrofor" name="bairrofor" readonly/>
                                 </div>
                             </div>
                             <div class="form-group row">
