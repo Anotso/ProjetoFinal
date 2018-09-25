@@ -8,7 +8,7 @@ public class Dao {
     protected PreparedStatement stmt;
     protected ResultSet rs;
     
-    String URL = "jdbc:mysql:https://www.db4free.net/:3306/projeto_final";
+    String URL = "jdbc:mysql:https://www.db4free.net:3306/projeto_final";
     String USER = "profinal";
     String PASS = "adminroot";
     
