@@ -6,7 +6,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Produto;
-import util.Arquivo;
+import br.com.projetofinal.util.Arquivo;
 
 @MultipartConfig
 //@WebServlet(name = "ProdutoServlet", urlPatterns = {"/Produto"})

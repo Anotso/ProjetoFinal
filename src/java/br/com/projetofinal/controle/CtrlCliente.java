@@ -1,14 +1,12 @@
-package controller;
+package br.com.projetofinal.controle;
 
-import dao.ClienteDAO;
-import dao.EnderecoDAO;
+import br.com.projetofinal.dao.ClienteDao;
 import java.util.List;
-import model.Cliente;
+import br.com.projetofinal.entidade.Cliente;
 
 public class CtrlCliente {
 
     ClienteDAO dao = null;
-    EnderecoDAO daoEnd = null;
 
     public void cadastrar(Cliente cliente) throws Exception {
         //Cliente

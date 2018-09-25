@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Cliente;
-import util.Arquivo;
-import util.Crypt;
+import br.com.projetofinal.util.Arquivo;
+import br.com.projetofinal.util.Crypt;
 
 @MultipartConfig
 //@WebServlet(name = "ClienteServlet", urlPatterns = {"/Cliente"})

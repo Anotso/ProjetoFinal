@@ -1,18 +1,17 @@
 package br.com.projetofinal.logica;
 
-import controller.CtrlFuncionario;
+import br.com.projetofinal.controle.CtrlFornecedor;
 import java.util.List;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import br.com.projetofinal.entidade.Funcionario;
+import br.com.projetofinal.entidade.Fornecedor;
 import br.com.projetofinal.util.Arquivo;
-import br.com.projetofinal.util.Crypt;
 
 @MultipartConfig
 //@WebServlet(name = "FuncionarioServlet", urlPatterns = {"/Func"})
-public class FuncionarioLog implements Logica {
+public class FornecedorLog implements Logica {
 
     public String executa(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
@@ -27,10 +26,14 @@ public class FuncionarioLog implements Logica {
 
         //Cadastro e Alteração
         if (acao.equals("cad") || acao.equals("alt")) {
-            Funcionario funcionario = new Funcionario();
+            Fornecedor fornecedor = new Fornecedor();
             try {
-                CtrlFuncionario ctrlFuncionario = new CtrlFuncionario();
+                CtrlFornecedor ctrlFornecedor = new CtrlFornecedor();
                 Arquivo arq = new Arquivo();
+                fornecedor.setFornecedor(request.getParameter("nfor").trim());
+                fornecedor.setEmailfor(request.getParameter("emailfor").trim());
+                fornecedor.setSitefor(request.getParameter("sitefor").trim());
+                fornecedor.setTelfor(request.getParameter("telfor").trim());
                 funcionario.setNome(request.getParameter("nome").trim());
                 funcionario.setEmail(request.getParameter("email").trim());
                 funcionario.setPws(request.getParameter("pws").trim());

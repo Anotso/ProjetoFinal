@@ -84,16 +84,16 @@
                     <div class="form-group row">
                         <label for="cepfor" class="col-md-4 col-form-label">Informe o CEP do Fornecedor:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="cepfor" name="cepfor" onblur="pesquisacep(this.value)"/>
+                            <input type="text" class="form-control" id="cepfor" name="cep" onblur="pesquisacep(this.value)"/>
                         </div>
                     </div>
                     <div class="esp5"></div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="endfor" class="col-md-4 col-form-label">Endereço:</label>
+                                <label for="end" class="col-md-4 col-form-label">Endereço:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="endfor" name="endfor" readonly/>
+                                    <input type="text" class="form-control" id="end" name="end" readonly/>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -111,21 +111,21 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="bairrofor" class="col-md-4 col-form-label">Bairro:</label>
+                                <label for="bairro" class="col-md-4 col-form-label">Bairro:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="bairrofor" name="bairrofor" readonly/>
+                                    <input type="text" class="form-control" id="bairro" name="bairro" readonly/>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="cidfor" class="col-md-4 col-form-label">Cidade:</label>
+                                <label for="cid" class="col-md-4 col-form-label">Cidade:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="cidfor" name="cidfor" readonly/>
+                                    <input type="text" class="form-control" id="cid" name="cid" readonly/>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="estfor" class="col-md-4 col-form-label">Estado:</label>
+                                <label for="est" class="col-md-4 col-form-label">Estado:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="estfor" name="estfor" readonly/>
+                                    <input type="text" class="form-control" id="est" name="est" readonly/>
                                 </div>
                             </div>
                         </div>
