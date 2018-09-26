@@ -15,6 +15,15 @@ public class Fornecedor {
     private String bairrofor;
     private String cidfor;
     private String estfor;
+    private boolean ativo = true;
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
     
     public Fornecedor(int idfornecedor, String fornecedor, String emailfor, String sitefor, String telfor, String cnpj, String cepfor, String endfor, String numfor, String complfor, String bairrofor, String cidfor, String estfor){
         super();

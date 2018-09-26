@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import br.com.projetofinal.entidade.Fornecedor;
-import br.com.projetofinal.util.Arquivo;
 
 @MultipartConfig
 //@WebServlet(name = "FuncionarioServlet", urlPatterns = {"/Func"})
@@ -20,61 +19,56 @@ public class FornecedorLog implements Logica {
 
         String pagina = "admin.jsp";
         String acao = request.getParameter("acao");
-        String caminhoFoto = System.getProperty("user.home") + ""
-                //+ "/Documents/NetBeansProjects/lomoj/web/img/func/";//windows
-                + "/NetBeansProjects/lomoj/web/img/func/";//linux
 
         //Cadastro e Alteração
         if (acao.equals("cad") || acao.equals("alt")) {
             Fornecedor fornecedor = new Fornecedor();
             try {
                 CtrlFornecedor ctrlFornecedor = new CtrlFornecedor();
-                Arquivo arq = new Arquivo();
                 fornecedor.setFornecedor(request.getParameter("nfor").trim());
                 fornecedor.setEmailfor(request.getParameter("emailfor").trim());
                 fornecedor.setSitefor(request.getParameter("sitefor").trim());
                 fornecedor.setTelfor(request.getParameter("telfor").trim());
-                funcionario.setNome(request.getParameter("nome").trim());
-                funcionario.setEmail(request.getParameter("email").trim());
-                funcionario.setPws(request.getParameter("pws").trim());
-                funcionario.setFoto(request.getPart("fotoperfil").getSubmittedFileName());
+                fornecedor.setCnpj(request.getParameter("cnpjfor").trim());
+                fornecedor.setCepfor(request.getParameter("cep").trim());
+                fornecedor.setEndfor(request.getParameter("end").trim());
+                fornecedor.setNumfor(request.getParameter("numfor").trim());
+                fornecedor.setComplfor(request.getParameter("complfor").trim());
+                fornecedor.setBairrofor(request.getParameter("bairro").trim());
+                fornecedor.setCidfor(request.getParameter("cid").trim());
+                fornecedor.setEstfor(request.getParameter("est").trim());
 
                 if (request.getParameter("ativo").equals("1")) {
-                    funcionario.setAtivo(true);
+                    fornecedor.setAtivo(true);
                 } else {
-                    funcionario.setAtivo(false);
+                    fornecedor.setAtivo(false);
                 }
-
-                //Upload da Foto
-                funcionario.setFoto(arq.upload(caminhoFoto,
-                        request.getPart("fotoperfil").getSubmittedFileName(),
-                        request.getPart("fotoperfil").getInputStream()));
 
                 if (acao.equals("cad")) {
-                    funcionario.validar(request.getParameter("pwsc").trim());
-                    funcionario.setPws(Crypt.md5(funcionario.getPws()));
-                    ctrlFuncionario.cadastrar(funcionario);
+                    fornecedor.validar(request.getParameter("pwsc").trim());
+                    fornecedor.setPws(Crypt.md5(fornecedor.getPws()));
+                    ctrlFornecedor.cadastrar(fornecedor);
                 } else {
                     funcionario.validar();
-                    ctrlFuncionario.alterar(funcionario);
+                    ctrlFornecedor.alterar(funcionario);
                 }
-                funcionario = null;
+                fornecedor = null;
                 request.setAttribute("avisos", "Cadastrado");
             } catch (Exception ex) {
                 request.setAttribute("erros", ex.getMessage().replace("\n", "<br>"));
             }
-            request.setAttribute("Funcionario", funcionario);
+            request.setAttribute("Fornecedor", fornecedor);
             pagina = "admin.jsp?p=formFuncionario";
         }
 
         //Login
         if (acao.equals("log")) {
             try {
-                CtrlFuncionario ctrlFuncionario = new CtrlFuncionario();
+                CtrlFornecedor ctrlFuncionario = new CtrlFornecedor();
                 String email = request.getParameter("email").trim();
                 String pws = Crypt.md5(request.getParameter("pws").trim());
                 System.out.println("senha:" + Crypt.md5("pws"));
-                Funcionario funcionario = ctrlFuncionario.login(email, pws);
+                Fornecedor funcionario = ctrlFuncionario.login(email, pws);
                 HttpSession user = request.getSession();
                 funcionario.setPws("");
                 user.setAttribute("funcionario", funcionario);
@@ -95,10 +89,10 @@ public class FornecedorLog implements Logica {
 
         //Pesquisar
         if (acao.equals("pesq")) {
-            CtrlFuncionario ctrlfuncionario = new CtrlFuncionario();
+            CtrlFornecedor ctrlfuncionario = new CtrlFornecedor();
             String dados = request.getParameter("dados").trim();
             try {
-                List<Funcionario> funcionarios = ctrlfuncionario.pesquisa(dados);
+                List<Fornecedor> funcionarios = ctrlfuncionario.pesquisa(dados);
                 request.setAttribute("funcionarios", funcionarios);
             } catch (Exception ex) {
                 request.setAttribute("erros", "Dados não encontrados.");
