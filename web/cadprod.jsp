@@ -102,10 +102,11 @@
                     
                     <div class="esp5"></div>
                     <hr/>
+                    
                    ​<picture>
                    <img src="..." class="rounded float-left" alt="...">
                    <img src="..." class="rounded float-right" alt="...">
-              
+                  
                    <div class="text-center">
                     <img src="..." class="rounded" alt="...">
 </div>
