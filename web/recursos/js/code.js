@@ -1,3 +1,4 @@
+        //CADASTRO DE CLIENTE
 //HABILITA A DIV RESPONSÁVEL PELOS CAMPOS DA PESSOA FÍSICA
 function CarPesFisica(){
     document.getElementById("pesfisica").style.display="block";
@@ -7,4 +8,9 @@ function CarPesFisica(){
 function CarPesJuridica(){
     document.getElementById("pesfisica").style.display="none";
     document.getElementById("pesjuridica").style.display="block";
+}
+
+        //CADASTRO DE FORNECEDOR
+function Envio(){
+    cadfornecedor.submit();
 }

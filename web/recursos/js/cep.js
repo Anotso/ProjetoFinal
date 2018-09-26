@@ -1,32 +1,32 @@
 function limpa_formulário_cep() {
         //Limpa valores do formulário de cep.
-        document.getElementById('endfor').value=("");
-        document.getElementById('barfor').value=("");
-        document.getElementById('cidfor').value=("");
-        document.getElementById('estfor').value=("");
+        document.getElementById('end').value=("");
+        document.getElementById('bairro').value=("");
+        document.getElementById('cid').value=("");
+        document.getElementById('est').value=("");
 }
 function meu_callback(conteudo) {
     if (!("erro" in conteudo)) {
         //Atualiza os campos com os valores.
-        r = document.getElementById('endfor').value=(conteudo.logradouro);
-        b = document.getElementById('barfor').value=(conteudo.bairro);
-        document.getElementById('cidfor').value=(conteudo.localidade);
-        document.getElementById('estfor').value=(conteudo.uf);
+        r = document.getElementById('end').value=(conteudo.logradouro);
+        b = document.getElementById('bairro').value=(conteudo.bairro);
+        document.getElementById('cid').value=(conteudo.localidade);
+        document.getElementById('est').value=(conteudo.uf);
         if((r=="")&&(b=="")){
-            document.getElementById('endfor').readOnly = false;
-            document.getElementById('barfor').readOnly = false;
+            document.getElementById('end').readOnly = false;
+            document.getElementById('bairro').readOnly = false;
         }else{
             if(r==""){
-                document.getElementById('endfor').readOnly = false;
+                document.getElementById('end').readOnly = false;
             }else{
                 if(b==""){
-                    document.getElementById('barfor').readOnly = false;
+                    document.getElementById('bairro').readOnly = false;
                 }
             }
         }
         if((r!="")&&(b!="")){
-            document.getElementById('endfor').readOnly = true;
-            document.getElementById('barfor').readOnly = true;
+            document.getElementById('end').readOnly = true;
+            document.getElementById('bairro').readOnly = true;
         }
     } //end if.
     else {
@@ -51,10 +51,10 @@ function pesquisacep(valor) {
         if(validacep.test(cep)) {
 
             //Preenche os campos com "..." enquanto consulta webservice.
-            document.getElementById('endfor').value="...";
-            document.getElementById('barfor').value="...";
-            document.getElementById('cidfor').value="...";
-            document.getElementById('estfor').value="...";
+            document.getElementById('end').value="...";
+            document.getElementById('bairro').value="...";
+            document.getElementById('cid').value="...";
+            document.getElementById('est').value="...";
 
             //Cria um elemento javascript.
             var script = document.createElement('script');

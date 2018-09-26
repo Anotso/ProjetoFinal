@@ -12,7 +12,7 @@ public class FornecedorDao extends Dao{
         try{
             String sql = "INSERT INTO"+
                 " fornecedor(nomefor, emailfor, sitefor, telfor, cnpjfor, cepfor, ruafor, numfor, complfor, bairrofor, cidadefor, estadofor, ativofor)"+
-                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
+                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);";
             stmt = con.prepareStatement(sql);
             stmt.setString(1, fornecedor.getFornecedor());
             stmt.setString(2, fornecedor.getEmailfor());

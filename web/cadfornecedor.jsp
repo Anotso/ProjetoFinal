@@ -16,6 +16,7 @@
                 <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
             <!--    Codificação própria -->
                 <script type="text/javascript" src="recursos/js/cep.js"></script>
+                <script type="text/javascript" src="recursos/js/code.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -46,7 +47,7 @@
                     </div>
                 </div>
                 <div class="esp15"></div>
-                <form action="cadfornecedor.html" method="POST">
+                <form action="cadastrarfornecedor.html" method="POST" id="cadfornecedor">
                     <div class="form-group row">
                         <label for="nfor" class="col-md-4 col-form-label">Nome do Fornecedor:</label>
                         <div class="col-md-8">
@@ -56,7 +57,7 @@
                     <div class="form-group row">
                         <label for="emailfor" class="col-md-4 col-form-label">E-mail do Fornecedor:</label>
                         <div class="col-md-8">
-                            <input type="email" class="form-control" id="emailfor" name="emailfor" placeholder="Ex.: exemplo@exemplo.com"/>
+                            <input type="email" class="form-control" id="emailfor" name="emailfor" placeholder="Ex.: exemplo@exemplo.com" required/>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -139,7 +140,7 @@
                         </div>
                         <div class="col-md-2 esp5"></div>
                         <div class="col-md-5">
-                            <button type="button" class="btn btn-danger btn-block">Cadastrar</button>
+                            <button type="submit" class="btn btn-danger btn-block">Cadastrar</button>
                         </div>
                     </div>
                     <div class="esp50"></div>
