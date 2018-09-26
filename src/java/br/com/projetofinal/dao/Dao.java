@@ -11,9 +11,9 @@ public class Dao {
     /*String URL = "jdbc:mysql:https://www.db4free.net:3306/projeto_final";
     String USER = "profinal";
     String PASS = "adminroot";*/
-    String URL = "jdbc:mysql://127.0.0.1:3306/projetofinalweb";
+    String URL = "jdbc:mysql://127.0.0.1:3307/projetofinalweb";
     String USER = "root";
-    String PASS = "";
+    String PASS = "usbw";
     
     protected void open(){
         try{

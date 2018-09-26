@@ -28,7 +28,7 @@ public class FornecedorDao extends Dao{
             stmt.setBoolean(13, fornecedor.isAtivo());
             stmt.execute();
             close();
-        }catch(Exception e){
+        }catch(SQLException e){
             throw new RuntimeException(e);
         }
     }
