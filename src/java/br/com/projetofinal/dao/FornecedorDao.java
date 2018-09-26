@@ -8,9 +8,10 @@ public class FornecedorDao extends Dao{
     
     public void cadastrarfornecedor(Fornecedor fornecedor) throws SQLException{
         open();
+        boolean ativo = true;
         try{
             String sql = "INSERT INTO"+
-                " fornecedor(nomefor, emailfor, sitefor, telfor, cnpjfor, cepfor, ruafor, numfor, complfor, bairrofor, cidadefor, estadofor)"+
+                " fornecedor(nomefor, emailfor, sitefor, telfor, cnpjfor, cepfor, ruafor, numfor, complfor, bairrofor, cidadefor, estadofor, ativofor)"+
                 "VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
             stmt = con.prepareStatement(sql);
             stmt.setString(1, fornecedor.getFornecedor());
@@ -25,11 +26,41 @@ public class FornecedorDao extends Dao{
             stmt.setString(10, fornecedor.getBairrofor());
             stmt.setString(11, fornecedor.getCidfor());
             stmt.setString(12, fornecedor.getEstfor());
+            stmt.setBoolean(13, ativo);
             stmt.execute();
             close();
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
+    }
+
+    public List<Fornecedor> buscarfornecedor(String dado) throws SQLException{
+        open();
+        String sql = "SELECT * FROM fornecedor WHERE cnpjfor = ? OR nomefor = ?";
+        stmt = con.prepareStatement(sql);
+        stmt.setString(1, dado);
+        stmt.setString(2, dado);
+
+        Fornecedor fornecedor = null;
+        rs = stmt.executeQuery();
+        List<Fornecedor> lista = new ArrayList<Fornecedor>();
+        if(rs.next()){
+            fornecedor = new Fornecedor(rs.getInt("idfor"),
+                rs.getString("nomefor"),
+                rs.getString("cnpjfor"),
+                rs.getString("sitefor"),
+                rs.getString("emailfor"),
+                rs.getString("telfor"),
+                rs.getString("cepfor"),
+                rs.getString("endfor"),
+                rs.getString("numfor"),
+                rs.getString("complfor"),
+                rs.getString("bairrofor"),
+                rs.getString("cidadefor"),
+                rs.getString("estadofor"));
+        }
+        close();
+        return lista;
     }
     
 }
