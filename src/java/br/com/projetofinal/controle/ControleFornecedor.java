@@ -19,24 +19,7 @@ public class ControleFornecedor extends HttpServlet {
     public ControleFornecedor(){
         super();
     }
-/*
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-/*            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControleFornecedor</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControleFornecedor at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-*/
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         executarfornecedor(request, response);
@@ -51,6 +34,7 @@ public class ControleFornecedor extends HttpServlet {
             throws ServletException, IOException{
         try{
             String url = request.getServletPath();
+            
             if (url.equalsIgnoreCase("/cadastrarfornecedor.html")) {
                     cadastrar(request, response);
             } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
@@ -67,6 +51,7 @@ public class ControleFornecedor extends HttpServlet {
                 throw new Exception("URL Inválida!!!");
             }
         }catch(Exception e){
+            System.err.println("Erro cad: "+e.toString());
             response.sendRedirect("index.jsp");
             e.printStackTrace();
         } 
@@ -106,6 +91,7 @@ public class ControleFornecedor extends HttpServlet {
             FornecedorDao dao = new FornecedorDao();
             dao.cadastrarfornecedor(fornecedor);
         }catch(Exception e){
+            System.err.println("Erro cad: "+e.toString());
             e.printStackTrace();
         }
     }
