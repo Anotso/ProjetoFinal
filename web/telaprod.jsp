@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
+<!--https://bootsnipp.com/snippets/featured/product-detail-page-ecommerce-->
 <html>
     <head>
         <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
@@ -33,27 +34,37 @@
         </nav>
         <div class="esp50"></div>
         <div class="corpo">  
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <img style="max-width:100px;" src="../recursos/telaprod/gtx.png" /> 
-                </div>
-                    <div class="col-md-6" style="border: 1px solid gray;">
-                    <!--Dados do produto-->
-                    <h3>celular do praguay</h3>
-                    <!--  <h5 style="color:#337ab7">vendido por <a href="#">Samsung</a>·<small style="color:#337ab7">(5054 ventas)</small></h5>--->
-                    <!--- preços--->
-                    <h6 class="title-price"><small>preço</small></h6>
-                    <h3 style="margin-top:0px;">U$S 399</h3>
-                    <!--    detalhe e especificaçao do produto--->
-                    <!------>
-                    <!-- Botao da compra -->
-                    <div class="section" style="padding-bottom:20px;">
-                        <button class="btn btn-success">Adicionar ao carrinho </button> 
+            <div class="container">
+                <center><h1>Placa de video rtx </h1></center>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img style="max-width:100%;border: 1px solid gray;" src="gx.jpg" /> 
                     </div>
+                    <div class="col-md-6" style="border: 1px solid gray;">
+                        <!--Dados do produto-->
+                        <center><h3>celular do praguay</h3>
+                        <!--  <h5 style="color:#337ab7">vendido por <a href="#">Samsung</a>·<small style="color:#337ab7">(5054 ventas)</small></h5>--->
+                        <!--- preços--->
+                        <h6 class="title-price"><small>preço</small></h6>
+                        <h3 style="margin-top:0px;">R$399</h3>
+
+                        <!--    detalhe e especificaçao do produto--->
+                        <!------>
+                        <!-- Botao da compra -->
+                        <div class="section" style="padding-bottom:20px;">
+                            <button class="btn btn-success">Adicionar ao carrinho </button> 
+                        </div> </center>
                     </div>
                 </div>
             </div>
         </div>
+        <!--detalhe do produto-->
+        <div class="col-md-6">
+            produto de filha dsadmskfmlkafsmkfasça
+            
+            
+        </div>
+        
+        
     </body>
 </html>
