@@ -28,6 +28,13 @@
     width: auto;
     min-height: 600px;
 }
+@media screen and (max-width: 315px){
+    body{
+        margin: auto;
+        width: 90%;
+        min-height: 600px;
+    }
+}
 .rodape{
     text-align: center;
     padding: 30px;
@@ -35,6 +42,17 @@
     color: white;
     background-color: rgb(187, 0, 0);
     /*background-color: rgb(84, 117, 161);*/
+}
+/*  AJUSTE DOS INPUTS CADPRODUTO    */
+@media screen and (max-width: 321px){
+    #vcompprod, #vvendprod, #qtdprod{
+        margin: auto;
+        width: 280px;
+    }
+    .form-group{
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 /*  RESPONSIVO  */
 @media screen and (min-width: 768px){

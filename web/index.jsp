@@ -42,7 +42,6 @@
                 <c:import url="include/teste.jsp"/>
             </div>
         </div>
-            <a href="cadfornecedor.jsp">TESTE DO FORMULÁRIO - Cadastrar Fornecedor</a>
         <footer>
             <c:import url="include/rodape.jsp"/>
         </footer>

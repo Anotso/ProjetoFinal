@@ -38,7 +38,7 @@
                 <center><h1>Placa de video rtx </h1></center>
                 <div class="row">
                     <div class="col-md-6">
-                        <img style="max-width:100%;border: 1px solid gray;" src="gx.jpg" /> 
+                        <img style="max-width:100%;border: 1px solid gray;" src="recursos/imgprod/gx.jpg" /> 
                     </div>
                     <div class="col-md-6" style="border: 1px solid gray;">
                         <!--Dados do produto-->
@@ -64,7 +64,8 @@
             
             
         </div>
-        
-        
+        <footer>
+            <c:import url="include/rodape.jsp"/>
+        </footer>
     </body>
 </html>

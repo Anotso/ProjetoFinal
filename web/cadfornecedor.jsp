@@ -85,7 +85,7 @@
                     <div class="form-group row">
                         <label for="cepfor" class="col-md-4 col-form-label">Informe o CEP do Fornecedor:</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="cepfor" name="cep" onblur="pesquisacep(this.value)"/>
+                            <input type="text" class="form-control" id="cep" name="cep" onblur="pesquisacep(this.value)"/>
                         </div>
                     </div>
                     <div class="esp5"></div>

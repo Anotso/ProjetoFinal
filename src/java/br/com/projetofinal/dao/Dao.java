@@ -8,18 +8,26 @@ public class Dao {
     protected PreparedStatement stmt = null;
     protected ResultSet rs = null;
     
+        //Servidor db4free
     /*String URL = "jdbc:mysql:https://www.db4free.net:3306/projeto_final";
     String USER = "profinal";
     String PASS = "adminroot";*/
-    String URL = "jdbc:mysql://127.0.0.1:3307/projetofinalweb";
+    
+        //House
+    String URL = "jdbc:mysql://127.0.0.1:3306/projetofinalweb";
     String USER = "root";
-    String PASS = "usbw";
+    String PASS = "";
+    
+        //USBServer
+    /*String URL = "jdbc:mysql://127.0.0.1:3307/projetofinalweb";
+    String USER = "root";
+    String PASS = "usbw";*/
     
     protected void open(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(URL, USER, PASS);
-            System.out.println("conectado");
+            //System.out.println("conectado");
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -37,7 +45,7 @@ public class Dao {
                 rs.close();
             }
             
-              System.out.println("Desconectado");
+            //System.out.println("Desconectado");
         }catch(Exception e){
             e.printStackTrace();
         }
