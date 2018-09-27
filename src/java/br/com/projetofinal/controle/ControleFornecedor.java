@@ -90,6 +90,7 @@ public class ControleFornecedor extends HttpServlet {
         try{
             FornecedorDao dao = new FornecedorDao();
             dao.cadastrarfornecedor(fornecedor);
+            response.sendRedirect("../web/menufun.jsp");
         }catch(Exception e){
             System.err.println("Erro cad: "+e.toString());
             e.printStackTrace();

@@ -11,6 +11,17 @@ function CarPesJuridica(){
 }
 
         //CADASTRO DE FORNECEDOR
-function Envio(){
+function EnvioFornecedor(){
     cadfornecedor.submit();
+}
+
+        //CADASTRO DE FUNÇÕES
+function EnvioFuncao(){
+    var fun = "";
+    fun = document.getElementById("funcao").value;
+    if ((fun == "")||(fun == null)){
+        alert("            Campo vazio ou inválido!\n\nVerifique os dados e tente novamente.")
+    }else{
+        cadfuncao.submit();
+    }
 }

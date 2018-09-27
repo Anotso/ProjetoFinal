@@ -140,7 +140,7 @@
                         </div>
                         <div class="col-md-2 esp5"></div>
                         <div class="col-md-5">
-                            <button type="submit" class="btn btn-danger btn-block">Cadastrar</button>
+                            <button type="button" class="btn btn-danger btn-block" onclick="EnvioFornecedor()">Cadastrar</button>
                         </div>
                     </div>
                     <div class="esp50"></div>

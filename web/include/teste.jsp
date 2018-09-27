@@ -5,4 +5,6 @@
 <a href="cadfuncionario.jsp">TESTE DO FORMULÁRIO - Cadastrar Funcionários</a>
 <div class="esp15"></div>
 <a href="cadproduto.jsp">TESTE DO FORMULÁRIO - Cadastrar Produtos</a>
+<div class="esp15"></div>
+<a href="cadfuncao.jsp">TESTE DO FORMULÁRIO - Cadastrar Função</a>
 <div class="esp50"></div>
