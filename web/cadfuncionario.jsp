@@ -77,6 +77,9 @@
                             <input type="text" class="form-control" id="cpffu" name="cpffun"/>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="funcaofu">Selecione a função</label>
+                    </div>
                     <div class="esp5"></div>
                     <hr/>
                         <!--    DADOS DO BUSCA CEP  -->
