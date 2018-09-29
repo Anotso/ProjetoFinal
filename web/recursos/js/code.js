@@ -10,6 +10,15 @@ function CarPesJuridica(){
     document.getElementById("pesjuridica").style.display="block";
 }
 
+
+        //CHAMA CADFUNCIONARIO
+function CarregaCadFuncionario(){
+    /*loadfuncao.submit;
+    alert("??");
+    document.location.href = "loadfuncao.html";*/
+    window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadfuncionario.jsp");
+}
+
         //CADASTRO DE FORNECEDOR
 function EnvioFornecedor(){
     cadfornecedor.submit();
@@ -24,4 +33,14 @@ function EnvioFuncao(){
     }else{
         cadfuncao.submit();
     }
+}
+
+        //CADASTRO DE FUNCIONÁRIO
+function EnviaFuncionario(){
+    var comp = "";
+    comp = document.getElementById("complfu").value;
+    if((comp == "")||(comp == null)){
+        document.getElementById("complfu").value = (" - ");
+    }
+    cadfuncionario.submit();
 }

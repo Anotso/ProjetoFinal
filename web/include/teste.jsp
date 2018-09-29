@@ -2,7 +2,10 @@
 <div class="esp50"></div>
 <a href="cadfornecedor.jsp">TESTE DO FORMULÁRIO - Cadastrar Fornecedor</a>
 <div class="esp15"></div>
-<a href="cadfuncionario.jsp">TESTE DO FORMULÁRIO - Cadastrar Funcionários</a>
+<!--<a href="cadfuncionario.jsp">TESTE DO FORMULÁRIO - Cadastrar Funcionários</a>-->
+<form action="loadfuncao.html" method="POST" id="loadfuncao">
+    <button class="btn btn-success" type="submit">TESTE DO FORMULÁRIO - Cadastrar Funcionários</button>
+</form>
 <div class="esp15"></div>
 <a href="cadproduto.jsp">TESTE DO FORMULÁRIO - Cadastrar Produtos</a>
 <div class="esp15"></div>

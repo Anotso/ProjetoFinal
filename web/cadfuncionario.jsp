@@ -16,9 +16,10 @@
                 <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
             <!--    Codificação própria -->
                 <script type="text/javascript" src="recursos/js/cep.js"></script>
+                <script type="text/javascript" src="recursos/js/code.js"></script>
         <title>JSP Page</title>
     </head>
-    <body>
+    <body onload="CarregaCadFuncionario()">
         <nav>
             <%
                 String usuario = (String) session.getAttribute("usuario");
@@ -46,7 +47,7 @@
                     </div>
                 </div>
                 <div class="esp15"></div>
-                <form action="cadfuncionario.html" method="POST">
+                <form action="cadfuncionario.html" method="POST" id="cadfuncionario">
                     <div class="form-group row">
                         <label for="nfu" class="col-md-4 col-form-label">Nome do Funcionário:</label>
                         <div class="col-md-8">
@@ -78,7 +79,14 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="funcaofu">Selecione a função</label>
+                        <label for="funcaofu" class="col-md-4 col-form-label">Selecione a função</label>
+                        <div class="col-md-8">
+                            <select class="form-control" id="funcaofu">
+                                <c:forEach var="funcao" items="${listaFuncao}">
+                                    <option name="funcaofu" value="${funcao.idfuncao}">${funcao.funcao}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
                     </div>
                     <div class="esp5"></div>
                     <hr/>
@@ -108,7 +116,7 @@
                             <div class="form-group row">
                                 <label for="complfun" class="col-md-4 col-form-label">Complemento:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="complfun" name="complfun"/>
+                                    <input type="text" class="form-control" id="complfu" name="complfun"/>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +150,7 @@
                         </div>
                         <div class="col-md-2 esp5"></div>
                         <div class="col-md-5">
-                            <button type="button" class="btn btn-danger btn-block">Cadastrar</button>
+                            <button type="button" class="btn btn-danger btn-block" onclick="EnviaFuncionario()">Cadastrar</button>
                         </div>
                     </div>
                     <div class="esp50"></div>

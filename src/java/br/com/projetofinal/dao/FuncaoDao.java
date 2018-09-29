@@ -34,7 +34,7 @@ public class FuncaoDao extends Dao{
         Funcao funcao = null;
         rs = stmt.executeQuery();
         List<Funcao> lista = new ArrayList<Funcao>();
-        if(rs.next()){
+        while(rs.next()){
             funcao = new Funcao(rs.getInt("idfuncao"),rs.getString("nomefuncao"));
             lista.add(funcao);
         }

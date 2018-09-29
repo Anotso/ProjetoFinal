@@ -15,6 +15,8 @@
                 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
             <!--	Font Awesome -->
                 <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
+            <!--        CODIFICAÇÃO PRÓPRIA -->
+                <script type="text/javascript" src="recursos/js/code.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
