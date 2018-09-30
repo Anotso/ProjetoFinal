@@ -9,7 +9,7 @@ public class Dao {
     protected ResultSet rs = null;
     
         //Servidor db4free
-    /*String URL = "jdbc:mysql:https://www.db4free.net:3306/projeto_final";
+    /*String URL = "jdbc:mysql:https://www.db4free.net:3306/projeto_final?useUnicode=yes&characterEncoding=UTF-8";
     String USER = "profinal";
     String PASS = "adminroot";*/
     

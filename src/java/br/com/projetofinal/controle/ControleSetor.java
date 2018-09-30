@@ -1,88 +1,92 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.projetofinal.controle;
 
+import br.com.projetofinal.dao.SetorDao;
+import br.com.projetofinal.entidade.Setor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author graci
- */
 @WebServlet(name = "ControleSetor", urlPatterns = {"/ControleSetor"})
 public class ControleSetor extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControleSetor</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControleSetor at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+    
+    private static final long serialVersionUID = 1L;
+    
+    public ControleSetor(){
+        super();
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        executarsetor(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        executarsetor(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    
+    protected void executarsetor(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        try{
+            String url = request.getServletPath();
+            
+            if (url.equalsIgnoreCase("/cadfuncao.html")) {
+                    cadastrar(request, response);
+            } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
+                    //editar(request, response);
+            } else if (url.equalsIgnoreCase("/buscarfornecedor.html")) {
+                    //buscar(request, response);
+            } else if (url.equalsIgnoreCase("/fornecedorconsultado.html")) {
+                    //buscar(request, response);
+            } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
+                    //confirmar(request, response);
+            }else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
+                    //excluir(request, response);
+            }else if (url.equalsIgnoreCase("/loadfuncao.html")){
+                carregasetor(request, response);
+            }else {
+                throw new Exception("URL Inválida!!!");
+            }
+        }catch(Exception e){
+            System.err.println("Erro cad: "+e.toString());
+            response.sendRedirect("index.jsp");
+            e.printStackTrace();
+        }
+    }
+    
+    //CADASTRAR SETOR
+    private void cadastrar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        
+        String nome = request.getParameter("setor");
+        Setor setor = new Setor();
+        setor.setSetor(nome);
+        
+        try{
+            SetorDao dao = new SetorDao();
+            dao.cadastrarsetor(setor);
+            response.sendRedirect("../web/menu.jsp");
+        }catch(Exception e){
+            System.err.println("Erro cad: "+e.toString());
+            e.printStackTrace();
+        }
+        
+    }
+    
+    //LISTAR FUNÇÕES NO CADCATEGORIA
+    public void carregasetor(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+        try{
+            SetorDao pd = new SetorDao();
+            List<List> lista = pd.buscarsetor();
+            request.setAttribute("listaSetor", lista);
+            request.getRequestDispatcher("cadcategoria.jsp").forward(request, response);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }

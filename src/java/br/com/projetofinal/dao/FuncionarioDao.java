@@ -26,7 +26,7 @@ public class FuncionarioDao extends Dao{
             stmt.setString(12, funcionario.getEstfunc());
             stmt.setString(13, funcionario.getComplfunc());
             stmt.setBoolean(14, funcionario.isAtivo());
-            stmt.executeQuery();
+            stmt.execute();
             close();
         }catch(SQLException e){
             throw new RuntimeException(e);

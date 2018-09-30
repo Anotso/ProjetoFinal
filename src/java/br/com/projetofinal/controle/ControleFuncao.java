@@ -71,7 +71,7 @@ public class ControleFuncao extends HttpServlet {
         try{
             FuncaoDao dao = new FuncaoDao();
             dao.cadastrarfuncao(funcao);
-            //response.sendRedirect("../web/menu.jsp");
+            response.sendRedirect("../web/menu.jsp");
         }catch(Exception e){
             System.err.println("Erro cad: "+e.toString());
             e.printStackTrace();
@@ -85,8 +85,12 @@ public class ControleFuncao extends HttpServlet {
                     List<Funcao> lista = pd.buscarfuncao();
                     request.setAttribute("listaFuncao", lista);
                     request.getRequestDispatcher("cadfuncionario.jsp").forward(request, response);
-                    RequestDispatcher rd = request.getRequestDispatcher("/cadfuncionario.jsp");
+                    
+                    /*RequestDispatcher rd = request.getRequestDispatcher("/cadfuncionario.jsp");
                     rd.forward(request,response);
+                    MEXI AQUI. O ERRO ESTAVA NESSAS DUAS LINHAS QUE ESTAVAM GERANDO O ERRO DEVIDO O CHAMAMENTO DA PÁGINA DE NOVO. APÓS COMENTAR ESSAS DUAS LINHAS A APLICAÇÃO FUNCIONOU SEM PROBLEMAS E CARREGOU A PÁGINA DE CADASTRO DE FUNCIONÁRIO.
+                    */
+                    
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
