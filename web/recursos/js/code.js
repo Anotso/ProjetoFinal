@@ -18,6 +18,13 @@ function CarregaCadFuncionario(){
     document.location.href = "loadfuncao.html";*/
     window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadfuncionario.jsp");
 }
+        //CHAMA CADCATEGORIA
+function CarregaCadSetor(){
+    /*loadfuncao.submit;
+    alert("??");
+    document.location.href = "loadfuncao.html";*/
+    window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadcategoria.jsp");
+}
 
         //CADASTRO DE FORNECEDOR
 function EnvioFornecedor(){
@@ -43,4 +50,15 @@ function EnviaFuncionario(){
         document.getElementById("complfu").value = (" - ");
     }
     cadfuncionario.submit();
+}
+
+        //CADASTRO DE SETOR
+function EnviaSetor(){
+    var set = "";
+    set = document.getElementById("setor").value;
+    if ((set == "")||(set== null)){
+        alert("Setor não informado! Informe o nome do setor antes de confirmar.")
+    }else{
+        cadcategoria.submit();
+    }
 }

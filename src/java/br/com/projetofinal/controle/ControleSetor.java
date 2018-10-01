@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ControleSetor", urlPatterns = {"/ControleSetor"})
+@WebServlet(name = "/ControleSetor", urlPatterns = {"/cadsetor.html","/loadsetor.html"})
 public class ControleSetor extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
@@ -35,7 +35,7 @@ public class ControleSetor extends HttpServlet {
         try{
             String url = request.getServletPath();
             
-            if (url.equalsIgnoreCase("/cadfuncao.html")) {
+            if (url.equalsIgnoreCase("/cadsetor.html")) {
                     cadastrar(request, response);
             } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
                     //editar(request, response);
@@ -47,7 +47,7 @@ public class ControleSetor extends HttpServlet {
                     //confirmar(request, response);
             }else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
                     //excluir(request, response);
-            }else if (url.equalsIgnoreCase("/loadfuncao.html")){
+            }else if (url.equalsIgnoreCase("/loadsetor.html")){
                 carregasetor(request, response);
             }else {
                 throw new Exception("URL Inválida!!!");
@@ -69,7 +69,7 @@ public class ControleSetor extends HttpServlet {
         try{
             SetorDao dao = new SetorDao();
             dao.cadastrarsetor(setor);
-            response.sendRedirect("../web/menu.jsp");
+            response.sendRedirect("/ProjetoFinal/menufun.jsp");
         }catch(Exception e){
             System.err.println("Erro cad: "+e.toString());
             e.printStackTrace();
@@ -81,7 +81,7 @@ public class ControleSetor extends HttpServlet {
     public void carregasetor(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         try{
             SetorDao pd = new SetorDao();
-            List<List> lista = pd.buscarsetor();
+            List<Setor> lista = pd.buscarsetor();
             request.setAttribute("listaSetor", lista);
             request.getRequestDispatcher("cadcategoria.jsp").forward(request, response);
         }catch(Exception e){

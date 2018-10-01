@@ -86,7 +86,7 @@ public class ControleFuncionario extends HttpServlet {
         try{
             FuncionarioDao dao = new FuncionarioDao();
             dao.cadastrarfuncionario(funcionario);
-            response.sendRedirect("/menufun.jsp");
+            response.sendRedirect("/ProjetoFinal/menufun.jsp");
         }catch(Exception e){
             System.err.println("Erro cad: "+e.toString());
             e.printStackTrace();
