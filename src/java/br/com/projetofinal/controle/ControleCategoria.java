@@ -9,21 +9,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.Response;
 
-/**
- *
- * @author graci
- */
 @WebServlet(name = "ControleCategoria", urlPatterns = {"/cadcategoria.html"})
 public class ControleCategoria extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
-    
-    public ControleCategoria(){
+
+    public ControleCategoria() {
         super();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         executarcategoria(request, response);
     }
 
@@ -31,57 +30,61 @@ public class ControleCategoria extends HttpServlet {
             throws ServletException, IOException {
         executarcategoria(request, response);
     }
-    
+
     protected void executarcategoria(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-        try{
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        try {
             String url = request.getServletPath();
-            
+
             if (url.equalsIgnoreCase("/cadcategoria.html")) {
-                    cadastrar(request, response);
+                cadastrar(request, response);
             } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
-                    //editar(request, response);
+                //editar(request, response);
             } else if (url.equalsIgnoreCase("/buscarfornecedor.html")) {
-                    //buscar(request, response);
+                //buscar(request, response);
             } else if (url.equalsIgnoreCase("/fornecedorconsultado.html")) {
-                    //buscar(request, response);
+                //buscar(request, response);
             } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
-                    //confirmar(request, response);
-            }else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
-                    //excluir(request, response);
-            }else if (url.equalsIgnoreCase("/loadfuncao.html")){
+                //confirmar(request, response);
+            } else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
+                //excluir(request, response);
+            } else if (url.equalsIgnoreCase("/loadfuncao.html")) {
                 //carregafuncao(request, response);
-            }else {
+            } else {
                 throw new Exception("URL Inválida!!!");
             }
-        }catch(Exception e){
-            System.err.println("Erro cad: "+e.toString());
+        } catch (Exception e) {
+            System.err.println("Erro cad: " + e.toString());
             response.sendRedirect("index.jsp");
             e.printStackTrace();
         }
     }
-    
+
     //CADASTRAR CATEGORIA
-    private void cadastrar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+    private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome = request.getParameter("categoria");
-        String setor = request.getParameter("setorcat");
-        
+        String setor = request.getParameter("setor");
+
         Categoria categoria = new Categoria();
         categoria.setCategoria(nome);
         categoria.setSetor(setor);
-        System.out.println("VALOR DO CARALHO DO SETOR: "+setor);
         
-        try{
+
+        try {
+            categoria.validar();
             CategoriaDao dao = new CategoriaDao();
             dao.cadastrarcategoria(categoria);
             response.sendRedirect("/ProjetoFinal/menufun.jsp");
-        }catch(Exception e){
+        } catch (Exception e) {
+            request.setAttribute("erros", e.getMessage());
+            request.getRequestDispatcher("/loadsetor.html").forward(request, response);
             e.printStackTrace();
         }
     }
-    
+
     //CONSULTAR CATEGORIA
     //EDITAR CATEGORIA
     //EXCLUIR CATEGORIA
-
 }

@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.projetofinal.dao;
 
-/**
- *
- * @author 381115152017.3
- */
-public class ProdutoDao {
+import br.com.projetofinal.entidade.Produto;
+
+public class ProdutoDao extends Dao{
+
+    public void cadastrarproduto(Produto produto) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

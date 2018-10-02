@@ -9,14 +9,8 @@
             <link rel="stylesheet" type="text/css" href="recursos/estilo/estilo.css"/>
             <!--	Bootstrap	-->
                 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-                <script type="text/javascript" src="bootstrap/jquery/jquery-3.3.1.slim.min.js"></script>
-                <script type="text/javascript" src="bootstrap/popper/popper.min.js"></script>
-                <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
             <!--	Font Awesome -->
                 <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
-            <!--    Codificação própria -->
-                <script type="text/javascript" src="recursos/js/cep.js"></script>
-                <script type="text/javascript" src="recursos/js/code.js"></script>
         <title>JSP Page</title>
     </head>
     <body onload="CarregaCadFuncionario()">
@@ -81,9 +75,9 @@
                     <div class="form-group row">
                         <label for="funcaofu" class="col-md-4 col-form-label">Selecione a função</label>
                         <div class="col-md-8">
-                            <select class="form-control" id="funcaofu">
+                            <select name="funcaofu" class="form-control" id="funcaofu">
                                 <c:forEach var="funcao" items="${listaFuncao}">
-                                    <option name="funcaofu" value="${funcao.idfuncao}">${funcao.funcao}</option>
+                                    <option value="${funcao.idfuncao}">${funcao.funcao}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -165,5 +159,11 @@
         <footer>
             <c:import url="include/rodape.jsp"/>
         </footer>
+        <script type="text/javascript" src="bootstrap/jquery/jquery-3.3.1.slim.min.js"></script>
+        <script type="text/javascript" src="bootstrap/popper/popper.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <!--    Codificação própria -->
+            <script type="text/javascript" src="recursos/js/cep.js"></script>
+            <script type="text/javascript" src="recursos/js/code.js"></script>
     </body>
 </html>

@@ -38,4 +38,22 @@ public class Categoria {
         this.categoria = categoria;
     }
     
+    private String isDados() {
+        String erros = "";
+
+        if (categoria.equals("")) {
+            erros += "Categoria em branco. \n";
+        }
+        if (setor.equals("")) {
+            erros += "Setor em branco. \n";
+        }
+        return erros;
+    }
+    
+    public void validar() throws Exception {
+        String erros = isDados();
+        if (!erros.equals("")) {
+            throw new Exception(erros);
+        }
+    }
 }
