@@ -99,3 +99,60 @@ CREATE TABLE produto(
     foto4prod		VARCHAR(40),
     foto5prod		VARCHAR(40)
 );
+
+
+
+CREATE TABLE login(
+    idlog		INT AUTO_INCREMENT PRIMARY KEY,
+    usuario		VARCHAR(40),
+    pass 		VARCHAR(40),
+    tacess		VARCHAR(2)
+);
+
+
+
+CREATE TABLE pf(
+    idpf		INT AUTO_INCREMENT PRIMARY KEY,
+    pf			VARCHAR(20) NOT NULL,
+    snome		VARCHAR(40) NOT NULL,
+    dtnasc		VARCHAR(10) NOT NULL,
+    sexo		VARCHAR(1) NOT NULL,
+    cpfpf		VARCHAR(13) UNIQUE NOT NULL,
+    rgpf		VARCHAR(13) UNIQUE NOT NULL,
+    emailpf		VARCHAR(40) UNIQUE NOT NULL,
+    senhapf		VARCHAR(40) NOT NULL,
+    telpf		VARCHAR(11) NOT NULL,
+    celpf		VARCHAR(14) NOT NULL,
+    ceppf		VARCHAR(8) NOT NULL,
+    endpf		VARCHAR(30) NOT NULL,
+    numpf		VARCHAR(6) NOT NULL,
+    complpf		VARCHAR(40) NOT NULL,
+    refpf		VARCHAR(40) NOT NULL,
+    bairropf	VARCHAR(25) NOT NULL,
+    cidpf		VARCHAR(25) NOT NULL,
+    estpf		VARCHAR(2) NOT NULL,
+    ativo		BOOLEAN NOT NULL
+);
+
+
+
+CREATE TABLE pj(
+    idpj 		INT AUTO_INCREMENT PRIMARY KEY,
+    razao 		VARCHAR(40) NOT NULL,
+    nomepj 		VARCHAR(20) NOT NULL,
+    cnpjpj 		VARCHAR(13) UNIQUE NOT NULL,
+    insestpj	VARCHAR(13) UNIQUE NOT NULL,
+    emailpj 	VARCHAR(40) UNIQUE NOT NULL,
+    senhapj 	VARCHAR(40) NOT NULL,
+    telpj 		VARCHAR(11) NOT NULL,
+    celpj 		VARCHAR(14) NOT NULL,
+    ceppj 		VARCHAR(8) NOT NULL,
+    endpj 		VARCHAR(30) NOT NULL,
+    numpj 		VARCHAR(6) NOT NULL,
+    complpj 	VARCHAR(40) NOT NULL,
+    refpj 		VARCHAR(40) NOT NULL,
+    bairropj 	VARCHAR(25) NOT NULL,
+    cidpj 		VARCHAR(25) NOT NULL,
+    estpj 		VARCHAR(2) NOT NULL,
+    ativo 		BOOLEAN NOT NULL
+);

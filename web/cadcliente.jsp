@@ -61,13 +61,13 @@
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label">E-mail:</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Ex.: exemplo@exemplo.com"/>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Ex.: exemplo@exemplo.com"/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="senha" class="col-md-4 col-form-label">Senha:</label>
                     <div class="col-md-8">
-                        <input type="senha" class="form-control" id="senha" name="senha" placeholder="Digite a senha"/>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha"/>
                     </div>
                 </div>
                 <div class="esp5"></div>
@@ -163,9 +163,9 @@
                                 </div>
                             </div>	
                             <div class="form-group row">
-                                <label for="fantasia:" class="col-md-4 col-form-label">Nome Fantasia:</label>
+                                <label for="fantasia" class="col-md-4 col-form-label">Nome Fantasia:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="fantasia:" name="fantasia:"/>
+                                    <input type="text" class="form-control" id="fantasia" name="fantasia"/>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -181,15 +181,15 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="tel" class="col-md-4 col-form-label">Telefone:</label>
+                                <label for="telpj" class="col-md-4 col-form-label">Telefone:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="tel" name="tel"/>
+                                    <input type="text" class="form-control" id="telpj" name="telpj"/>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="cel" class="col-md-4 col-form-label">Celular:</label>
+                                <label for="celpj" class="col-md-4 col-form-label">Celular:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="cel" name="cel"/>
+                                    <input type="text" class="form-control" id="celpj" name="celpj"/>
                                 </div>
                             </div>
                         </div>
@@ -258,7 +258,7 @@
                     </div>
                     <div class="col-md-2 esp5"></div>
                     <div class="col-md-5">
-                        <button type="button" class="btn btn-danger btn-block">Cadastrar</button>
+                        <button type="submit" class="btn btn-danger btn-block">Cadastrar</button>
                     </div>
                 </div>
             </form>

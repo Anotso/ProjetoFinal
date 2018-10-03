@@ -1,17 +1,17 @@
 package br.com.projetofinal.dao;
 
 import br.com.projetofinal.entidade.Pj;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class PjDao extends Dao{
     
-    public void cadastrarpf(Pj pj) throws SQLException{
+    public void cadastrarpj(Pj pj) throws SQLException{
         open();
         int acesso = 2;
         try{
             String sql = "INSERT INTO"+
-                " pj(pf, snome, dtnasc, sexo, cpfpf, rgpf, emailpf, senhapf, telpf, celpf, ceppf, endpf, numpf, complpf, refpf, bairropf, cidpf, estpf, ativo)"+
-                " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                " pj(razao, nomepj, cnpjpj, insestpj, emailpj, senhapj, telpj, celpj, ceppj, endpj, numpj, complpj, refpj, bairropj, cidpj, estpj, ativo)"+
+                " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             stmt = con.prepareStatement(sql);
             stmt.setString(1, pj.getRazao());
             stmt.setString(2, pj.getNomepj());
@@ -29,7 +29,7 @@ public class PjDao extends Dao{
             stmt.setString(14, pj.getBairropj());
             stmt.setString(15, pj.getCidpj());
             stmt.setString(16, pj.getEstpj());
-            stmt.setBoolean(7, pj.isAtivo());
+            stmt.setBoolean(17, pj.isAtivo());
             
             String sqllog = "INSERT INTO login(usuario, pass, tacess) VALUES(?,?,?)";
             stmtlog = con.prepareStatement(sqllog);

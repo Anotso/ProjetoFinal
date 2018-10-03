@@ -190,5 +190,64 @@ public class Pj {
         this.ativo = ativo;
     }
 
+    private String isDados() {
+        String erros = "";
+        if (razao.equals("")) {
+            erros += "Nome em branco. \n";
+        }
+        if (nomepj.equals("")) {
+            erros += "Sobrenome em branco. \n";
+        }
+        if (cnpjpj.equals("")) {
+            erros += "CNPJ em branco. \n";
+        }
+        if (insestpj.equals("")) {
+            erros += "Identidade em branco. \n";
+        }
+        if (emailpj.equals("")) {
+            erros += "E-mail em branco. \n";
+        }
+        if (senhapj.equals("")) {
+            erros += "Senha em branco. \n";
+        }
+        if (telpj.equals("")) {
+            erros += "Número de telefone em branco. \n";
+        }
+        if (celpj.equals("")) {
+            erros += "Número de celular em branco. \n";
+        }
+        if (ceppj.equals("")) {
+            erros += "CEP em branco. \n";
+        }
+        if (endpj.equals("")) {
+            erros += "Endereço em branco. \n";
+        }
+        if (numpj.equals("")) {
+            erros += "Número da residência em branco. \n";
+        }
+        if (complpj.equals("")) {
+            erros += "Complemento em branco. \n";
+        }
+        if (refpj.equals("")) {
+            erros += "Referência em branco. \n";
+        }
+        if (bairropj.equals("")) {
+            erros += "Bairro em branco. \n";
+        }
+        if (cidpj.equals("")) {
+            erros += "Cidade em branco. \n";
+        }
+        if (estpj.equals("")) {
+            erros += "Estado em branco. \n";
+        }
+        return erros;
+    }
+
+    public void validar() throws Exception {
+        String erros = isDados();
+        if (!erros.equals("")) {
+            throw new Exception(erros);
+        }
+    }
     
 }
