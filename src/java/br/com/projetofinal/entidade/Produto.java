@@ -6,8 +6,9 @@ public class Produto {
     private String produto;
     private String fornecedor;
     private String categoria;
-    private String compra;
-    private String venda;
+    private String descricao;
+    private float compra;
+    private float venda;
     private int qtd;
     private String foto1;
     private String foto2;
@@ -46,20 +47,28 @@ public class Produto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+    
+    public String getDescricao() {
+        return descricao;
+    }
 
-    public String getCompra() {
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public float getCompra() {
         return compra;
     }
 
-    public void setCompra(String compra) {
+    public void setCompra(float compra) {
         this.compra = compra;
     }
 
-    public String getVenda() {
+    public float getVenda() {
         return venda;
     }
 
-    public void setVenda(String venda) {
+    public void setVenda(float venda) {
         this.venda = venda;
     }
 
@@ -125,10 +134,13 @@ public class Produto {
         if (categoria.equals("")) {
             erros += "Categoria em branco. \n";
         }
-        if (compra.equals("")) {
+        if (descricao.equals("")) {
+            erros += "Descrição em branco. \n";
+        }
+        if (compra == 0) {
             erros += "Valor de compra em branco. \n";
         }
-        if (venda.equals("")) {
+        if (venda == 0) {
             erros += "Valor de venda em branco. \n";
         }
         if (qtd == 0) {

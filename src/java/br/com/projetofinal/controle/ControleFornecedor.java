@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "/ControleFornecedor", urlPatterns = {"/cadastrarfornecedor.html"})
+@WebServlet(name = "/ControleFornecedor", urlPatterns = {"/cadastrarfornecedor.html","/loadfornecedor.html"})
 public class ControleFornecedor extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
@@ -49,6 +49,8 @@ public class ControleFornecedor extends HttpServlet {
                     //confirmar(request, response);
             }else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
                     //excluir(request, response);
+            }else if (url.equalsIgnoreCase("/loadfornecedor.html")) {
+                carregaforn(request, response);
             }else {
                 throw new Exception("URL Inválida!!!");
             }
@@ -107,8 +109,20 @@ public class ControleFornecedor extends HttpServlet {
             
             List<Fornecedor> lista = forn.buscarfornecedor(dado);
             request.setAttribute("dado", dado);
-            request.setAttribute("lista", lista);
+            request.setAttribute("listafornecedor", lista);
             request.getRequestDispatcher("fornecedorconsultado.jsp").forward(request, response);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    //CARREGA FORNECEDOR - CADASTRO DE PRODUTOS
+    public void carregaforn(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        try{
+            FornecedorDao forn = new FornecedorDao();
+            List<Fornecedor> listafor = forn.loadfornecedor();
+            request.setAttribute("listaFornecedor", listafor);
+            request.getRequestDispatcher("cadproduto.jsp").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();
         }

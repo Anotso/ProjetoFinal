@@ -1,18 +1,23 @@
 package br.com.projetofinal.controle;
 
+import br.com.projetofinal.dao.CategoriaDao;
+import br.com.projetofinal.dao.FornecedorDao;
 import br.com.projetofinal.dao.ProdutoDao;
+import br.com.projetofinal.entidade.Categoria;
+import br.com.projetofinal.entidade.Fornecedor;
 import br.com.projetofinal.entidade.Produto;
 import br.com.projetofinal.util.Arquivo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ControleProduto", urlPatterns = {"/cadproduto.html"})
+@WebServlet(name = "ControleProduto", urlPatterns = {"/cadproduto.html","/carregacadprod.html"})
 public class ControleProduto extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
@@ -50,8 +55,8 @@ public class ControleProduto extends HttpServlet {
                 //confirmar(request, response);
             } else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
                 //excluir(request, response);
-            } else if (url.equalsIgnoreCase("/loadfuncao.html")) {
-                //carregafuncao(request, response);
+            } else if (url.equalsIgnoreCase("/carregacadprod.html")) {
+                carregacad(request, response);
             } else {
                 throw new Exception("URL Inválida!!!");
             }
@@ -68,26 +73,51 @@ public class ControleProduto extends HttpServlet {
         Arquivo arq = new Arquivo();
         String caminhofoto = System.getProperty("user.home")+""+
                 "NetBeansProjectes/ProjetoFinal/web/recursos/imgprod/";
+        float nc = 0;
+        float nv = 0;
+        int qtd = 0;
         
         String nome = request.getParameter("nprod");
         String fornecedor = request.getParameter("forprod");
         String categoria = request.getParameter("catprod");
         String compra = request.getParameter("vcompprod");
         String venda = request.getParameter("vvendprod");
-        int qtd = parseInt(request.getParameter("qtdprod"));
+        String q = request.getParameter("qtdprod");
         String img1 = request.getParameter("foto01");
         String img2 = request.getParameter("foto02");
         String img3 = request.getParameter("foto03");
         String img4 = request.getParameter("foto04");
         String img5 = request.getParameter("foto05");
         
+        if(q.equals("")){
+            qtd = 0;
+        }else{
+            qtd = parseInt(q);
+        }
+
+        if(compra.equals("")){
+            nc = 0;
+        }else{
+            compra = compra.replace(".", "");
+            compra = compra.replace(",", ".");
+            nc = Float.parseFloat(compra);
+        }if(venda.equals("")){
+            nv = 0;
+        }else{
+            venda = venda.replace(".", "");
+            venda = venda.replace(",", ".");
+            nv = Float.parseFloat(venda);
+        }      
+        
         Produto produto = new Produto();
         produto.setProduto(nome);
         produto.setFornecedor(fornecedor);
         produto.setCategoria(categoria);
-        produto.setCompra(compra);
-        produto.setVenda(venda);
+        produto.setCompra(nc);
+        produto.setVenda(nv);
         produto.setQtd(qtd);
+        
+        System.out.println(img1);
         
         //UPLOAD DA FOTO
         if(!img1.equals("")){
@@ -123,10 +153,33 @@ public class ControleProduto extends HttpServlet {
             response.sendRedirect("/ProjetoFinal/menufun.jsp");
         }catch(Exception e){
             request.setAttribute("erros", e.getMessage());
-            //request.getRequestDispatcher("/loadsetor.html").forward(request, response);
+            request.getRequestDispatcher("/carregacadprod.html").forward(request, response);
             e.printStackTrace();
         }
         
     }
+    
+    private void carregacad(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            CategoriaDao pd = new CategoriaDao();
+            List<Categoria> listacat1 = pd.buscarcategoria();
+            request.setAttribute("listaCategoria", listacat1);
+            
+            FornecedorDao forn = new FornecedorDao();
+            List<Fornecedor> listafor = forn.loadfornecedor();
+            request.setAttribute("listaFornecedor", listafor);
+            System.out.println("Valor" +listafor);
+            
+            if((listafor.equals(""))){
+                System.out.println("COMO VOU FAZER ESSA PORRA??");
+            }else{
+                request.getRequestDispatcher("cadproduto.jsp").forward(request, response);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
 
 }

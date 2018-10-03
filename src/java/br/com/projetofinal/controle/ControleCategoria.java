@@ -4,6 +4,7 @@ import br.com.projetofinal.dao.CategoriaDao;
 import br.com.projetofinal.entidade.Categoria;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
 
-@WebServlet(name = "ControleCategoria", urlPatterns = {"/cadcategoria.html"})
+@WebServlet(name = "ControleCategoria", urlPatterns = {"/cadcategoria.html", "/loadcat1.html"})
 public class ControleCategoria extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -50,8 +51,8 @@ public class ControleCategoria extends HttpServlet {
                 //confirmar(request, response);
             } else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
                 //excluir(request, response);
-            } else if (url.equalsIgnoreCase("/loadfuncao.html")) {
-                //carregafuncao(request, response);
+            } else if (url.equalsIgnoreCase("/loadcat1.html")) {
+                carregacat1(request, response);
             } else {
                 throw new Exception("URL Inválida!!!");
             }
@@ -70,7 +71,6 @@ public class ControleCategoria extends HttpServlet {
         Categoria categoria = new Categoria();
         categoria.setCategoria(nome);
         categoria.setSetor(setor);
-        
 
         try {
             categoria.validar();
@@ -84,6 +84,17 @@ public class ControleCategoria extends HttpServlet {
         }
     }
 
+    //CARREGA CAT1
+    public void carregacat1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            CategoriaDao pd = new CategoriaDao();
+            List<Categoria> listacat1 = pd.buscarcategoria();
+            request.setAttribute("listaCategoria", listacat1);
+            request.getRequestDispatcher("loadfor.html").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //CONSULTAR CATEGORIA
     //EDITAR CATEGORIA
     //EXCLUIR CATEGORIA

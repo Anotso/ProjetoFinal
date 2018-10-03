@@ -5,7 +5,7 @@ package br.com.projetofinal.dao;
 public class Dao {
     
     protected Connection con;
-    protected PreparedStatement stmt = null;
+    protected PreparedStatement stmt, stmtlog = null;
     protected ResultSet rs = null;
     
         //Servidor db4free
@@ -14,14 +14,14 @@ public class Dao {
     String PASS = "adminroot";*/
     
         //House
-    /*String URL = "jdbc:mysql://127.0.0.1:3306/projetofinalweb";
+    String URL = "jdbc:mysql://127.0.0.1:3306/projetofinalweb";
     String USER = "root";
-    String PASS = "";*/
+    String PASS = "";
     
         //USBServer
-    String URL = "jdbc:mysql://127.0.0.1:3307/projetofinalweb";
+    /*String URL = "jdbc:mysql://127.0.0.1:3307/projetofinalweb";
     String USER = "root";
-    String PASS = "usbw";
+    String PASS = "usbw";*/
     
     protected void open(){
         try{

@@ -5,29 +5,29 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="stylesheet" type="text/css" href="recursos/estilo/reset.css"/>
-            <link rel="stylesheet" type="text/css" href="recursos/estilo/estilo.css"/>
-            <!--	Bootstrap	-->
-                <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-                <script type="text/javascript" src="bootstrap/jquery/jquery-3.3.1.slim.min.js"></script>
-                <script type="text/javascript" src="bootstrap/popper/popper.min.js"></script>
-                <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-            <!--	Font Awesome -->
-                <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
-            <!--    Codificação própria -->
-                <script type="text/javascript" src="recursos/js/cep.js"></script>
-                <script type="text/javascript" src="recursos/js/code.js"></script>
+        <link rel="stylesheet" type="text/css" href="recursos/estilo/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="recursos/estilo/estilo.css"/>
+        <!--	Bootstrap	-->
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="bootstrap/jquery/jquery-3.3.1.slim.min.js"></script>
+        <script type="text/javascript" src="bootstrap/popper/popper.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <!--	Font Awesome -->
+        <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
+        <!--    Codificação própria -->
+        <script type="text/javascript" src="recursos/js/cep.js"></script>
+        <script type="text/javascript" src="recursos/js/code.js"></script>
         <title>JSP Page</title>
     </head>
     <body onload="CarPesFisica()">
         <nav>
             <%
                 String usuario = (String) session.getAttribute("usuario");
-                if(usuario == null){
-                        %><c:import url="include/navlogin.jsp"/>
+                if (usuario == null) {
+            %><c:import url="include/navlogin.jsp"/>
             <%
-                }else{
-                        %><c:import url="include/navlogout.jsp"/>
+            } else {
+            %><c:import url="include/navlogout.jsp"/>
             <%
                 }
             %>
@@ -35,30 +35,39 @@
         </nav>
         <div class="container">
             <div class="esp15"></div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <center><h3>Cadastro de Cliente</h3></center>
-                        <hr>
-                    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <center><h3>Cadastro de Cliente</h3></center>
+                    <hr>
                 </div>
-                <div class="esp15"></div>
-            <form action="" method="POST">
+            </div>
+            <c:if test="${not empty avisos}">
+                <div class="alert alert-success">
+                    <p>${avisos}</p>
+                </div>
+            </c:if>
+            <c:if test="${not empty erros}">
+                <div class="alert alert-danger">
+                    <p>${erros}</p>
+                </div>
+            </c:if>
+            <c:if test="${not empty alertas}">
+                <div class="alert alert-warning">
+                    <p>${alertas}</p>
+                </div>
+            </c:if>
+            <div class="esp15"></div>
+            <form action="cadcliente.html" method="POST">
                 <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label">E-mail:</label>
-                        <div class="col-md-8">
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Ex.: exemplo@exemplo.com"/>
-                        </div>
+                    <label for="email" class="col-md-4 col-form-label">E-mail:</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Ex.: exemplo@exemplo.com"/>
+                    </div>
                 </div>
                 <div class="form-group row">
                     <label for="senha" class="col-md-4 col-form-label">Senha:</label>
                     <div class="col-md-8">
                         <input type="senha" class="form-control" id="senha" name="senha" placeholder="Digite a senha"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="reptsenha" class="col-md-4 col-form-label">Repetir senha:</label>
-                    <div class="col-md-8">
-                        <input type="url" class="form-control" id="reptsenha" name="reptsenha" placeholder="Repetir senha"/>
                     </div>
                 </div>
                 <div class="esp5"></div>
@@ -82,7 +91,7 @@
                 <hr/>
                 <div class="esp5"></div>
                 <div class="form-row">
-                    
+
                     <div class="col-md-6">
                         <!-- PESSOA FÍSICA -->
                         <div id="pesfisica">
@@ -105,8 +114,7 @@
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label" for="sexo">Sexo</label>
                                 <div class="col-md-8">
-                                    <select class="custom-select form-control" id="sexo">
-                                        <option selected>Selecione</option>
+                                    <select class="custom-select form-control" id="sexo" name="sexo">
                                         <option value="M">Masculino</option>
                                         <option value="F">Feminino</option>
                                     </select>
@@ -149,15 +157,15 @@
                             </div>
                             <div class="row"><div class="col-md-12 esp5"></div></div>
                             <div class="form-group row">
-                                <label for="nomecli" class="col-md-4 col-form-label">Razão Social:</label>
+                                <label for="rsocial" class="col-md-4 col-form-label">Razão Social:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="nomecli" name="nomecli"/>
+                                    <input type="text" class="form-control" id="rsocial" name="rsocial"/>
                                 </div>
                             </div>	
                             <div class="form-group row">
-                                <label for="sobrenome" class="col-md-4 col-form-label">Nome Fantasia:</label>
+                                <label for="fantasia:" class="col-md-4 col-form-label">Nome Fantasia:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome"/>
+                                    <input type="text" class="form-control" id="fantasia:" name="fantasia:"/>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -192,15 +200,15 @@
                         </div>
                         <div class="row"><div class="col-md-12 esp5"></div></div>
                         <div class="form-group row">
-                        <label for="cep" class="col-md-4 col-form-label">CEP:</label>
+                            <label for="cep" class="col-md-4 col-form-label">CEP:</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="cep" name="cep"/>
+                                <input type="text" class="form-control" id="cep" name="cep" onblur="pesquisacep(this.value)"/>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="rua" class="col-md-4 col-form-label">Rua:</label>
+                            <label for="end" class="col-md-4 col-form-label">Rua:</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="rua" name="rua" readonly/>
+                                <input type="text" class="form-control" id="end" name="end" readonly/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -228,15 +236,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="cidade" class="col-md-4 col-form-label">Cidade:</label>
+                            <label for="cid" class="col-md-4 col-form-label">Cidade:</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="cidade" name="cidade" readonly/>
+                                <input type="text" class="form-control" id="cid" name="cid" readonly/>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="estado" class="col-md-4 col-form-label">Estado:</label>
+                            <label for="est" class="col-md-4 col-form-label">Estado:</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="estado" name="estado" readonly/>
+                                <input type="text" class="form-control" id="est" name="est" readonly/>
                             </div>
                         </div>
                     </div>
@@ -245,14 +253,14 @@
                 <hr/>
                 <div class="esp15"></div>
                 <div class="row">
-                        <div class="col-md-5">
-                            <button type="button" class="btn btn-danger btn-block">Cancelar</button>
-                        </div>
-                        <div class="col-md-2 esp5"></div>
-                        <div class="col-md-5">
-                            <button type="button" class="btn btn-danger btn-block">Cadastrar</button>
-                        </div>
+                    <div class="col-md-5">
+                        <button type="button" class="btn btn-danger btn-block">Cancelar</button>
                     </div>
+                    <div class="col-md-2 esp5"></div>
+                    <div class="col-md-5">
+                        <button type="button" class="btn btn-danger btn-block">Cadastrar</button>
+                    </div>
+                </div>
             </form>
         </div>
         <div class="esp50"></div>

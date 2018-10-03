@@ -8,7 +8,6 @@
             <link rel="stylesheet" type="text/css" href="recursos/estilo/css_login.css"/>
             <link rel="stylesheet" type="text/css" href="recursos/estilo/css.css"/>
         <!--Link do css-->
-        <script src="recursos/js/js.js"></script>
         <title>Fabio</title>
     </head>
     <body>
@@ -20,8 +19,8 @@
                         <div class="quadradodologin2">
                             <h1 id="bem"> Bem Vindo </h1>
                             <p id="text12">WARNING! Caps lock is ON.</p>
-                            <form autocomplete="off">
-                                <input type="text" placeholder="Email" name="Nome" size="40" class="input-nomee"/>
+                            <form action="login.html" method="post" autocomplete="off">
+                                <input type="text" placeholder="E-mail" name="Nome" size="40" class="input-nomee"/>
                                 <label>
                                     <!--<button type="image"  src="OI.png " alt="submit" onclick="mostrar()"  width="16" height="16" id="ou" ></button> -->
                                     <input type="password" placeholder="Senha" maxlength="20" size="40" name="senha" class="input-nomee" id="senha"/> 
@@ -36,8 +35,9 @@
                                 <div>
                                     <div class="entre com outras">
                                     </div>
-                                    <input class="btn" type="submit" name="btn" value="Entrar">
-                                    <input class="btn2" type="submit" name="btn" value="Criar conta">
+                                    <input class="btn" type="submit" name="btn" value="Entrar"/>
+                                    <input class="btn2" type="button" name="btn" value="Criar conta"/>
+                                    <input class="btn3" type="button" name="btn" value="Voltar" onclick="Volta()"/>
                                     <!--   Aceitos<input type="checkbox" id="checagem"><-->
                                 </div>
                             </form>
@@ -46,5 +46,7 @@
                 </div>
             </div>
         </div>
+        <script src="recursos/js/js.js"></script>
+        <script src="recursos/js/code.js"></script>
     </body>
 </html>

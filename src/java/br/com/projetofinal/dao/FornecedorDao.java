@@ -50,7 +50,7 @@ public class FornecedorDao extends Dao{
                 rs.getString("emailfor"),
                 rs.getString("telfor"),
                 rs.getString("cepfor"),
-                rs.getString("endfor"),
+                rs.getString("ruafor"),
                 rs.getString("numfor"),
                 rs.getString("complfor"),
                 rs.getString("bairrofor"),
@@ -59,6 +59,33 @@ public class FornecedorDao extends Dao{
         }
         close();
         return lista;
+    }
+
+    public List<Fornecedor> loadfornecedor() throws SQLException {
+        open();
+        String sql = "SELECT * FROM fornecedor";
+        stmt = con.prepareStatement(sql);
+        Fornecedor fornecedor = null;
+        rs = stmt.executeQuery();
+        List<Fornecedor> listafor = new ArrayList<Fornecedor>();
+        while(rs.next()){
+            fornecedor = new Fornecedor(rs.getInt("idfor"),
+                rs.getString("nomefor"),
+                rs.getString("cnpjfor"),
+                rs.getString("sitefor"),
+                rs.getString("emailfor"),
+                rs.getString("telfor"),
+                rs.getString("cepfor"),
+                rs.getString("ruafor"),
+                rs.getString("numfor"),
+                rs.getString("complfor"),
+                rs.getString("bairrofor"),
+                rs.getString("cidadefor"),
+                rs.getString("estadofor"));
+            listafor.add(fornecedor);
+        }
+        close();
+        return listafor;
     }
     
 }

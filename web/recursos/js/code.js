@@ -20,11 +20,13 @@ function CarregaCadFuncionario(){
 }
         //CHAMA CADCATEGORIA
 function CarregaCadSetor(){
-    /*loadfuncao.submit;
-    alert("??");
-    document.location.href = "loadfuncao.html";*/
     window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadcategoria.jsp");
 }
+        //CHAMA CADPRODUTO
+function CarregaCadProd(){
+    window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadproduto.jsp");
+}
+
 
         //CADASTRO DE FORNECEDOR
 function EnvioFornecedor(){

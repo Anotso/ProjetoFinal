@@ -12,7 +12,11 @@
     <button class="btn btn-success" type="submit">TESTE DO FORMULÁRIO - Cadastrar Categoria</button>
 </form>
 <div class="esp15"></div>
-<a href="cadproduto.jsp">TESTE DO FORMULÁRIO - Cadastrar Produtos</a>
+<form action="carregacadprod.html" method="POST" id="loadcat1">
+    <button class="btn btn-success" type="submit">TESTE DO FORMULÁRIO - Cadastrar Produtos</button>
+</form>
 <div class="esp15"></div>
 <a href="cadfuncao.jsp">TESTE DO FORMULÁRIO - Cadastrar Função</a>
+<div class="esp15"></div>
+<a href="cadcliente.jsp">TESTE DO FORMULÁRIO - Cadastrar Cliente</a>
 <div class="esp50"></div>

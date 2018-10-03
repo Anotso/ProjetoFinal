@@ -1,0 +1,101 @@
+CREATE TABLE clientepf(
+    idpf		INT AUTO_INCREMENT PRIMARY KEY,
+    nomepf		VARCHAR(20),
+    snomepf		VARCHAR(40),
+senhapf VARCHAR(32),
+    sexopf		VARCHAR(1),
+    cpfpf		VARCHAR(11),
+    rgpf		VARCHAR(10),
+    dtnascpf	VARCHAR(10),
+    emailpf		VARCHAR(30) UNIQUE,
+    senhapf		VARCHAR(15),
+    telpf		VARCHAR(13),
+    celpf		VARCHAR(14),
+    ceppf		VARCHAR(8),
+    ruapf		VARCHAR(30),
+    numpf		VARCHAR(6),
+    bairropf	VARCHAR(15),
+    cidadepf	VARCHAR(25),
+    estadopf	VARCHAR(2),
+    complpf		VARCHAR(40),
+    refpf		VARCHAR(40),
+ativo	BOOLEAN
+);
+
+
+
+CREATE TABLE fornecedor(
+    idfor		INT AUTO_INCREMENT PRIMARY KEY,
+    nomefor		VARCHAR(40),
+    emailfor	VARCHAR(35),
+    sitefor		VARCHAR(30),
+    telfor		VARCHAR(13),
+    cnpjfor		VARCHAR(14),
+    cepfor		VARCHAR(8),
+    ruafor		VARCHAR(30),
+    numfor		VARCHAR(6),
+    complfor	VARCHAR(40),
+    bairrofor	VARCHAR(25),
+    cidadefor	VARCHAR(25),
+    estadofor	VARCHAR(2)
+);
+
+
+
+CREATE TABLE funcionario(
+    idfunc		INT AUTO_INCREMENT PRIMARY KEY,
+    nomefunc	VARCHAR(60),
+    emailfunc	VARCHAR(40) UNIQUE,
+    telfunc		VARCHAR(11),
+    celfunc		VARCHAR(14),
+    cpffunc		VARCHAR(13) UNIQUE,
+    funcaofun	VARCHAR(2),
+    cepfunc		VARCHAR(8),
+    ruafunc		VARCHAR(30),
+    numfunc		VARCHAR(6),
+    bairrofunc	VARCHAR(25),
+    cidadefunc	VARCHAR(25),
+    estadofunc	VARCHAR(2),
+    complfunc	VARCHAR(40),
+    ativo	BOOLEAN
+);
+
+
+
+CREATE TABLE funcao(
+    idfuncao		INT AUTO_INCREMENT PRIMARY KEY,
+    nomefuncao		VARCHAR(25)
+);
+
+
+
+CREATE TABLE setor(
+    idsetor			INT AUTO_INCREMENT PRIMARY KEY,
+    nomesetor		VARCHAR(25)
+);
+
+
+
+CREATE TABLE categoria(
+    idcategoria			INT AUTO_INCREMENT PRIMARY KEY,
+    nomecategoria		VARCHAR(25),
+    setor			VARCHAR(25)
+);
+
+
+
+CREATE TABLE produto(
+    idprod			INT AUTO_INCREMENT PRIMARY KEY,
+    nomeprod		VARCHAR(30),
+    forprod			VARCHAR(4),
+    catprod			VARCHAR(4),
+    descprod		VARCHAR(500),
+    compraprod		FLOAT(8,2),
+    vendaprod		FLOAT(8,2),
+    qtdprod			INT(5),
+    foto1prod		VARCHAR(40),
+    foto2prod		VARCHAR(40),
+    foto3prod		VARCHAR(40),
+    foto4prod		VARCHAR(40),
+    foto5prod		VARCHAR(40)
+);

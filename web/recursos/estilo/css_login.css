@@ -22,7 +22,7 @@ body{
 /*   quadradinho  */
 .quadradodologin{
     width:280px;
-	height: 280px;
+	height: 320px;
     border: 2px #e6e6e6; /* borda*/ 
 	text-align:center;/* alinhamento do texto*/
     margin: 0 auto;  /* margem*/
@@ -240,6 +240,32 @@ color: #e6e6e6;
     top:5px;
     box-shadow:none;
 }
+
+.btn3{
+    color: white;
+    outline: none;
+    width: 250px;
+    height: 30px;
+    background: red;
+    border: none;
+    border-radius: 1px;
+    padding: 10px;
+    margin-top:20px;
+    box-shadow: 0 5px 0 rgb(129, 32, 32);
+}
+
+.btn3:hover{
+    cursor: pointer;
+    background: rgb(218, 69, 69);
+    box-shadow: 0 5px 0 rgb(94, 34, 34);
+}
+
+.btn3:active{
+    position:relative;
+    top:5px;
+    box-shadow:none;
+}
+
 
 @media screen and (max-width: 640px)    {
     h1{
