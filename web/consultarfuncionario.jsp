@@ -35,72 +35,77 @@
         </nav>
         <%
             if (usuario == null) {
-        %> 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <center><h3>Pesquisar Funcionario</h3></center>
+        %>
+        <div class="corpo">
+            <div class="esp50"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <center><h3>Pesquisar Funcionario</h3></center>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <form action="buscafuncionario.html" method="post">
-                        <div class="form-group row">
-                            <!---Sobre nome-->
-                            <label for="bfunc" class="col-md-4 col-form-label">Informe o CPF</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="bfunc" name="bfunc"/>
+                <div class="esp15"></div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <form action="buscafuncionario.html" method="post">
+                            <div class="form-group row">
+                                <!---Sobre nome-->
+                                <label for="bfunc" class="col-md-4 col-form-label">Informe o CPF</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="bfunc" name="bfunc"/>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-danger btn-block">Sign in</button>
+                        </form>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="esp15"></div>
+                <div class="row">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                        <a href="carregafuncionario.html">Carregar todos os Funcionário</a>
+                    </div>
+                </div>
+                <c:if test="${not empty funcionario.idfuncionario}">
+                    <c:forEach var="consfuncionario" items="${conFuncionario}">
+                        <div class="card">
+                            <div class="card-header">
+                                <label><h5>Nome: ${funcionario.funcionario}</h5></label>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">ID: ${funcionario.idfuncionario}</p>
+                                <c:if test="${not empty funcionario.telfunc}">
+                                    <p class="card-text">Telefone.: ${funcionario.telfunc}</p>
+                                </c:if>
+                                <c:if test="${not empty funcionario.celfunc}">
+                                    <p class="card-text">Celular.: ${funcionario.celfunc}</p>
+                                </c:if>
+                                <p class="card-text">Endereço: ${funcionario.endfunc}</p>
+                                <p class="card-text">CEP.: ${funcionario.cepfunc}</p>
+                                <p class="card-text">Número: ${funcionario.numfunc}</p>
+                                <c:if test="${not empty funcionario.complfunc}">
+                                    <p class="card-text">Complemento: ${funcionario.complfunc}</p>
+                                </c:if>
+                                <p class="card-text">Bairro: ${funcionario.bairrofunc}</p>
+                                <p class="card-text">Cidade: ${funcionario.cidfunc}</p>
+                                <p class="card-text">Estado: ${funcionario.estfunc}</p>
+                                <p class="card-text">Status: 
+                                    <c:if test="${funcionario.ativo == true}">
+                                        Ativo
+                                    </c:if>
+                                    <c:if test="${funcionario.ativo == false}">
+                                        Inativo
+                                    </c:if>
+                                </p>
+                                <a href="excluirfuncionario.html?id=${funcionario.idfuncionario}" class="btn btn-primary">Excluir</a>
+                                <a href="editarfuncionario.html?id=${funcionario.idfuncionario}" class="btn btn-primary">Editar</a>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-danger btn-block">Sign in</button>
-                    </form>
-                </div>
-                <div class="col-md-3"></div>
+                    </c:forEach>
+                </c:if>
             </div>
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-4">
-                    <a href="carregafuncionario.html">Carregar todos os Funcionário</a>
-                </div>
-            </div>
-            <c:if test="${not empty funcionario.idfuncionario}">
-                <c:forEach var="consfuncionario" items="${conFuncionario}">
-                    <div class="card">
-                        <div class="card-header">
-                            <label><h5>Nome: ${funcionario.funcionario}</h5></label>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">ID: ${funcionario.idfuncionario}</p>
-                            <c:if test="${not empty funcionario.telfunc}">
-                                <p class="card-text">Telefone.: ${funcionario.telfunc}</p>
-                            </c:if>
-                            <c:if test="${not empty funcionario.celfunc}">
-                                <p class="card-text">Celular.: ${funcionario.celfunc}</p>
-                            </c:if>
-                            <p class="card-text">Endereço: ${funcionario.endfunc}</p>
-                            <p class="card-text">CEP.: ${funcionario.cepfunc}</p>
-                            <p class="card-text">Número: ${funcionario.numfunc}</p>
-                            <c:if test="${not empty funcionario.complfunc}">
-                                <p class="card-text">Complemento: ${funcionario.complfunc}</p>
-                            </c:if>
-                            <p class="card-text">Bairro: ${funcionario.bairrofunc}</p>
-                            <p class="card-text">Cidade: ${funcionario.cidfunc}</p>
-                            <p class="card-text">Estado: ${funcionario.estfunc}</p>
-                            <p class="card-text">Status: 
-                                <c:if test="${funcionario.ativo == true}">
-                                    Ativo
-                                </c:if>
-                                <c:if test="${funcionario.ativo == false}">
-                                    Inativo
-                                </c:if>
-                            </p>
-                            <a href="excluirfuncionario.html?id=${funcionario.idfuncionario}" class="btn btn-primary">Excluir</a>
-                            <a href="editarfuncionario.html?id=${funcionario.idfuncionario}" class="btn btn-primary">Editar</a>
-                        </div>
-                    </div>
-                </c:forEach>
-            </c:if>
         </div>
         <%
             } else {

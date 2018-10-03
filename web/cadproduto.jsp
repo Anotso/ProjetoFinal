@@ -59,7 +59,7 @@
                     </div>
                 </c:if>
                 <div class="esp15"></div>
-                <form action="cadproduto.html" method="POST">
+                <form action="cadproduto.html" method="POST" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label for="nprod" class="col-md-4 col-form-label">Nome:</label>
                         <div class="col-md-8">
@@ -91,7 +91,7 @@
                     <div class="form-row">
                         <label class="form-group col-md-4" for="descricao">Descrição do produto:</label>
                         <div class="col-md-7">
-                            <textarea class="form-control" id="descricao" rows="4" value="${produto.descricao}"></textarea>
+                            <textarea class="form-control" name="descricao" id="descricao" rows="4" value="${produto.descricao}"></textarea>
                         </div>
                         <label class="form-group col-md-1">Exemplo de textarea</label>
                     </div>
@@ -119,34 +119,39 @@
                     <div class="esp5"></div>
                     <hr/>
                     ​<div class="custom-file">
-                        <input type="file" class="custom-file-input" name="foto01" id="foto01" value="${produto.foto1}" placeholder="Foto 01" required/>
+                        <input type="file" class="custom-file-input" name="foto01" id="foto01" value="${produto.foto1}" required/>
                         <label class="custom-file-label" for="foto01"></label>
                         <div class="invalid-feedback">Example invalid custom file feedback</div>
                     </div>
                     <div class="esp15"></div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="foto02" id="foto02" value="${produto.foto2}" placeholder="Foto 02" required/>
+                        <input type="file" class="custom-file-input" name="foto02" id="foto02" value="${produto.foto2}"/>
                         <label class="custom-file-label" for="foto02"></label>
                         <div class="invalid-feedback">Example invalid custom file feedback</div>
                     </div>
                     <div class="esp15"></div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="foto03" id="foto03" value="${produto.foto3}" placeholder="Foto 03" required/>
+                        <input type="file" class="custom-file-input" name="foto03" id="foto03" value="${produto.foto3}"/>
                         <label class="custom-file-label" for="foto03"></label>
                         <div class="invalid-feedback">Example invalid custom file feedback</div>
                     </div>
                     <div class="esp15"></div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="foto04" id="foto04" value="${produto.foto4}" placeholder="Foto 04" required/>
+                        <input type="file" class="custom-file-input" name="foto04" id="foto04" value="${produto.foto4}"/>
                         <label class="custom-file-label" for="foto04"></label>
                         <div class="invalid-feedback">Example invalid custom file feedback</div>
                     </div>
                     <div class="esp15"></div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="foto05" id="foto05" value="${produto.foto5}" placeholder="Foto 05" required/>
+                        <input type="file" class="custom-file-input" name="foto05" id="foto05" value="${produto.foto5}"/>
                         <label class="custom-file-label" for="foto05"></label>
                         <div class="invalid-feedback">Example invalid custom file feedback</div>
                     </div>
+                    <!--<input type="file"name="foto01" value="${produto.foto1}"/>
+                    <input type="file"name="foto02" value="${produto.foto2}"/>
+                    <input type="file" name="foto03" value="${produto.foto3}"/>
+                    <input type="file" name="foto04" value="${produto.foto4}"/>
+                    <input type="file" name="foto05" value="${produto.foto5}"/>-->
                     <div class="esp15"></div>
                     <hr/>
                     <div class="esp15"></div>

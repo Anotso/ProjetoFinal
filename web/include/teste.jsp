@@ -19,4 +19,13 @@
 <a href="cadfuncao.jsp">TESTE DO FORMULÁRIO - Cadastrar Função</a>
 <div class="esp15"></div>
 <a href="cadcliente.jsp">TESTE DO FORMULÁRIO - Cadastrar Cliente</a>
+<hr/>
+<div class="esp15"></div>
+<a href="consultaproduto.jsp">TESTE DO FORMULÁRIO - Consultar Produto</a>
+<div class="esp15"></div>
+<a href="consultarfornecedor.jsp">TESTE DO FORMULÁRIO - Consultar Fornecedor</a>
+<div class="esp15"></div>
+<a href="consultarfuncionario.jsp">TESTE DO FORMULÁRIO - Consultar Funcionario</a>
+<div class="esp15"></div>
+<a href="consultarcliente.jsp">TESTE DO FORMULÁRIO - Consultar Cliente</a>
 <div class="esp50"></div>

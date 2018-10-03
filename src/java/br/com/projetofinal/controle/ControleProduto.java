@@ -12,11 +12,14 @@ import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
+@MultipartConfig
 @WebServlet(name = "ControleProduto", urlPatterns = {"/cadproduto.html","/carregacadprod.html"})
 public class ControleProduto extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -72,7 +75,7 @@ public class ControleProduto extends HttpServlet {
         
         Arquivo arq = new Arquivo();
         String caminhofoto = System.getProperty("user.home")+""+
-                "NetBeansProjectes/ProjetoFinal/web/recursos/imgprod/";
+                "\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
         float nc = 0;
         float nv = 0;
         int qtd = 0;
@@ -83,11 +86,12 @@ public class ControleProduto extends HttpServlet {
         String compra = request.getParameter("vcompprod");
         String venda = request.getParameter("vvendprod");
         String q = request.getParameter("qtdprod");
-        String img1 = request.getParameter("foto01");
-        String img2 = request.getParameter("foto02");
-        String img3 = request.getParameter("foto03");
-        String img4 = request.getParameter("foto04");
-        String img5 = request.getParameter("foto05");
+        String desc = request.getParameter("descricao");
+        String img1 = request.getPart("foto01").getSubmittedFileName();
+        String img2 = request.getPart("foto02").getSubmittedFileName();
+        String img3 = request.getPart("foto03").getSubmittedFileName();
+        String img4 = request.getPart("foto04").getSubmittedFileName();
+        String img5 = request.getPart("foto05").getSubmittedFileName();
         
         if(q.equals("")){
             qtd = 0;
@@ -113,21 +117,20 @@ public class ControleProduto extends HttpServlet {
         produto.setProduto(nome);
         produto.setFornecedor(fornecedor);
         produto.setCategoria(categoria);
+        produto.setDescricao(desc);
         produto.setCompra(nc);
         produto.setVenda(nv);
         produto.setQtd(qtd);
         
-        System.out.println(img1);
-        
         //UPLOAD DA FOTO
         if(!img1.equals("")){
         produto.setFoto1(arq.upload(caminhofoto, 
-                request.getPart("foto01").getName(), 
+                request.getPart("foto01").getSubmittedFileName(), 
                 request.getPart("foto01").getInputStream()));
         }
         if(!img2.equals("")){
         produto.setFoto2(arq.upload(caminhofoto, 
-                request.getPart("foto02").getName(), 
+                request.getPart("foto02").getSubmittedFileName(), 
                 request.getPart("foto02").getInputStream()));
         }
         if(!img3.equals("")){
@@ -135,19 +138,19 @@ public class ControleProduto extends HttpServlet {
                 request.getPart("foto03").getSubmittedFileName(), 
                 request.getPart("foto03").getInputStream()));
         }
-        if(img4.equals("")){}else{
+        if(!img4.equals("")){
             produto.setFoto4(arq.upload(caminhofoto, 
                 request.getPart("foto04").getSubmittedFileName(), 
                 request.getPart("foto04").getInputStream()));
         }
-        if(img5.equals("")){}else{
-        produto.setFoto4(arq.upload(caminhofoto, 
-                request.getPart("foto04").getSubmittedFileName(), 
-                request.getPart("foto04").getInputStream()));
+        if(!img5.equals("")){
+        produto.setFoto5(arq.upload(caminhofoto, 
+                request.getPart("foto05").getSubmittedFileName(), 
+                request.getPart("foto05").getInputStream()));
         }
         
         try{
-            produto.validar();
+            //produto.validar();
             ProdutoDao dao = new ProdutoDao();
             dao.cadastrarproduto(produto);
             response.sendRedirect("/ProjetoFinal/menufun.jsp");

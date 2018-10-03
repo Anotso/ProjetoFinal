@@ -61,13 +61,15 @@
                 <div class="form-group row">
                     <label for="email" class="col-md-4 col-form-label">E-mail:</label>
                     <div class="col-md-8">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Ex.: exemplo@exemplo.com"/>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Ex.: exemplo@exemplo.com"
+                            value="<c:if test="${pf.emailpf}">${pf.emailpf}</c:if><c:if test="${pj.emailpj}">${pj.emailpj}</c:if>"/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="senha" class="col-md-4 col-form-label">Senha:</label>
                     <div class="col-md-8">
-                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha"/>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha"
+                            value="<c:if test="${pf.senhapf}"></c:if><c:if test="${pj.senhapj}"></c:if>"/>
                     </div>
                 </div>
                 <div class="esp5"></div>
@@ -76,13 +78,15 @@
                 <div class="form-row">
                     <div class=" col-md-6">
                         <div class="form-check form-check-inline" onclick="CarPesFisica()">
-                            <input class="form-check-input" type="radio" id="pf" value="pf" name="pessoa">
+                                <input class="form-check-input" type="radio" id="pf" value="pf" name="pessoa"
+                                <c:if test="${not empty pf.cpfpf}"></c:if>/>
                             <label class="form-check-label" for="pf">Pessoa Física</label>
                         </div>
                     </div>
                     <div class=" col-md-6">
                         <div class="form-check form-check-inline" onclick="CarPesJuridica()">
-                            <input class="form-check-input" type="radio" id="pj" value="pj" name="pessoa">
+                            <input class="form-check-input" type="radio" id="pj" value="pj" name="pessoa"
+                            <c:if test="${not empty pf.cpfpf}"></c:if>/>
                             <label class="form-check-label" for="pj">Pessoa Jurídica</label>
                         </div>
                     </div>
@@ -91,7 +95,6 @@
                 <hr/>
                 <div class="esp5"></div>
                 <div class="form-row">
-
                     <div class="col-md-6">
                         <!-- PESSOA FÍSICA -->
                         <div id="pesfisica">
@@ -102,19 +105,21 @@
                             <div class="form-group row">
                                 <label for="nomecli" class="col-md-4 col-form-label">Nome:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="nomecli" name="nomecli"/>
+                                    <input type="text" class="form-control" id="nomecli" name="nomecli"
+                                    <c:if test="pf.pf"></c:if>/>
                                 </div>
                             </div>	
                             <div class="form-group row">
                                 <label for="sobrenome" class="col-md-4 col-form-label">Sobrenome:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome"/>
+                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome"
+                                        <c:if test="pf.snomepf"></c:if>/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-4 col-form-label" for="sexo">Sexo</label>
                                 <div class="col-md-8">
-                                    <select class="custom-select form-control" id="sexo" name="sexo">
+                                    <select class="custom-select form-control" id="sexo" name="sexo"<c:if test="pf.sexo"></c:if>>
                                         <option value="M">Masculino</option>
                                         <option value="F">Feminino</option>
                                     </select>
@@ -123,31 +128,31 @@
                             <div class="form-group row">
                                 <label for="cpf" class="col-md-4 col-form-label">CPF:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="cpf" name="cpf"/>
+                                    <input type="text" class="form-control" id="cpf" name="cpf"<c:if test="pf.cpfpf"></c:if>/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="rg" class="col-md-4 col-form-label">Identidade:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="rg" name="rg"/>
+                                    <input type="text" class="form-control" id="rg" name="rg"<c:if test="pf.rgpf"></c:if>/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="nasc" class="col-md-4 col-form-label">Data de Nascimento:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="nasc" name="nasc"/>
+                                    <input type="text" class="form-control" id="nasc" name="nasc"<c:if test="pf.dtnasc"></c:if>/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="tel" class="col-md-4 col-form-label">Telefone:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="tel" name="tel"/>
+                                    <input type="text" class="form-control" id="tel" name="tel"<c:if test="pf.telpf"></c:if>/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="cel" class="col-md-4 col-form-label">Celular:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="cel" name="cel"/>
+                                    <input type="text" class="form-control" id="cel" name="cel"<c:if test="pf.celpf"></c:if>/>
                                 </div>
                             </div>
                         </div>
@@ -159,13 +164,13 @@
                             <div class="form-group row">
                                 <label for="rsocial" class="col-md-4 col-form-label">Razão Social:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="rsocial" name="rsocial"/>
+                                    <input type="text" class="form-control" id="rsocial" name="rsocial"<c:if test="pj.razao"></c:if>/>
                                 </div>
                             </div>	
                             <div class="form-group row">
                                 <label for="fantasia" class="col-md-4 col-form-label">Nome Fantasia:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="fantasia" name="fantasia"/>
+                                    <input type="text" class="form-control" id="fantasia" name="fantasia"<c:if test="pj.nomepj"></c:if>/>
                                 </div>
                             </div>
                             <div class="form-group row">
