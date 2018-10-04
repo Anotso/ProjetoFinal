@@ -4,6 +4,7 @@ import br.com.projetofinal.dao.FuncionarioDao;
 import br.com.projetofinal.entidade.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "/ControleFuncionario", urlPatterns = {"/cadfuncionario.html","/buscafuncionario.html",
-    "/excluirfuncionario.html","/editarfuncionario.html","/carregafuncionario.html"})
+    "/excluirfuncionario.html","/editarfuncionario.html","/carregafuncionario.html",
+    "/atualizafuncionario.html"
+})
 public class ControleFuncionario extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -41,10 +44,10 @@ public class ControleFuncionario extends HttpServlet {
                     buscar(request, response);
             } else if (url.equalsIgnoreCase("/editarfuncionario.html")) {
                     editar(request, response);
-            } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
-                    //confirmar(request, response);
+            } else if (url.equalsIgnoreCase("/atualizafuncionario.html")) {
+                    confirmar(request, response);
             }else if (url.equalsIgnoreCase("/excluirfuncionario.html")) {
-                    excluir(request, response);
+                    //excluir(request, response);
             }else {
                 throw new Exception("URL Inválida!!!");
             }
@@ -89,6 +92,21 @@ public class ControleFuncionario extends HttpServlet {
         funcionario.setCidfunc(cidfunc);
         funcionario.setEstfunc(estfunc);
         
+        System.out.println("Nome: "+nome);
+        System.out.println("E-mail: "+emailfunc);
+        System.out.println("Senha: "+senhafunc);
+        System.out.println("Tel: "+telfunc);
+        System.out.println("Cel: "+celfunc);
+        System.out.println("CPF: "+cpffunc);
+        System.out.println("Função: "+funcaofunc);
+        System.out.println("CEP: "+cepfunc);
+        System.out.println("End: "+endfunc);
+        System.out.println("Número: "+numfunc);
+        System.out.println("Complemento: "+complfunc);
+        System.out.println("Bairro: "+bairrofunc);
+        System.out.println("Cidade: "+cidfunc);
+        System.out.println("Estado: "+estfunc);
+        
         try{
             funcionario.validar();
             FuncionarioDao dao = new FuncionarioDao();
@@ -111,18 +129,26 @@ public class ControleFuncionario extends HttpServlet {
             
             request.setAttribute("cpf", cpf);
             request.setAttribute("listaFuncionario", lista);
-            request.getRequestDispatcher("consultafuncionario.jsp").forward(request, response);
+            request.getRequestDispatcher("/consultarfuncionario.jsp").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();
         }
     }
 
     private void editar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        
-    }
-
-    private void excluir(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        
+        try{
+            String id = request.getParameter("id");
+            
+            FuncionarioDao pd = new FuncionarioDao();
+            
+            List<Funcionario> lista = pd.editaFuncionario(id);
+            
+            request.setAttribute("id", id);
+            request.setAttribute("editaFuncionario", lista);
+            request.getRequestDispatcher("/loadfuncao.html").forward(request, response);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void carrega(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
@@ -130,8 +156,76 @@ public class ControleFuncionario extends HttpServlet {
             FuncionarioDao func = new FuncionarioDao();
             List<Funcionario> lista = func.carregafuncionario();
             request.setAttribute("listaFuncionario", lista);
-            request.getRequestDispatcher("consultafuncionario.jsp").forward(request, response);
+            request.getRequestDispatcher("/consultarfuncionario.jsp").forward(request, response);
         }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void confirmar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        int id = parseInt(request.getParameter("idfun"));
+        String nome = request.getParameter("nfun");
+        String emailfunc = request.getParameter("emailfun");
+        String telfunc = request.getParameter("telfun");
+        String celfunc = request.getParameter("celfun");
+        String cpffunc = request.getParameter("cpffu");
+        String funcaofunc = request.getParameter("funcaofu");
+        String cepfunc = request.getParameter("cep");
+        String endfunc = request.getParameter("end");
+        String numfunc = request.getParameter("numfu");
+        String complfunc = request.getParameter("complfu");
+        String bairrofunc = request.getParameter("bairro");
+        String cidfunc = request.getParameter("cid");
+        String estfunc = request.getParameter("est");
+        String st = request.getParameter("statusfunc");
+        
+        boolean status = true;
+        
+        if(st.trim().equals("false")){
+            status = false;
+        }
+        
+        Funcionario funcionario = new Funcionario();
+        funcionario.setIdfuncionario(id);
+        funcionario.setFuncionario(nome);
+        funcionario.setEmailfunc(emailfunc);
+        funcionario.setTelfunc(telfunc);
+        funcionario.setCelfunc(celfunc);
+        funcionario.setCpffunc(cpffunc);
+        funcionario.setFuncaofunc(funcaofunc);
+        funcionario.setCepfunc(cepfunc);
+        funcionario.setEndfunc(endfunc);
+        funcionario.setNumfunc(numfunc);
+        funcionario.setComplfunc(complfunc);
+        funcionario.setBairrofunc(bairrofunc);
+        funcionario.setCidfunc(cidfunc);
+        funcionario.setEstfunc(estfunc);
+        funcionario.setAtivo(status);
+        
+        System.out.println("ID: "+id);
+        System.out.println("Nome: "+nome);
+        System.out.println("E-mail: "+emailfunc);
+        System.out.println("Tel: "+telfunc);
+        System.out.println("Cel: "+celfunc);
+        System.out.println("CPF: "+cpffunc);
+        System.out.println("Função: "+funcaofunc);
+        System.out.println("CEP: "+cepfunc);
+        System.out.println("End: "+endfunc);
+        System.out.println("Número: "+numfunc);
+        System.out.println("Complemento: "+complfunc);
+        System.out.println("Bairro: "+bairrofunc);
+        System.out.println("Cidade: "+cidfunc);
+        System.out.println("Estado: "+estfunc);
+        System.out.println("Status: "+status);
+        
+        try{
+            funcionario.validarAtt();
+            FuncionarioDao dao = new FuncionarioDao();
+            dao.editarrfuncionario(funcionario);
+            response.sendRedirect("/ProjetoFinal/menufun.jsp");
+        }catch(Exception e){
+            request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
+            request.getRequestDispatcher("/loadfuncao.html").forward(request, response);
             e.printStackTrace();
         }
     }

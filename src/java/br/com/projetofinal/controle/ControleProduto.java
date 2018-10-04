@@ -74,8 +74,10 @@ public class ControleProduto extends HttpServlet {
     private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         Arquivo arq = new Arquivo();
-        String caminhofoto = System.getProperty("user.home")+""+
-                "\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
+        //  CURSO
+        //String caminhofoto = System.getProperty("user.home")+""+"\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
+        //  CASA
+        String caminhofoto = System.getProperty("user.home")+""+"\\Pictures\\imgprod\\";
         float nc = 0;
         float nv = 0;
         int qtd = 0;

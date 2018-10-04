@@ -68,8 +68,9 @@
                         <a href="carregafuncionario.html">Carregar todos os Funcionário</a>
                     </div>
                 </div>
-                <c:if test="${not empty funcionario.idfuncionario}">
-                    <c:forEach var="consfuncionario" items="${conFuncionario}">
+                <c:if test="${not empty listaFuncionario}">
+                    <div class="esp15"></div>
+                    <c:forEach var="funcionario" items="${listaFuncionario}">
                         <div class="card">
                             <div class="card-header">
                                 <label><h5>Nome: ${funcionario.funcionario}</h5></label>
@@ -103,6 +104,7 @@
                                 <a href="editarfuncionario.html?id=${funcionario.idfuncionario}" class="btn btn-primary">Editar</a>
                             </div>
                         </div>
+                        <div class="esp15"></div>
                     </c:forEach>
                 </c:if>
             </div>

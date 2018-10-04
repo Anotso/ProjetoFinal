@@ -222,5 +222,57 @@ public class Funcionario {
             throw new Exception(erros);
         }
     }
+
+    
+    private String isDadosAtt() {
+        String erros = "";
+        if (funcionario.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (emailfunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (telfunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (celfunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (cpffunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (funcaofunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (cepfunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (endfunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (numfunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (complfunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (bairrofunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (cidfunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        if (estfunc.equals("")){
+            erros += "Nome do funcionário em branco. \n";
+        }
+        return erros;
+    }
+    
+    public void validarAtt() throws Exception{
+        String erros = isDadosAtt();
+        if(!erros.equals("")){
+            throw new Exception(erros);
+        }
+    }
     
 }

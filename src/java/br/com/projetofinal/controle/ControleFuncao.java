@@ -86,7 +86,7 @@ public class ControleFuncao extends HttpServlet {
                     FuncaoDao pd = new FuncaoDao();
                     List<Funcao> lista = pd.buscarfuncao();
                     request.setAttribute("listaFuncao", lista);
-                    request.getRequestDispatcher("cadfuncionario.jsp").forward(request, response);
+                    request.getRequestDispatcher("/cadfuncionario.jsp").forward(request, response);
                     
                     /*RequestDispatcher rd = request.getRequestDispatcher("/cadfuncionario.jsp");
                     rd.forward(request,response);

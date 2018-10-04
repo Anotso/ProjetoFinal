@@ -47,20 +47,20 @@ public class FuncionarioDao extends Dao{
 
     public List<Funcionario> listaFuncionario(String cpf) throws SQLException{
         open();
-        stmt=this.con.prepareStatement("SELECT * FROM funcionario WHERE cpffunc = ?");
-        stmt.setString(1, cpf);
+        stmt=this.con.prepareStatement("SELECT * FROM funcionario WHERE cpffunc like ?");
+        stmt.setString(1, cpf+"%");
         Funcionario funcionario = null;
         rs = stmt.executeQuery();
-        List<Funcionario> listafunc2 = new ArrayList<Funcionario>();
+        List<Funcionario> lista = new ArrayList<Funcionario>();
         while(rs.next()){
-            funcionario = new Funcionario(rs.getInt("idfuncionario"),
+            funcionario = new Funcionario(rs.getInt("idfunc"),
                 rs.getString("nomefunc"),
                 rs.getString("emailfunc"),
                 rs.getString("senhafunc"),
                 rs.getString("telfunc"),
                 rs.getString("celfunc"),
                 rs.getString("cpffunc"),
-                rs.getString("funcaofunc"),
+                rs.getString("funcaofun"),
                 rs.getString("cepfunc"),
                 rs.getString("ruafunc"),
                 rs.getString("numfunc"),
@@ -70,10 +70,10 @@ public class FuncionarioDao extends Dao{
                 rs.getString("complfunc"),
                 rs.getBoolean("ativo")
             );
-            listafunc2.add(funcionario);
+            lista.add(funcionario);
         }
         close();
-        return listafunc2;
+        return lista;
     }
 
     public List<Funcionario> carregafuncionario() throws SQLException{
@@ -82,16 +82,16 @@ public class FuncionarioDao extends Dao{
         stmt = con.prepareStatement(sql);
         Funcionario funcionario = null;
         rs = stmt.executeQuery();
-        List<Funcionario> listafunc1 = new ArrayList<Funcionario>();
+        List<Funcionario> lista = new ArrayList<Funcionario>();
         while(rs.next()){
-            funcionario = new Funcionario(rs.getInt("idfuncionario"),
+            funcionario = new Funcionario(rs.getInt("idfunc"),
                 rs.getString("nomefunc"),
                 rs.getString("emailfunc"),
                 rs.getString("senhafunc"),
                 rs.getString("telfunc"),
                 rs.getString("celfunc"),
                 rs.getString("cpffunc"),
-                rs.getString("funcaofunc"),
+                rs.getString("funcaofun"),
                 rs.getString("cepfunc"),
                 rs.getString("ruafunc"),
                 rs.getString("numfunc"),
@@ -101,10 +101,82 @@ public class FuncionarioDao extends Dao{
                 rs.getString("complfunc"),
                 rs.getBoolean("ativo")
             );
-            listafunc1.add(funcionario);
+            lista.add(funcionario);
         }
         close();
-        return listafunc1;
+        return lista;
+    }
+
+    public List<Funcionario> editaFuncionario(String id) throws SQLException{
+        open();
+        stmt=this.con.prepareStatement("SELECT * FROM funcionario WHERE cpffunc like ?");
+        stmt.setString(1, id+"%");
+        Funcionario funcionario = null;
+        rs = stmt.executeQuery();
+        List<Funcionario> lista = new ArrayList<Funcionario>();
+        while(rs.next()){
+            funcionario = new Funcionario(rs.getInt("idfunc"),
+                rs.getString("nomefunc"),
+                rs.getString("emailfunc"),
+                rs.getString("senhafunc"),
+                rs.getString("telfunc"),
+                rs.getString("celfunc"),
+                rs.getString("cpffunc"),
+                rs.getString("funcaofun"),
+                rs.getString("cepfunc"),
+                rs.getString("ruafunc"),
+                rs.getString("numfunc"),
+                rs.getString("bairrofunc"),
+                rs.getString("cidadefunc"),
+                rs.getString("estadofunc"),
+                rs.getString("complfunc"),
+                rs.getBoolean("ativo")
+            );
+            lista.add(funcionario);
+        }
+        close();
+        return lista;
+    }
+
+    public void editarrfuncionario(Funcionario funcionario)  throws SQLException{
+        open();
+        //try{
+            String sql = "UPDATE funcionario SET nomefunc = ?,"+
+                " emailfunc = ?,"+
+                " telfunc = ?,"+
+                " celfunc = ?,"+
+                " cpffunc = ?,"+
+                " funcaofun = ?,"+
+                " cepfunc = ?,"+
+                " ruafunc = ?,"+
+                " numfunc = ?,"+
+                " bairrofunc = ?,"+
+                " cidadefunc = ?,"+
+                " estadofunc = ?,"+
+                " complfunc = ?,"+
+                " ativo = ? WHERE idfunc = ?";
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, funcionario.getFuncionario());
+            stmt.setString(2, funcionario.getEmailfunc());
+            stmt.setString(3, funcionario.getTelfunc());
+            stmt.setString(4, funcionario.getCelfunc());
+            stmt.setString(5, funcionario.getCpffunc());
+            stmt.setString(6, funcionario.getFuncaofunc());
+            stmt.setString(7, funcionario.getCepfunc());
+            stmt.setString(8, funcionario.getEndfunc());
+            stmt.setString(9, funcionario.getNumfunc());
+            stmt.setString(10, funcionario.getBairrofunc());
+            stmt.setString(11, funcionario.getCidfunc());
+            stmt.setString(12, funcionario.getEstfunc());
+            stmt.setString(13, funcionario.getComplfunc());
+            stmt.setBoolean(14, funcionario.isAtivo());
+            stmt.setInt(15, funcionario.getIdfuncionario());
+
+            stmt.executeUpdate();
+            close();
+        //}catch(SQLException e){
+            //throw new RuntimeException(e);
+        //}
     }
     
 }
