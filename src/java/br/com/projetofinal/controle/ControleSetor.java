@@ -1,6 +1,8 @@
 package br.com.projetofinal.controle;
 
+import br.com.projetofinal.dao.CategoriaDao;
 import br.com.projetofinal.dao.SetorDao;
+import br.com.projetofinal.entidade.Categoria;
 import br.com.projetofinal.entidade.Setor;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "/ControleSetor", urlPatterns = {"/cadsetor.html","/loadsetor.html","/menuprod.jsp"})
+@WebServlet(name = "/ControleSetor", urlPatterns = {"/cadsetor.html","/loadsetor.html"})
 public class ControleSetor extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
@@ -42,7 +44,7 @@ public class ControleSetor extends HttpServlet {
             } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
                     //editar(request, response);
             } else if (url.equalsIgnoreCase("/menuprod.jsp")) {
-                    carreganav(request, response);
+                    //carreganav(request, response);
             } else if (url.equalsIgnoreCase("/fornecedorconsultado.html")) {
                     //buscar(request, response);
             } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
@@ -90,16 +92,26 @@ public class ControleSetor extends HttpServlet {
             e.printStackTrace();
         }
     }
-
-    private void carreganav(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    
+    private List<Setor> listSetor(){
+        List<Setor> lista = null;
         try{
             SetorDao pd = new SetorDao();
-            List<Setor> lista = pd.buscarsetor();
-            request.setAttribute("listaSetor", lista);
-            request.getRequestDispatcher("/carreganav.html").forward(request, response);
+            lista = pd.buscarsetor();
         }catch(Exception e){
             e.printStackTrace();
         }
+        return lista;
+    }
+    private List<Categoria> listCategoria(){
+        List<Categoria> lista = null;
+        try{
+            CategoriaDao pd = new CategoriaDao();
+            lista = pd.buscarcategoria();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return lista;
     }
 
 }

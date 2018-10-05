@@ -1,7 +1,7 @@
 package br.com.projetofinal.entidade;
 
 public class Produto {
-    
+
     private int idproduto;
     private String produto;
     private String fornecedor;
@@ -15,7 +15,7 @@ public class Produto {
     private String foto3;
     private String foto4;
     private String foto5;
-    
+
     public Produto(int idproduto, String produto, String fornecedor, String categoria, String descricao, float compra, float venda, int qtd, String foto1, String foto2, String foto3, String foto4, String foto5) {
         super();
         this.idproduto = idproduto;
@@ -33,7 +33,8 @@ public class Produto {
         this.foto5 = foto5;
     }
 
-    public Produto() {}
+    public Produto() {
+    }
 
     public int getIdproduto() {
         return idproduto;
@@ -66,7 +67,7 @@ public class Produto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+
     public String getDescricao() {
         return descricao;
     }
@@ -138,9 +139,8 @@ public class Produto {
     public void setFoto5(String foto5) {
         this.foto5 = foto5;
     }
-    
+
     //TRATAMENTO DE ERROS
-    
     private String isDados() {
         String erros = "";
 
@@ -176,12 +176,12 @@ public class Produto {
         }
         return erros;
     }
-    
+
     public void validar() throws Exception {
         String erros = isDados();
         if (!erros.equals("")) {
             throw new Exception(erros);
         }
     }
-    
+
 }

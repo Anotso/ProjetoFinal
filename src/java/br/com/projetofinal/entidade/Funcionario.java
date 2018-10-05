@@ -38,14 +38,15 @@ public class Funcionario {
         this.estfunc = estfunc;
         this.ativo = ativo;
     }
-    
-    public Funcionario() {}
+
+    public Funcionario() {
+    }
 
     public Funcionario(String login, String pass) {
         this.emailfunc = login;
         this.senhafunc = pass;
     }
-    
+
     public int getIdfuncionario() {
         return idfuncionario;
     }
@@ -69,7 +70,7 @@ public class Funcionario {
     public void setEmailfunc(String emailfunc) {
         this.emailfunc = emailfunc;
     }
-    
+
     public String getSenhafunc() {
         return senhafunc;
     }
@@ -176,114 +177,114 @@ public class Funcionario {
 
     private String isDados() {
         String erros = "";
-        if (funcionario.equals("")){
+        if (funcionario.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (emailfunc.equals("")){
+        if (emailfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (senhafunc.equals("")){
+        if (senhafunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (telfunc.equals("")){
+        if (telfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (celfunc.equals("")){
+        if (celfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (cpffunc.equals("")){
+        if (cpffunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (funcaofunc.equals("")){
+        if (funcaofunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (cepfunc.equals("")){
+        if (cepfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (endfunc.equals("")){
+        if (endfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (numfunc.equals("")){
+        if (numfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (complfunc.equals("")){
+        if (complfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (bairrofunc.equals("")){
+        if (bairrofunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (cidfunc.equals("")){
+        if (cidfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (estfunc.equals("")){
+        if (estfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
         return erros;
     }
-    
-    public void validar() throws Exception{
+
+    public void validar() throws Exception {
         String erros = isDados();
-        if(!erros.equals("")){
+        if (!erros.equals("")) {
             throw new Exception(erros);
         }
     }
 
-    
     private String isDadosAtt() {
         String erros = "";
-        if (funcionario.equals("")){
+        if (funcionario.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (emailfunc.equals("")){
+        if (emailfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (telfunc.equals("")){
+        if (telfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (celfunc.equals("")){
+        if (celfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (cpffunc.equals("")){
+        if (cpffunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (funcaofunc.equals("")){
+        if (funcaofunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (cepfunc.equals("")){
+        if (cepfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (endfunc.equals("")){
+        if (endfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (numfunc.equals("")){
+        if (numfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (complfunc.equals("")){
+        if (complfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (bairrofunc.equals("")){
+        if (bairrofunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (cidfunc.equals("")){
+        if (cidfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
-        if (estfunc.equals("")){
+        if (estfunc.equals("")) {
             erros += "Nome do funcionário em branco. \n";
         }
         return erros;
     }
-    
-    public void validarAtt() throws Exception{
+
+    public void validarAtt() throws Exception {
         String erros = isDadosAtt();
-        if(!erros.equals("")){
+        if (!erros.equals("")) {
             throw new Exception(erros);
         }
     }
 
-    public void setSenhafunc(byte[] messageDigest) {}
+    public void setSenhafunc(byte[] messageDigest) {
+    }
 
     public Funcionario loginfun(String login, String sen) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

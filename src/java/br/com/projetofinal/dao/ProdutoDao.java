@@ -6,14 +6,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdutoDao extends Dao{
+public class ProdutoDao extends Dao {
 
     public void cadastrarproduto(Produto produto) {
         open();
-        try{
-            String sql = "INSERT INTO"+
-            " produto(nomeprod,forprod,catprod,descprod,compraprod,vendaprod,qtdprod,foto1prod,foto2prod,foto3prod,foto4prod,foto5prod)"
-            +"VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            String sql = "INSERT INTO"
+                    + " produto(nomeprod,forprod,catprod,descprod,compraprod,vendaprod,qtdprod,foto1prod,foto2prod,foto3prod,foto4prod,foto5prod)"
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
             stmt = con.prepareStatement(sql);
             stmt.setString(1, produto.getProduto());
             stmt.setString(2, produto.getFornecedor());
@@ -29,7 +29,7 @@ public class ProdutoDao extends Dao{
             stmt.setString(12, produto.getFoto5());
             stmt.execute();
             close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -62,11 +62,11 @@ public class ProdutoDao extends Dao{
         return lista;
     }
 
-    public List<Produto> listaProduto(String dado) throws SQLException{
+    public List<Produto> listaProduto(String dado) throws SQLException {
         open();
         stmt = this.con.prepareStatement("SELECT * FROM produto WHERE idprod like ? OR nomeprod like ?");
         stmt.setString(1, dado + "%");
-        stmt.setString(2, "%"+ dado + "%");
+        stmt.setString(2, "%" + dado + "%");
         Produto produto = null;
         rs = stmt.executeQuery();
         List<Produto> lista = new ArrayList<Produto>();
@@ -91,7 +91,7 @@ public class ProdutoDao extends Dao{
         return lista;
     }
 
-    public List<Produto> carregaProduto(int id) throws SQLException{
+    public List<Produto> carregaProduto(int id) throws SQLException {
         open();
         stmt = this.con.prepareStatement("SELECT * FROM produto WHERE idprod = ?");
         stmt.setInt(1, id);
@@ -121,25 +121,25 @@ public class ProdutoDao extends Dao{
 
     public void editaproduto(Produto produto) throws SQLException {
         open();
-        String sql = "UPDATE produto SET nomeprof=?"+
-                ", forprod=?"+
-                ", catprod=?"+
-                ", descprod=?"+
-                ", compraprod=?"+
-                ", vendaprod=?"+
-                ", qtdprod=?"+
-                " WHERE idprod=?";
+        String sql = "UPDATE produto SET nomeprof=?"
+                + ", forprod=?"
+                + ", catprod=?"
+                + ", descprod=?"
+                + ", compraprod=?"
+                + ", vendaprod=?"
+                + ", qtdprod=?"
+                + " WHERE idprod=?";
         stmt = con.prepareStatement(sql);
-            stmt.setString(1, produto.getProduto());
-            stmt.setString(2, produto.getFornecedor());
-            stmt.setString(3, produto.getCategoria());
-            stmt.setString(4, produto.getDescricao());
-            stmt.setFloat(5, produto.getCompra());
-            stmt.setFloat(6, produto.getVenda());
-            stmt.setInt(7, produto.getQtd());
-            stmt.setInt(8, produto.getIdproduto());
-            stmt.executeUpdate();
-            close();
+        stmt.setString(1, produto.getProduto());
+        stmt.setString(2, produto.getFornecedor());
+        stmt.setString(3, produto.getCategoria());
+        stmt.setString(4, produto.getDescricao());
+        stmt.setFloat(5, produto.getCompra());
+        stmt.setFloat(6, produto.getVenda());
+        stmt.setInt(7, produto.getQtd());
+        stmt.setInt(8, produto.getIdproduto());
+        stmt.executeUpdate();
+        close();
     }
-    
+
 }

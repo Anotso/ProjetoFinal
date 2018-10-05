@@ -1,7 +1,7 @@
 package br.com.projetofinal.entidade;
 
 public class Fornecedor {
-    
+
     private int idfornecedor;
     private String fornecedor;
     private String emailfor;
@@ -15,8 +15,8 @@ public class Fornecedor {
     private String bairrofor;
     private String cidfor;
     private String estfor;
-    
-    public Fornecedor(int idfornecedor, String fornecedor, String emailfor, String sitefor, String telfor, String cnpj, String cepfor, String endfor, String numfor, String complfor, String bairrofor, String cidfor, String estfor){
+
+    public Fornecedor(int idfornecedor, String fornecedor, String emailfor, String sitefor, String telfor, String cnpj, String cepfor, String endfor, String numfor, String complfor, String bairrofor, String cidfor, String estfor) {
         super();
         this.idfornecedor = idfornecedor;
         this.fornecedor = fornecedor;
@@ -31,7 +31,7 @@ public class Fornecedor {
         this.bairrofor = bairrofor;
         this.cidfor = cidfor;
         this.estfor = estfor;
-        
+
     }
 
     public Fornecedor() {
@@ -141,5 +141,5 @@ public class Fornecedor {
     public void setEstfor(String estfor) {
         this.estfor = estfor;
     }
-    
+
 }

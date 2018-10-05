@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
 
-@WebServlet(name = "ControleCategoria", urlPatterns = {"/cadcategoria.html", "/loadcat1.html","/carreganav.html"})
+@WebServlet(name = "ControleCategoria", urlPatterns = {"/cadcategoria.html", "/loadcat1.html", "/carreganav.html"})
 public class ControleCategoria extends HttpServlet {
 
     private static final long serialVersionUID = 1L;

@@ -4,8 +4,8 @@ public class Funcao {
 
     private int idfuncao;
     private String funcao;
-    
-    public Funcao(int idfuncao, String funcao){
+
+    public Funcao(int idfuncao, String funcao) {
         super();
         this.idfuncao = idfuncao;
         this.funcao = funcao;
@@ -13,7 +13,7 @@ public class Funcao {
 
     public Funcao() {
     }
-    
+
     public int getIdfuncao() {
         return idfuncao;
     }
@@ -29,5 +29,5 @@ public class Funcao {
     public void setFuncao(String funcao) {
         this.funcao = funcao;
     }
-    
+
 }

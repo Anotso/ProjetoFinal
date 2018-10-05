@@ -12,13 +12,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "/ControleFornecedor", urlPatterns = {"/cadastrarfornecedor.html","/loadfornecedor.html",
-    "/buscafornecedor.html","/carregafornecedor.html"
+@WebServlet(name = "/ControleFornecedor", urlPatterns = {"/cadastrarfornecedor.html", "/loadfornecedor.html",
+    "/buscafornecedor.html", "/carregafornecedor.html"
 })
 public class ControleFornecedor extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
-    
-    public ControleFornecedor(){
+
+    public ControleFornecedor() {
         super();
     }
 
@@ -33,39 +34,39 @@ public class ControleFornecedor extends HttpServlet {
     }
 
     protected void executarfornecedor(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        try{
+        try {
             String url = request.getServletPath();
-            
+
             if (url.equalsIgnoreCase("/cadastrarfornecedor.html")) {
-                    cadastrar(request, response);
+                cadastrar(request, response);
             } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
-                    //editar(request, response);
+                //editar(request, response);
             } else if (url.equalsIgnoreCase("/buscafornecedor.html")) {
-                    buscar(request, response);
+                buscar(request, response);
             } else if (url.equalsIgnoreCase("/carregafornecedor.html")) {
-                    carrega(request, response);
+                carrega(request, response);
             } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
-                    //confirmar(request, response);
-            }else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
-                    //excluir(request, response);
-            }else if (url.equalsIgnoreCase("/loadfornecedor.html")) {
+                //confirmar(request, response);
+            } else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
+                //excluir(request, response);
+            } else if (url.equalsIgnoreCase("/loadfornecedor.html")) {
                 carregaforn(request, response);
-            }else {
+            } else {
                 throw new Exception("URL Inválida!!!");
             }
-        }catch(Exception e){
-            System.err.println("Erro cad: "+e.toString());
+        } catch (Exception e) {
+            System.err.println("Erro cad: " + e.toString());
             response.sendRedirect("index.jsp");
             e.printStackTrace();
-        } 
+        }
     }
-    
+
     //CADASTRAR FORNECEDOR
-    protected void cadastrar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        
+    protected void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String nome = request.getParameter("nfor");
         String emailfor = request.getParameter("emailfor");
         String sitefor = request.getParameter("sitefor");
@@ -78,7 +79,7 @@ public class ControleFornecedor extends HttpServlet {
         String bairrofor = request.getParameter("bairro");
         String cidfor = request.getParameter("cid");
         String estfor = request.getParameter("est");
-        
+
         Fornecedor fornecedor = new Fornecedor();
         fornecedor.setFornecedor(nome);
         fornecedor.setEmailfor(emailfor);
@@ -92,51 +93,51 @@ public class ControleFornecedor extends HttpServlet {
         fornecedor.setBairrofor(bairrofor);
         fornecedor.setCidfor(cidfor);
         fornecedor.setEstfor(estfor);
-        
-        try{
+
+        try {
             FornecedorDao dao = new FornecedorDao();
             dao.cadastrarfornecedor(fornecedor);
             response.sendRedirect("/ProjetoFinal/menufun.jsp");
-        }catch(Exception e){
-            System.err.println("Erro cad: "+e.toString());
+        } catch (Exception e) {
+            System.err.println("Erro cad: " + e.toString());
             e.printStackTrace();
         }
     }
-    
+
     //BUSCAR FORNECEDOR
-    public void buscar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        try{
+    public void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             String dado = request.getParameter("dado");
             FornecedorDao forn = new FornecedorDao();
-            
+
             List<Fornecedor> lista = forn.buscarfornecedor(dado);
             request.setAttribute("dado", dado);
             request.setAttribute("listafornecedor", lista);
             request.getRequestDispatcher("fornecedorconsultado.jsp").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     //CARREGA FORNECEDOR - CADASTRO DE PRODUTOS
-    public void carregaforn(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        try{
+    public void carregaforn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             FornecedorDao forn = new FornecedorDao();
             List<Fornecedor> listafor = forn.loadfornecedor();
             request.setAttribute("listaFornecedor", listafor);
             request.getRequestDispatcher("cadproduto.jsp").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private void carrega(HttpServletRequest request, HttpServletResponse response) {
-        try{
+        try {
             FornecedorDao forn = new FornecedorDao();
             List<Fornecedor> listafor = forn.loadfornecedor();
             request.setAttribute("listaFornecedor", listafor);
             request.getRequestDispatcher("/consultarfornecedor.jsp").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

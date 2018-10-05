@@ -1,19 +1,19 @@
 package br.com.projetofinal.dao;
 
-    import java.sql.*;
-    import java.util.*;
-    import br.com.projetofinal.entidade.Cliente;
+import java.sql.*;
+import java.util.*;
+import br.com.projetofinal.entidade.Cliente;
 
 public class ClienteDao extends Dao {
 
-    public void cadastrar(Cliente cliente) throws SQLException{
+    public void cadastrar(Cliente cliente) throws SQLException {
         open();
         int acesso = 2;
-        try{
-            String sql = "INSERT INTO"+
-                " cliente(cliente, snome, dtnasc, sexo, tipocli, cadfed, cadest, emailcli, senhacli,"+
-                " telcli, celcli, cepcli, endcli, numcli, complcli, refcli, bairrocli, cidcli, estcli, ativo)"+
-                " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            String sql = "INSERT INTO"
+                    + " cliente(cliente, snome, dtnasc, sexo, tipocli, cadfed, cadest, emailcli, senhacli,"
+                    + " telcli, celcli, cepcli, endcli, numcli, complcli, refcli, bairrocli, cidcli, estcli, ativo)"
+                    + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             stmt = con.prepareStatement(sql);
             stmt.setString(1, cliente.getCliente());
             stmt.setString(2, cliente.getSnome());
@@ -35,17 +35,17 @@ public class ClienteDao extends Dao {
             stmt.setString(18, cliente.getCidcli());
             stmt.setString(19, cliente.getEstcli());
             stmt.setBoolean(20, cliente.isAtivo());
-            
+
             String sqllog = "INSERT INTO login(usuario, pass, tacess) VALUES(?,?,?)";
             stmtlog = con.prepareStatement(sqllog);
             stmtlog.setString(1, cliente.getEmailcli());
             stmtlog.setString(2, cliente.getSenhacli());
             stmtlog.setInt(3, acesso);
-            
+
             stmt.execute();
             stmtlog.execute();
             close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -130,12 +130,12 @@ public class ClienteDao extends Dao {
         stmt.setString(2, sen);
         rs = stmt.executeQuery();
         Cliente cliente = null;
-        
-        if(rs.next()){
+
+        if (rs.next()) {
             cliente = new Cliente(rs.getString(1), rs.getString(2));
         }
         close();
         return cliente;
     }
-    
+
 }

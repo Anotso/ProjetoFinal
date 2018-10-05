@@ -10,5 +10,5 @@ package br.com.projetofinal.entidade;
  * @author 381115152017.3
  */
 public class Venda {
-    
+
 }

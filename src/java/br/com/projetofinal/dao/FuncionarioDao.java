@@ -109,7 +109,7 @@ public class FuncionarioDao extends Dao {
 
     public List<Funcionario> editafuncionario(int id) throws SQLException {
         open();
-        System.out.println("Valor do ID no Dao: "+id);
+        System.out.println("Valor do ID no Dao: " + id);
         stmt = this.con.prepareStatement("SELECT * FROM funcionario WHERE ativo = true AND idfunc = ?");
         stmt.setInt(1, id);
         Funcionario funcionario = null;
@@ -172,7 +172,7 @@ public class FuncionarioDao extends Dao {
         stmt.setString(12, funcionario.getEstfunc());
         stmt.setString(13, funcionario.getComplfunc());
         stmt.setInt(14, funcionario.getIdfuncionario());
-        
+
         stmt.executeUpdate();
         close();
         //}catch(SQLException e){
@@ -204,8 +204,8 @@ public class FuncionarioDao extends Dao {
         stmt.setString(2, sen);
         rs = stmt.executeQuery();
         Funcionario funcionario = null;
-        
-        if(rs.next()){
+
+        if (rs.next()) {
             funcionario = new Funcionario(rs.getString(1), rs.getString(2));
         }
         close();

@@ -15,11 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "/ControleFuncionario", urlPatterns = {"/cadfuncionario.html","/buscafuncionario.html",
-    "/excluirfuncionario.html","/editarfuncionario.html","/carregafuncionario.html",
+@WebServlet(name = "/ControleFuncionario", urlPatterns = {"/cadfuncionario.html", "/buscafuncionario.html",
+    "/excluirfuncionario.html", "/editarfuncionario.html", "/carregafuncionario.html",
     "/atualizafuncionario.html"
 })
 public class ControleFuncionario extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,37 +34,37 @@ public class ControleFuncionario extends HttpServlet {
     }
 
     protected void executarfuncionario(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        try{
+        try {
             String url = request.getServletPath();
-            
+
             if (url.equalsIgnoreCase("/cadfuncionario.html")) {
-                    cadastrar(request, response);
+                cadastrar(request, response);
             } else if (url.equalsIgnoreCase("/carregafuncionario.html")) {
-                    carrega(request, response);
+                carrega(request, response);
             } else if (url.equalsIgnoreCase("/buscafuncionario.html")) {
-                    buscar(request, response);
+                buscar(request, response);
             } else if (url.equalsIgnoreCase("/editarfuncionario.html")) {
-                    editar(request, response);
+                editar(request, response);
             } else if (url.equalsIgnoreCase("/atualizafuncionario.html")) {
-                    confirmar(request, response);
-            }else if (url.equalsIgnoreCase("/excluirfuncionario.html")) {
-                    excluir(request, response);
-            }else {
+                confirmar(request, response);
+            } else if (url.equalsIgnoreCase("/excluirfuncionario.html")) {
+                excluir(request, response);
+            } else {
                 throw new Exception("URL Inválida!!!");
             }
-        }catch(Exception e){
-            System.err.println("Erro cad: "+e.toString());
+        } catch (Exception e) {
+            System.err.println("Erro cad: " + e.toString());
             response.sendRedirect("index.jsp");
             e.printStackTrace();
         }
     }
-    
+
     //CADASTRAR FUNCIONARIO
-    private void cadastrar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, NoSuchAlgorithmException{
-        
+    private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NoSuchAlgorithmException {
+
         String nome = request.getParameter("nfun");
         String emailfunc = request.getParameter("emailfun");
         String senhafunc = Crypt.md5(request.getParameter("senhafun"));
@@ -81,7 +82,7 @@ public class ControleFuncionario extends HttpServlet {
         String bairrofunc = request.getParameter("bairro");
         String cidfunc = request.getParameter("cid");
         String estfunc = request.getParameter("est");
-        
+
         Funcionario funcionario = new Funcionario();
         funcionario.setFuncionario(nome);
         funcionario.setEmailfunc(emailfunc);
@@ -98,8 +99,8 @@ public class ControleFuncionario extends HttpServlet {
         funcionario.setBairrofunc(bairrofunc);
         funcionario.setCidfunc(cidfunc);
         funcionario.setEstfunc(estfunc);
-        
-        /*System.out.println("Nome: "+nome);
+
+        System.out.println("Nome: "+nome);
         System.out.println("E-mail: "+emailfunc);
         System.out.println("Senha: "+senhafunc);
         System.out.println("Tel: "+telfunc);
@@ -112,64 +113,64 @@ public class ControleFuncionario extends HttpServlet {
         System.out.println("Complemento: "+complfunc);
         System.out.println("Bairro: "+bairrofunc);
         System.out.println("Cidade: "+cidfunc);
-        System.out.println("Estado: "+estfunc);*/
-        
-        try{
+        System.out.println("Estado: "+estfunc);
+        try {
             funcionario.validar();
             FuncionarioDao dao = new FuncionarioDao();
             dao.cadastrarfuncionario(funcionario);
-            response.sendRedirect("/ProjetoFinal/menufun.jsp");
-        }catch(Exception e){
+            //response.sendRedirect("/ProjetoFinal/menufun.jsp");
+            response.sendRedirect("/ProjetoFinal/index.jsp");
+        } catch (Exception e) {
             request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
             request.getRequestDispatcher("/loadfuncao.html").forward(request, response);
             e.printStackTrace();
         }
-        
+
     }
 
-    private void buscar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        try{
+    private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             String cpf = request.getParameter("bfunc");
             FuncionarioDao pd = new FuncionarioDao();
-            
+
             List<Funcionario> lista = pd.listaFuncionario(cpf);
-            
+
             request.setAttribute("cpf", cpf);
             request.setAttribute("listaFuncionario", lista);
             request.getRequestDispatcher("/consultarfuncionario.jsp").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void editar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        try{
+    private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             int id = Integer.parseInt(request.getParameter("id"));
-            
+
             FuncionarioDao pd = new FuncionarioDao();
-            
+
             List<Funcionario> lista = pd.editafuncionario(id);
-            
+
             request.setAttribute("id", id);
             request.setAttribute("listaFuncionario", lista);
             request.getRequestDispatcher("/loadfuncao.html").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void carrega(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        try{
+    private void carrega(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             FuncionarioDao func = new FuncionarioDao();
             List<Funcionario> lista = func.carregafuncionario();
             request.setAttribute("listaFuncionario", lista);
             request.getRequestDispatcher("/consultarfuncionario.jsp").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void confirmar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void confirmar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = parseInt(request.getParameter("idfun"));
         String nome = request.getParameter("nfun");
         String emailfunc = request.getParameter("emailfun");
@@ -184,7 +185,7 @@ public class ControleFuncionario extends HttpServlet {
         String bairrofunc = request.getParameter("bairro");
         String cidfunc = request.getParameter("cid");
         String estfunc = request.getParameter("est");
-        
+
         Funcionario funcionario = new Funcionario();
         funcionario.setIdfuncionario(id);
         funcionario.setFuncionario(nome);
@@ -201,35 +202,35 @@ public class ControleFuncionario extends HttpServlet {
         funcionario.setCidfunc(cidfunc);
         funcionario.setEstfunc(estfunc);
 
-        try{
+        try {
             funcionario.validarAtt();
             FuncionarioDao dao = new FuncionarioDao();
             dao.editarfuncionario(funcionario);
             request.getSession().setAttribute("funcionario", funcionario);
             response.sendRedirect("/ProjetoFinal/menufun.jsp");
-        }catch(Exception e){
+        } catch (Exception e) {
             request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
             request.getRequestDispatcher("/loadfuncao.html").forward(request, response);
             e.printStackTrace();
         }
     }
 
-    private void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = parseInt(request.getParameter("id"));
         Funcionario funcionario = new Funcionario();
-        
+
         funcionario.setIdfuncionario(id);
         funcionario.setAtivo(false);
-        
-        try{
+
+        try {
             FuncionarioDao dao = new FuncionarioDao();
             dao.excluirrfuncionario(funcionario);
             response.sendRedirect("/ProjetoFinal/menufun.jsp");
-        }catch(Exception e){
+        } catch (Exception e) {
             //request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
             request.getRequestDispatcher("/loadfuncao.html").forward(request, response);
             e.printStackTrace();
         }
     }
-    
+
 }

@@ -1,7 +1,7 @@
 package br.com.projetofinal.entidade;
 
 public class Cliente {
-    
+
     private int idcli;
     private String cliente;
     private String snome;
@@ -23,7 +23,7 @@ public class Cliente {
     private String cidcli;
     private String estcli;
     private boolean ativo = true;
-    
+
     public Cliente(int idcli, String cliente, String snome, String dtnasc, String sexo, String tipocli, String cadfed, String cadest,
             String emailcli, String senhacli, String telcli, String celcli, String cepcli, String endcli, String numcli,
             String complcli, String refcli, String bairrocli, String cidcli, String estcli, boolean ativo) {
@@ -51,7 +51,8 @@ public class Cliente {
         this.ativo = ativo;
     }
 
-    public Cliente() {}
+    public Cliente() {
+    }
 
     public Cliente(String login, String pass) {
         this.emailcli = login;
@@ -225,7 +226,7 @@ public class Cliente {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
-    
+
     private String isDados() {
         String erros = "";
         if (cliente.equals("")) {
@@ -289,6 +290,7 @@ public class Cliente {
         }
     }
 
-    public void setSenhacli(byte[] messageDigest) {}
-    
+    public void setSenhacli(byte[] messageDigest) {
+    }
+
 }

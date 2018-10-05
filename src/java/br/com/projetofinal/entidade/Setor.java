@@ -4,15 +4,16 @@ public class Setor {
 
     private int idsetor;
     private String setor;
-    
-    public Setor(int idsetor, String setor){
+
+    public Setor(int idsetor, String setor) {
         super();
         this.idsetor = idsetor;
         this.setor = setor;
     }
-    
-    public Setor(){}
-    
+
+    public Setor() {
+    }
+
     public int getIdsetor() {
         return idsetor;
     }
@@ -28,5 +29,5 @@ public class Setor {
     public void setSetor(String setor) {
         this.setor = setor;
     }
-    
+
 }

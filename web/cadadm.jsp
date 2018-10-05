@@ -13,7 +13,7 @@
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
         <title>JSP Page</title>
     </head>
-    <body onload="CarregaCadFuncionario()">
+    <body>
         <nav>
             <%
                 Object usuario = session.getAttribute("funcionario");
@@ -25,7 +25,6 @@
             <%
                 }
             %>
-            <c:import url="include/menuprod.jsp"/>
         </nav>
         <div class="esp50"></div>
         <div class="corpo">
@@ -62,9 +61,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="emailfu" class="col-md-4 col-form-label">E-mail do Funcionário:</label>
+                            <label for="emailfun" class="col-md-4 col-form-label">E-mail do Funcionário:</label>
                             <div class="col-md-8">
-                                <input type="email" class="form-control" id="emailfu" name="emailfun" placeholder="Ex.: exemplo@exemplo.com"  value="${funcionario.emailfunc}"/>
+                                <input type="email" class="form-control" id="emailfun" name="emailfun" placeholder="Ex.: exemplo@exemplo.com"  value="${funcionario.emailfunc}"/>
                             </div>
                         </div>
                         <c:if test="${empty editaFuncionario}">
@@ -163,7 +162,7 @@
                             </div>
                             <div class="col-md-2 esp5"></div>
                             <div class="col-md-5">
-                                <button type="button" class="btn btn-danger btn-block" onclick="EnviaFuncionario()">Cadastrar</button>
+                                <button type="submit" class="btn btn-danger btn-block">Cadastrar</button>
                             </div>
                         </div>
                         <div class="esp50"></div>

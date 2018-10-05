@@ -82,9 +82,9 @@ public class ControleProduto extends HttpServlet {
 
         Arquivo arq = new Arquivo();
         //  CURSO
-        //String caminhofoto = System.getProperty("user.home")+""+"\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
+        String caminhofoto = System.getProperty("user.home")+""+"\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
         //  CASA
-        String caminhofoto = System.getProperty("user.home") + "" + "\\Pictures\\imgprod\\";
+        //String caminhofoto = System.getProperty("user.home") + "" + "\\Pictures\\imgprod\\";
         float nc = 0;
         float nv = 0;
         int qtd = 0;
@@ -231,11 +231,11 @@ public class ControleProduto extends HttpServlet {
         }
     }
 
-    private void confirmar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void confirmar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         float nc = 0;
         float nv = 0;
         int qtd = 0;
-        
+
         int id = Integer.parseInt(request.getParameter("idprod"));
         String nome = request.getParameter("nprod");
         String fornecedor = request.getParameter("forprod");

@@ -1,7 +1,7 @@
 package br.com.projetofinal.entidade;
 
 public class Categoria {
-    
+
     private int idcategoria;
     private String categoria;
     private String setor;
@@ -13,14 +13,16 @@ public class Categoria {
     public void setSetor(String setor) {
         this.setor = setor;
     }
-    
-    public Categoria(int idcategoria, String categoria, String setor){
+
+    public Categoria(int idcategoria, String categoria, String setor) {
         super();
         this.idcategoria = idcategoria;
         this.categoria = categoria;
         this.setor = setor;
     }
-    public Categoria(){}
+
+    public Categoria() {
+    }
 
     public int getIdcategoria() {
         return idcategoria;
@@ -37,7 +39,7 @@ public class Categoria {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
+
     private String isDados() {
         String erros = "";
 
@@ -49,7 +51,7 @@ public class Categoria {
         }
         return erros;
     }
-    
+
     public void validar() throws Exception {
         String erros = isDados();
         if (!erros.equals("")) {

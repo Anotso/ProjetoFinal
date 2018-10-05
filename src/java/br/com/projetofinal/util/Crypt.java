@@ -15,7 +15,7 @@ public class Crypt {
             return null;
         }
     }
-    
+
     public static String sha1(String psw) {
         try {
             MessageDigest m = MessageDigest.getInstance("SHA-1");
