@@ -19,8 +19,9 @@
     <body>
         <nav>
             <%
-                String usuario = (String) session.getAttribute("usuario");
-                if (usuario == null) {
+                Object usuario1 = session.getAttribute("cliente");
+                Object usuario2 = session.getAttribute("funcionario");
+                if ((usuario1 == null)||((usuario2 == null))) {
             %><c:import url="include/navlogin.jsp"/>
             <%
             } else {
@@ -30,9 +31,6 @@
             %>
             <c:import url="include/menuprod.jsp"/>
         </nav>
-        <%
-            if (usuario == null) {
-        %>
         <div class="corpo">
             <div class="esp50"></div>
             <div class="container">
@@ -62,11 +60,6 @@
                 </c:if>
             </div>
         </div>
-        <%
-            } else {
-                response.sendRedirect("index.jsp");
-            }
-        %>
         <footer>
             <c:import url="include/rodape.jsp"/>
         </footer>

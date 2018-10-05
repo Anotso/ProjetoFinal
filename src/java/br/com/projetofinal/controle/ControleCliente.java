@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author graci
  */
 @WebServlet(name = "ControleCliente", urlPatterns = {"/cadcliente.html",
-    "/buscacliente.html", "/carregacliente.html","/log.html","/logout.html"
+    "/buscacliente.html", "/carregacliente.html", "/log.html", "/logout.html"
 })
 public class ControleCliente extends HttpServlet {
 
@@ -62,7 +62,7 @@ public class ControleCliente extends HttpServlet {
             } else if (url.equalsIgnoreCase("/log.html")) {
                 login(request, response);
             } else if (url.equalsIgnoreCase("/logout.html")) {
-                //logout(request, response);
+                logout(request, response);
             } else {
                 throw new Exception("URL Inválida!!!");
             }
@@ -230,29 +230,38 @@ public class ControleCliente extends HttpServlet {
 
         Cliente cliente = new ClienteDao().logincli(login, sen);
         Funcionario funcionario = new FuncionarioDao().loginfun(login, sen);
+        try {
+            if (funcionario != null) {
+                System.out.println("Entrou no funcionário");
+                lvl = 1;
+                request.getSession().setAttribute("funcionario", funcionario);
+                request.getSession().setAttribute("funcionario", lvl);
+                request.getSession().setAttribute("login", login);
+                System.out.println("Valor de funcionario: " + funcionario);
+                System.out.println("Valor de cliente: " + cliente);
+                request.getRequestDispatcher("menufun.jsp").forward(request, response);
+            } else {
 
-        if (funcionario != null) {
-            lvl = 1;
-            request.getSession().setAttribute("funcionario", funcionario);
-            request.getSession().setAttribute("funcionario", lvl);
-            request.getSession().setAttribute("login", login);
-            request.getRequestDispatcher("/menufun.jsp").forward(request, response);
-        } else {
-            try {
                 if (cliente != null) {
                     lvl = 2;
                     request.getSession().setAttribute("cliente", cliente);
                     request.getSession().setAttribute("cliente", lvl);
                     request.getSession().setAttribute("login", login);
-                    request.getRequestDispatcher("/menucli.jsp").forward(request, response);
+                    response.sendRedirect("/menucli.jsp");
                 } else {
                     request.getRequestDispatcher("/login.html").forward(request, response);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
+
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
+    }
+
+    private void logout(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().invalidate();
+        request.getRequestDispatcher("/index.jsp");
     }
 
 }

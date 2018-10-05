@@ -22,7 +22,7 @@
     <body>
         <nav>
             <%
-                String usuario = (String) session.getAttribute("usuario");
+                Object usuario = session.getAttribute("funcionario");
                 if (usuario == null) {
             %><c:import url="include/navlogin.jsp"/>
             <%

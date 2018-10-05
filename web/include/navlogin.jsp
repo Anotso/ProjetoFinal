@@ -3,36 +3,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 logo"><a href="index.jsp">LOGO</a></div>
+            <div class="esp15 d-sm-block d-md-none"></div>
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-3 nav1">
-                        <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                        <a href="login.html"><i class="fas fa-sign-in-alt"></i><span class="d-sm-none d-md-block"> Login</span></a>
                     </div>
                     <div class="col-md-3 nav1">
-                        <a href="cadcliente.jsp"><i class="fas fa-plus"></i> Cadastre-se</a>
+                        <a href="cadcliente.jsp"><i class="fas fa-plus"></i><span class="d-sm-none d-md-block"> Cadastre-se</span></a>
                     </div>
                     <div class="col-md-3 nav1">
-                        <a href="#"><i class="fas fa-cart-arrow-down"></i> Meu Carrinho</a>
+                        <a href="#"><i class="fas fa-cart-arrow-down"></i><span class="d-sm-none d-md-block"> Meu Carrinho</span></a>
                     </div>
                     <div class="col-md-3 nav1">
-                        <a href="#"><i class="fas fa-phone"></i> Fale Conosco</a>
-                    </div>
-                </div>
-            </div>
-            <div class="esp15"></div>
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-3 nav2">
-                        <a href="#"><i class="fas fa-sign-in-alt fa-2x"></i></a>
-                    </div>
-                    <div class="col-3 nav2">
-                        <a href="#"><i class="fas fa-plus fa-2x"></i></a>
-                    </div>
-                    <div class="col-3 nav2">
-                        <a href="#"><i class="fas fa-cart-arrow-down fa-2x"></i></a>
-                    </div>
-                    <div class="col-3 nav2">
-                        <a href="#"><i class="fas fa-phone fa-2x"></i></a>
+                        <a href="#"><i class="fas fa-phone"></i><span class="d-sm-none d-md-block"> Fale Conosco</span></a>
                     </div>
                 </div>
             </div>

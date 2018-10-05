@@ -22,6 +22,10 @@ function CarregaCadFuncionario(){
 function CarregaCadSetor(){
     window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadcategoria.jsp");
 }
+        //CHAMA MENUPROD
+function ChamaSetor(){
+    window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/menuprod.html");
+}
         //CHAMA CADPRODUTO
 function CarregaCadProd(){
     window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadproduto.jsp");

@@ -22,7 +22,7 @@
     <body onload="CarregaCadSetor()">
         <nav>
             <%
-                String usuario = (String) session.getAttribute("usuario");
+                Object usuario = session.getAttribute("funcionario");
                 if (usuario == null) {
             %><c:import url="include/navlogin.jsp"/>
             <%
@@ -33,6 +33,9 @@
             %>
             <c:import url="include/menuprod.jsp"/>
         </nav>
+        <%
+            if (usuario == null) {
+        %>
         <div class="esp50"></div>
         <div class="corpo">
             <div class="container">
@@ -89,6 +92,11 @@
                 </form>
             </div>
         </div>
+        <%
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+        %>
         <footer>
             <c:import url="include/rodape.jsp"/>
         </footer>

@@ -197,7 +197,8 @@ public class FuncionarioDao extends Dao {
 
     public Funcionario loginfun(String login, String sen) throws SQLException {
         open();
-        String sql = "SELECT emailfunc, senhafunc FROM cliente WHERE emailfunc=? AND senhafunc=? AND ativo = true";
+        //String sql = "SELECT emailfunc, senhafunc FROM cliente WHERE emailfunc=? AND senhafunc=? AND ativo = true";
+        String sql = "SELECT emailfunc, senhafunc FROM funcionario WHERE emailfunc=? AND senhafunc=? AND ativo=1";
         stmt = con.prepareStatement(sql);
         stmt.setString(1, login);
         stmt.setString(2, sen);

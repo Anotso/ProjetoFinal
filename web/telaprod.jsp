@@ -19,8 +19,9 @@
     <body>
         <nav>
             <%
-                String usuario = (String) session.getAttribute("usuario");
-                if (usuario == null) {
+                Object usuario1 = session.getAttribute("cliente");
+                Object usuario2 = session.getAttribute("funcionario");
+                if ((usuario1 == null)||((usuario2 == null))) {
             %><c:import url="include/navlogin.jsp"/>
             <%
             } else {

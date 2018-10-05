@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "/ControleSetor", urlPatterns = {"/cadsetor.html","/loadsetor.html"})
+@WebServlet(name = "/ControleSetor", urlPatterns = {"/cadsetor.html","/loadsetor.html","/menuprod.html"})
 public class ControleSetor extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
@@ -41,8 +41,8 @@ public class ControleSetor extends HttpServlet {
                     cadastrar(request, response);
             } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
                     //editar(request, response);
-            } else if (url.equalsIgnoreCase("/buscarfornecedor.html")) {
-                    //buscar(request, response);
+            } else if (url.equalsIgnoreCase("/menuprod.html")) {
+                    carreganav(request, response);
             } else if (url.equalsIgnoreCase("/fornecedorconsultado.html")) {
                     //buscar(request, response);
             } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
@@ -86,6 +86,17 @@ public class ControleSetor extends HttpServlet {
             List<Setor> lista = pd.buscarsetor();
             request.setAttribute("listaSetor", lista);
             request.getRequestDispatcher("cadcategoria.jsp").forward(request, response);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void carreganav(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        try{
+            SetorDao pd = new SetorDao();
+            List<Setor> lista = pd.buscarsetor();
+            request.setAttribute("listaSetor", lista);
+            request.getRequestDispatcher("/carreganav.html").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();
         }

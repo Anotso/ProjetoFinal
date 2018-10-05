@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
 
-@WebServlet(name = "ControleCategoria", urlPatterns = {"/cadcategoria.html", "/loadcat1.html"})
+@WebServlet(name = "ControleCategoria", urlPatterns = {"/cadcategoria.html", "/loadcat1.html","/carreganav.html"})
 public class ControleCategoria extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -43,8 +43,8 @@ public class ControleCategoria extends HttpServlet {
                 cadastrar(request, response);
             } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
                 //editar(request, response);
-            } else if (url.equalsIgnoreCase("/buscarfornecedor.html")) {
-                //buscar(request, response);
+            } else if (url.equalsIgnoreCase("/carreganav.html")) {
+                carreganav(request, response);
             } else if (url.equalsIgnoreCase("/fornecedorconsultado.html")) {
                 //buscar(request, response);
             } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
@@ -98,4 +98,15 @@ public class ControleCategoria extends HttpServlet {
     //CONSULTAR CATEGORIA
     //EDITAR CATEGORIA
     //EXCLUIR CATEGORIA
+
+    private void carreganav(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            CategoriaDao pd = new CategoriaDao();
+            List<Categoria> listacat1 = pd.buscarcategoria();
+            request.setAttribute("listaCategoria", listacat1);
+            request.getRequestDispatcher("menuprod.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
