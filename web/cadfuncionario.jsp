@@ -61,7 +61,7 @@
                         <div class="form-group row">
                             <label for="nfu" class="col-md-4 col-form-label">Nome do Funcionário:</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="nfu" name="nfun" placeholder="Informe o nome do fornecedor" value="${funcionario.funcionario}"/>
+                                <input type="text" class="form-control" id="nfu" name="nfun" placeholder="Informe o nome do funcionário" value="${funcionario.funcionario}"/>
                             </div>
                         </div>
                         <div class="form-group row">

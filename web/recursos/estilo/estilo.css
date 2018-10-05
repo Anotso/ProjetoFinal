@@ -28,6 +28,13 @@
     width: auto;
     min-height: 600px;
 }
+.btnmudafoto{
+    /*background-color: #DEDED4;*/
+    background-color: #E8E8E8;
+}
+.linkprod:hover{
+    text-decoration: none;
+}
 @media screen and (max-width: 315px){
     body{
         margin: auto;

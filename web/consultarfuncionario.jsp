@@ -41,7 +41,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <center><h3>Pesquisar Funcionario</h3></center>
+                        <center><h3>Pesquisar Funcionário</h3></center>
                     </div>
                 </div>
                 <div class="esp15"></div>
@@ -56,7 +56,7 @@
                                     <input type="text" class="form-control" id="bfunc" name="bfunc"/>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-danger btn-block">Sign in</button>
+                            <button type="submit" class="btn btn-danger btn-block">Pesquisar</button>
                         </form>
                     </div>
                     <div class="col-md-3"></div>
@@ -92,14 +92,6 @@
                                 <p class="card-text">Bairro: ${funcionario.bairrofunc}</p>
                                 <p class="card-text">Cidade: ${funcionario.cidfunc}</p>
                                 <p class="card-text">Estado: ${funcionario.estfunc}</p>
-                                <p class="card-text">Status: 
-                                    <c:if test="${funcionario.ativo == true}">
-                                        Ativo
-                                    </c:if>
-                                    <c:if test="${funcionario.ativo == false}">
-                                        Inativo
-                                    </c:if>
-                                </p>
                                 <a href="excluirfuncionario.html?id=${funcionario.idfuncionario}" class="btn btn-primary">Excluir</a>
                                 <a href="editarfuncionario.html?id=${funcionario.idfuncionario}" class="btn btn-primary">Editar</a>
                             </div>

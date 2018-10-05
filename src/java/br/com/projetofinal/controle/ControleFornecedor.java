@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "/ControleFornecedor", urlPatterns = {"/cadastrarfornecedor.html","/loadfornecedor.html"})
+@WebServlet(name = "/ControleFornecedor", urlPatterns = {"/cadastrarfornecedor.html","/loadfornecedor.html",
+    "/buscafornecedor.html","/carregafornecedor.html"
+})
 public class ControleFornecedor extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
@@ -41,10 +43,10 @@ public class ControleFornecedor extends HttpServlet {
                     cadastrar(request, response);
             } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
                     //editar(request, response);
-            } else if (url.equalsIgnoreCase("/buscarfornecedor.html")) {
-                    //buscar(request, response);
-            } else if (url.equalsIgnoreCase("/fornecedorconsultado.html")) {
-                    //buscar(request, response);
+            } else if (url.equalsIgnoreCase("/buscafornecedor.html")) {
+                    buscar(request, response);
+            } else if (url.equalsIgnoreCase("/carregafornecedor.html")) {
+                    carrega(request, response);
             } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
                     //confirmar(request, response);
             }else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
@@ -123,6 +125,17 @@ public class ControleFornecedor extends HttpServlet {
             List<Fornecedor> listafor = forn.loadfornecedor();
             request.setAttribute("listaFornecedor", listafor);
             request.getRequestDispatcher("cadproduto.jsp").forward(request, response);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void carrega(HttpServletRequest request, HttpServletResponse response) {
+        try{
+            FornecedorDao forn = new FornecedorDao();
+            List<Fornecedor> listafor = forn.loadfornecedor();
+            request.setAttribute("listaFornecedor", listafor);
+            request.getRequestDispatcher("/consultarfornecedor.jsp").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();
         }

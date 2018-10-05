@@ -1,15 +1,15 @@
 package br.com.projetofinal.controle;
 
-import br.com.projetofinal.dao.PfDao;
-import br.com.projetofinal.dao.PjDao;
-import br.com.projetofinal.entidade.Pf;
-import br.com.projetofinal.entidade.Pj;
+import br.com.projetofinal.dao.ClienteDao;
+import br.com.projetofinal.entidade.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +20,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author graci
  */
-@WebServlet(name = "ControleCliente", urlPatterns = {"/cadcliente.html"})
+@WebServlet(name = "ControleCliente", urlPatterns = {"/cadcliente.html",
+    "/buscacliente.html","/carregacliente.html"
+})
 public class ControleCliente extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,10 +45,10 @@ public class ControleCliente extends HttpServlet {
 
             if (url.equalsIgnoreCase("/cadcliente.html")) {
                 cadastrar(request, response);
-            } else if (url.equalsIgnoreCase("/carregafuncionario.html")) {
-                //carrega(request, response);
-            } else if (url.equalsIgnoreCase("/buscafuncionario.html")) {
-                //buscar(request, response);
+            } else if (url.equalsIgnoreCase("/carregacliente.html")) {
+                carrega(request, response);
+            } else if (url.equalsIgnoreCase("/buscacliente.html")) {
+                buscar(request, response);
             } else if (url.equalsIgnoreCase("/editarfuncionario.html")) {
                 //editar(request, response);
             } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
@@ -65,10 +67,11 @@ public class ControleCliente extends HttpServlet {
 
     //CADASTRAR CLIENTE
     private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
-        String pfisica = request.getParameter("pessoa");
-        String pjuridica = request.getParameter("pessoa");
+        String pessoa = request.getParameter("pessoa");
         String emailcli = request.getParameter("email");
-        String senha = request.getParameter("senha");
+        //String senha = request.getParameter("senha");
+        MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        byte messageDigest[] = algorithm.digest("senha".getBytes("UTF-8"));
         String tel = request.getParameter("tel");
         String cel = request.getParameter("cel");
         String cep = request.getParameter("cep");
@@ -81,7 +84,7 @@ public class ControleCliente extends HttpServlet {
         String est = request.getParameter("est");
         
         //if (pfisica == true) {
-        if (pfisica.trim().equalsIgnoreCase("pf")) {
+        if (pessoa.trim().equalsIgnoreCase("pf")) {
             String nome = request.getParameter("nomecli");
             String snome = request.getParameter("sobrenome");
             String sexo = request.getParameter("sexo");
@@ -92,30 +95,31 @@ public class ControleCliente extends HttpServlet {
             //SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
             //Date nasc = dt.parse(request.getParameter("nasc"));
 
-            Pf pf = new Pf();
-            pf.setPf(nome);
-            pf.setSnome(snome);
-            pf.setDtnasc(nasc);
-            pf.setSexo(sexo);
-            pf.setCpfpf(cpf);
-            pf.setRgpf(rg);
-            pf.setEmailpf(emailcli);
-            pf.setSenhapf(senha);
-            pf.setTelpf(tel);
-            pf.setCelpf(cel);
-            pf.setCeppf(cep);
-            pf.setEndpf(end);
-            pf.setNumpf(num);
-            pf.setComplpf(compl);
-            pf.setRefpf(ref);
-            pf.setBairropf(bairro);
-            pf.setCidpf(cid);
-            pf.setEstpf(est);
+            Cliente cliente = new Cliente();
+            cliente.setCliente(nome);
+            cliente.setSnome(snome);
+            cliente.setDtnasc(nasc);
+            cliente.setSexo(sexo);
+            cliente.setTipocli(pessoa);
+            cliente.setCadfed(cpf);
+            cliente.setCadest(rg);
+            cliente.setEmailcli(emailcli);
+            cliente.setSenhacli(messageDigest);
+            cliente.setTelcli(tel);
+            cliente.setCelcli(cel);
+            cliente.setCepcli(cep);
+            cliente.setEndcli(end);
+            cliente.setNumcli(num);
+            cliente.setComplcli(compl);
+            cliente.setRefcli(ref);
+            cliente.setBairrocli(bairro);
+            cliente.setCidcli(cid);
+            cliente.setEstcli(est);
 
             try {
-                pf.validar();
-                PfDao dao = new PfDao();
-                dao.cadastrarpf(pf);
+                cliente.validar();
+                ClienteDao dao = new ClienteDao();
+                dao.cadastrar(cliente);
                 response.sendRedirect("/ProjetoFinal/index.jsp");
             } catch (Exception e) {
                 request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
@@ -124,7 +128,7 @@ public class ControleCliente extends HttpServlet {
             }
         }
         //if (pjuridica == true) {
-        if (pjuridica.trim().equalsIgnoreCase("pj")) {
+        if (pessoa.trim().equalsIgnoreCase("pj")) {
             //System.out.println("Entrou no IF PJ - Controle");
             String razao = request.getParameter("rsocial");
             String fantasia = request.getParameter("fantasia");
@@ -148,35 +152,64 @@ public class ControleCliente extends HttpServlet {
             System.out.println("Cidade: "+cid);
             System.out.println("Estado: "+est);*/
             
-            Pj pj = new Pj();
-            pj.setRazao(razao);
-            pj.setNomepj(fantasia);
-            pj.setCnpjpj(cnpj);
-            pj.setInsestpj(insest);
-            pj.setEmailpj(emailcli);
-            pj.setSenhapj(senha);
-            pj.setTelpj(telpj);
-            pj.setCelpj(celpj);
-            pj.setCeppj(cep);
-            pj.setEndpj(end);
-            pj.setNumpj(num);
-            pj.setComplpj(compl);
-            pj.setRefpj(ref);
-            pj.setBairropj(bairro);
-            pj.setCidpj(cid);
-            pj.setEstpj(est);
+            Cliente cliente = new Cliente();
+            cliente.setCliente(razao);
+            cliente.setSnome(fantasia);
+            cliente.setDtnasc("-");
+            cliente.setSexo("-");
+            cliente.setTipocli(pessoa);
+            cliente.setCadfed(cnpj);
+            cliente.setCadest(insest);
+            cliente.setEmailcli(emailcli);
+            cliente.setSenhacli(messageDigest);
+            cliente.setTelcli(telpj);
+            cliente.setCelcli(celpj);
+            cliente.setCepcli(cep);
+            cliente.setEndcli(end);
+            cliente.setNumcli(num);
+            cliente.setComplcli(compl);
+            cliente.setRefcli(ref);
+            cliente.setBairrocli(bairro);
+            cliente.setCidcli(cid);
+            cliente.setEstcli(est);
             
             try {
-                pj.validar();
-                PjDao dao = new PjDao();
-                dao.cadastrarpj(pj);
-                //response.sendRedirect("/ProjetoFinal/index.jsp");
+                cliente.validar();
+                ClienteDao dao = new ClienteDao();
+                dao.cadastrar(cliente);
+                response.sendRedirect("/ProjetoFinal/index.jsp");
             } catch (Exception e) {
                 request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
                 request.getRequestDispatcher("/cadcliente.jsp").forward(request, response);
                 e.printStackTrace();
             }
             
+        }
+    }
+
+    private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        try{
+            String cpf = request.getParameter("bfunc");
+            ClienteDao pd = new ClienteDao();
+            
+            List<Cliente> lista = pd.listaCliente(cpf);
+            
+            request.setAttribute("cpf", cpf);
+            request.setAttribute("listaCliente", lista);
+            request.getRequestDispatcher("/consultarcliente.jsp").forward(request, response);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void carrega(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        try{
+            ClienteDao pd = new ClienteDao();
+            List<Cliente> lista = pd.carregacliente();
+            request.setAttribute("listaCliente", lista);
+            request.getRequestDispatcher("/consultarcliente.jsp").forward(request, response);
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 

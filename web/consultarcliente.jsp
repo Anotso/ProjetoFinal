@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-                        <form action="buscafornecedor.html" method="post">
+                        <form action="buscacliente.html" method="post">
                             <div class="form-group row">
                                 <!---Sobre nome-->
                                 <label for="bfunc" class="col-md-4 col-form-label">Informe o CPF</label>
@@ -65,32 +65,36 @@
                 <div class="row">
                     <div class="col-md-8"></div>
                     <div class="col-md-4">
-                        <a href="carregafornecedor.html">Carregar todos os Clientes</a>
+                        <a href="carregacliente.html">Carregar todos os Clientes</a>
                     </div>
                 </div>
-                <c:if test="${not empty listaFornecedor}">
+                <c:if test="${not empty listaCliente}">
                     <div class="esp15"></div>
-                    <c:forEach var="fornecedor" items="${listaFornecedor}">
+                    <c:forEach var="cliente" items="${listaCliente}">
                         <div class="card">
                             <div class="card-header">
-                                <label><h5>Nome: ${fornecedor.fornecedor}</h5></label>
+                                <label><h5>Nome: ${cliente.cliente}</h5></label>
                             </div>
                             <div class="card-body">
-                                <p class="card-text">ID: ${fornecedor.idfornecedor}</p>
-                                <c:if test="${not empty fornecedor.telfor}">
-                                    <p class="card-text">Telefone.: ${fornecedor.telfor}</p>
+                                <p class="card-text">ID: ${cliente.idcli}</p>
+                                <c:if test="${not empty cliente.telcli}">
+                                    <p class="card-text">Telefone.: ${cliente.telcli}</p>
                                 </c:if>
-                                <p class="card-text">CEP.: ${fornecedor.cepfor}</p>
-                                <p class="card-text">Endereço: ${fornecedor.endfor}</p>
-                                <p class="card-text">Número: ${fornecedor.numfor}</p>
-                                <c:if test="${not empty fornecedor.complfor}">
-                                    <p class="card-text">Complemento: ${fornecedor.complfor}</p>
+                                <c:if test="${not empty cliente.celcli}">
+                                    <p class="card-text">Celular.: ${cliente.celcli}</p>
                                 </c:if>
-                                <p class="card-text">Bairro: ${fornecedor.bairrofor}</p>
-                                <p class="card-text">Cidade: ${fornecedor.cidfor}</p>
-                                <p class="card-text">Estado: ${fornecedor.estfor}</p>
-                                <a href="excluirfornecedor.html?id=${fornecedor.idfornecedor}" class="btn btn-primary">Excluir</a>
-                                <a href="editarfornecedor.html?id=${fornecedor.idfornecedor}" class="btn btn-primary">Editar</a>
+                                <p class="card-text">CEP.: ${cliente.cepcli}</p>
+                                <p class="card-text">Endereço: ${cliente.endcli}</p>
+                                <p class="card-text">Número: ${cliente.numcli}</p>
+                                <c:if test="${not empty cliente.complcli}">
+                                    <p class="card-text">Complemento: ${cliente.complcli}</p>
+                                </c:if>
+                                <c:if test="${not empty cliente.refcli}">
+                                    <p class="card-text">Referência ${cliente.refcli}</p>
+                                </c:if>
+                                <p class="card-text">Bairro: ${cliente.bairrocli}</p>
+                                <p class="card-text">Cidade: ${cliente.cidcli}</p>
+                                <p class="card-text">Estado: ${cliente.estcli}</p>
                             </div>
                         </div>
                         <div class="esp15"></div>

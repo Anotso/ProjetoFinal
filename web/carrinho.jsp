@@ -12,6 +12,8 @@
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
         <!--	Font Awesome -->
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
+        <!--    Codificação própria -->
+        <link href="recursos/estilo/estilo.css" rel="stylesheet"/>
         <title>JSP Page</title>
     </head>
     <body>
@@ -28,17 +30,43 @@
             %>
             <c:import url="include/menuprod.jsp"/>
         </nav>
-        <div class="esp50"></div>
+        <%
+            if (usuario == null) {
+        %>
         <div class="corpo">
+            <div class="esp50"></div>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3"><center>TESTE 01</center></div>
-                    <div class="col-md-3"><center>TESTE 02</center></div>
-                    <div class="col-md-3"><center>TESTE 03</center></div>
-                </div>
-                <c:import url="include/teste.jsp"/>
+                <c:if test="${not empty listaProduto}">
+                    <div class="esp15"></div>
+                    <c:forEach var="produto" items="${listaProduto}">
+                        <a href="telaprod.html?id=${produto.idproduto}" class="linkprod">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="C:/Users/graci/Pictures/imgprod/${produto.foto1}"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <label><h5>Nome: ${produto.produto}</h5></label>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">ID: ${produto.idproduto}</p>
+                                            <p class="card-text">R$ ${produto.venda}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="esp15"></div>
+                    </c:forEach>
+                </c:if>
             </div>
         </div>
+        <%
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+        %>
         <footer>
             <c:import url="include/rodape.jsp"/>
         </footer>

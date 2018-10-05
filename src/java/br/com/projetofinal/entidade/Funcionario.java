@@ -274,5 +274,7 @@ public class Funcionario {
             throw new Exception(erros);
         }
     }
+
+    public void setSenhafunc(byte[] messageDigest) {}
     
 }

@@ -9,7 +9,7 @@
                         <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
                     </div>
                     <div class="col-md-3 nav1">
-                        <a href="#"><i class="fas fa-plus"></i> Cadastre-se</a>
+                        <a href="cadcliente.jsp"><i class="fas fa-plus"></i> Cadastre-se</a>
                     </div>
                     <div class="col-md-3 nav1">
                         <a href="#"><i class="fas fa-cart-arrow-down"></i> Meu Carrinho</a>

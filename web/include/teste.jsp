@@ -13,7 +13,7 @@
 </form>
 <div class="esp15"></div>
 <form action="carregacadprod.html" method="POST" id="loadcat1">
-    <button class="btn btn-success" type="submit">TESTE DO FORMULÁRIO - Cadastrar Produtos</button>
+    <button class="btn btn-success" type="submit">TESTE DO FORMULÁRIO - Cadastrar Produto</button>
 </form>
 <div class="esp15"></div>
 <a href="cadfuncao.jsp">TESTE DO FORMULÁRIO - Cadastrar Função</a>
@@ -28,4 +28,8 @@
 <a href="consultarfuncionario.jsp">TESTE DO FORMULÁRIO - Consultar Funcionario</a>
 <div class="esp15"></div>
 <a href="consultarcliente.jsp">TESTE DO FORMULÁRIO - Consultar Cliente</a>
+<div class="esp15"></div>
+<hr/>
+<div class="esp15"></div>
+<a href="telaprod.jsp">TESTE DE TELA - Página de load do produto</a>
 <div class="esp50"></div>

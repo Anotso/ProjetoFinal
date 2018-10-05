@@ -5,6 +5,8 @@ import br.com.projetofinal.entidade.Funcionario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,7 +49,7 @@ public class ControleFuncionario extends HttpServlet {
             } else if (url.equalsIgnoreCase("/atualizafuncionario.html")) {
                     confirmar(request, response);
             }else if (url.equalsIgnoreCase("/excluirfuncionario.html")) {
-                    //excluir(request, response);
+                    excluir(request, response);
             }else {
                 throw new Exception("URL Inválida!!!");
             }
@@ -59,11 +61,13 @@ public class ControleFuncionario extends HttpServlet {
     }
     
     //CADASTRAR FUNCIONARIO
-    private void cadastrar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+    private void cadastrar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, NoSuchAlgorithmException{
         
         String nome = request.getParameter("nfun");
         String emailfunc = request.getParameter("emailfun");
-        String senhafunc = request.getParameter("senhafun");
+        //String senhafunc = request.getParameter("senhafun");
+        MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        byte messageDigest[] = algorithm.digest("senha".getBytes("UTF-8"));
         String telfunc = request.getParameter("telfun");
         String celfunc = request.getParameter("celfun");
         String cpffunc = request.getParameter("cpffu");
@@ -79,7 +83,7 @@ public class ControleFuncionario extends HttpServlet {
         Funcionario funcionario = new Funcionario();
         funcionario.setFuncionario(nome);
         funcionario.setEmailfunc(emailfunc);
-        funcionario.setSenhafunc(senhafunc);
+        funcionario.setSenhafunc(messageDigest);
         funcionario.setTelfunc(telfunc);
         funcionario.setCelfunc(celfunc);
         funcionario.setCpffunc(cpffunc);
@@ -92,7 +96,7 @@ public class ControleFuncionario extends HttpServlet {
         funcionario.setCidfunc(cidfunc);
         funcionario.setEstfunc(estfunc);
         
-        System.out.println("Nome: "+nome);
+        /*System.out.println("Nome: "+nome);
         System.out.println("E-mail: "+emailfunc);
         System.out.println("Senha: "+senhafunc);
         System.out.println("Tel: "+telfunc);
@@ -105,7 +109,7 @@ public class ControleFuncionario extends HttpServlet {
         System.out.println("Complemento: "+complfunc);
         System.out.println("Bairro: "+bairrofunc);
         System.out.println("Cidade: "+cidfunc);
-        System.out.println("Estado: "+estfunc);
+        System.out.println("Estado: "+estfunc);*/
         
         try{
             funcionario.validar();
@@ -177,13 +181,6 @@ public class ControleFuncionario extends HttpServlet {
         String bairrofunc = request.getParameter("bairro");
         String cidfunc = request.getParameter("cid");
         String estfunc = request.getParameter("est");
-        String st = request.getParameter("statusfunc");
-        
-        boolean status = true;
-        
-        if(st.trim().equals("false")){
-            status = false;
-        }
         
         Funcionario funcionario = new Funcionario();
         funcionario.setIdfuncionario(id);
@@ -200,7 +197,6 @@ public class ControleFuncionario extends HttpServlet {
         funcionario.setBairrofunc(bairrofunc);
         funcionario.setCidfunc(cidfunc);
         funcionario.setEstfunc(estfunc);
-        funcionario.setAtivo(status);
         
         System.out.println("ID: "+id);
         System.out.println("Nome: "+nome);
@@ -216,15 +212,32 @@ public class ControleFuncionario extends HttpServlet {
         System.out.println("Bairro: "+bairrofunc);
         System.out.println("Cidade: "+cidfunc);
         System.out.println("Estado: "+estfunc);
-        System.out.println("Status: "+status);
         
         try{
             funcionario.validarAtt();
             FuncionarioDao dao = new FuncionarioDao();
-            dao.editarrfuncionario(funcionario);
+            dao.editarfuncionario(funcionario);
             response.sendRedirect("/ProjetoFinal/menufun.jsp");
         }catch(Exception e){
             request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
+            request.getRequestDispatcher("/loadfuncao.html").forward(request, response);
+            e.printStackTrace();
+        }
+    }
+
+    private void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        int id = parseInt(request.getParameter("id"));
+        Funcionario funcionario = new Funcionario();
+        
+        funcionario.setIdfuncionario(id);
+        funcionario.setAtivo(false);
+        
+        try{
+            FuncionarioDao dao = new FuncionarioDao();
+            dao.excluirrfuncionario(funcionario);
+            response.sendRedirect("/ProjetoFinal/menufun.jsp");
+        }catch(Exception e){
+            //request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
             request.getRequestDispatcher("/loadfuncao.html").forward(request, response);
             e.printStackTrace();
         }
