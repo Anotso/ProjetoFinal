@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "/ControleSetor", urlPatterns = {"/cadsetor.html","/loadsetor.html","/menuprod.html"})
+@WebServlet(name = "/ControleSetor", urlPatterns = {"/cadsetor.html","/loadsetor.html","/menuprod.jsp"})
 public class ControleSetor extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
@@ -41,7 +41,7 @@ public class ControleSetor extends HttpServlet {
                     cadastrar(request, response);
             } else if (url.equalsIgnoreCase("/editarfornecedor.html")) {
                     //editar(request, response);
-            } else if (url.equalsIgnoreCase("/menuprod.html")) {
+            } else if (url.equalsIgnoreCase("/menuprod.jsp")) {
                     carreganav(request, response);
             } else if (url.equalsIgnoreCase("/fornecedorconsultado.html")) {
                     //buscar(request, response);
