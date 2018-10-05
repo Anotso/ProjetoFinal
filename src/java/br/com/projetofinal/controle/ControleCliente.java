@@ -69,9 +69,9 @@ public class ControleCliente extends HttpServlet {
     private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
         String pessoa = request.getParameter("pessoa");
         String emailcli = request.getParameter("email");
-        //String senha = request.getParameter("senha");
-        MessageDigest algorithm = MessageDigest.getInstance("MD5");
-        byte messageDigest[] = algorithm.digest("senha".getBytes("UTF-8"));
+        String senha = request.getParameter("senha");
+        /*MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        byte messageDigest[] = algorithm.digest("senha".getBytes("UTF-8"));*/
         String tel = request.getParameter("tel");
         String cel = request.getParameter("cel");
         String cep = request.getParameter("cep");
@@ -104,7 +104,8 @@ public class ControleCliente extends HttpServlet {
             cliente.setCadfed(cpf);
             cliente.setCadest(rg);
             cliente.setEmailcli(emailcli);
-            cliente.setSenhacli(messageDigest);
+            //cliente.setSenhacli(messageDigest);
+            cliente.setSenhacli(senha);
             cliente.setTelcli(tel);
             cliente.setCelcli(cel);
             cliente.setCepcli(cep);
@@ -161,7 +162,8 @@ public class ControleCliente extends HttpServlet {
             cliente.setCadfed(cnpj);
             cliente.setCadest(insest);
             cliente.setEmailcli(emailcli);
-            cliente.setSenhacli(messageDigest);
+            //cliente.setSenhacli(messageDigest);
+            cliente.setSenhacli(senha);
             cliente.setTelcli(telpj);
             cliente.setCelcli(celpj);
             cliente.setCepcli(cep);

@@ -65,9 +65,9 @@ public class ControleFuncionario extends HttpServlet {
         
         String nome = request.getParameter("nfun");
         String emailfunc = request.getParameter("emailfun");
-        //String senhafunc = request.getParameter("senhafun");
-        MessageDigest algorithm = MessageDigest.getInstance("MD5");
-        byte messageDigest[] = algorithm.digest("senha".getBytes("UTF-8"));
+        String senhafunc = request.getParameter("senhafun");
+        /*MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        byte messageDigest[] = algorithm.digest("senhafun".getBytes("UTF-8"));*/
         String telfunc = request.getParameter("telfun");
         String celfunc = request.getParameter("celfun");
         String cpffunc = request.getParameter("cpffu");
@@ -83,7 +83,8 @@ public class ControleFuncionario extends HttpServlet {
         Funcionario funcionario = new Funcionario();
         funcionario.setFuncionario(nome);
         funcionario.setEmailfunc(emailfunc);
-        funcionario.setSenhafunc(messageDigest);
+        //funcionario.setSenhafunc(messageDigest);
+        funcionario.setSenhafunc(senhafunc);
         funcionario.setTelfunc(telfunc);
         funcionario.setCelfunc(celfunc);
         funcionario.setCpffunc(cpffunc);
