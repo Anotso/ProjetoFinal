@@ -53,6 +53,11 @@ public class Cliente {
 
     public Cliente() {}
 
+    public Cliente(String login, String pass) {
+        this.emailcli = login;
+        this.senhacli = pass;
+    }
+
     public int getIdcli() {
         return idcli;
     }

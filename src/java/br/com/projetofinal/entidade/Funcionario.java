@@ -40,6 +40,11 @@ public class Funcionario {
     }
     
     public Funcionario() {}
+
+    public Funcionario(String login, String pass) {
+        this.emailfunc = login;
+        this.senhafunc = pass;
+    }
     
     public int getIdfuncionario() {
         return idfuncionario;
@@ -276,5 +281,9 @@ public class Funcionario {
     }
 
     public void setSenhafunc(byte[] messageDigest) {}
+
+    public Funcionario loginfun(String login, String sen) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

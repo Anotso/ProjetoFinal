@@ -118,5 +118,28 @@ public class ProdutoDao extends Dao{
         close();
         return lista;
     }
+
+    public void editaproduto(Produto produto) throws SQLException {
+        open();
+        String sql = "UPDATE produto SET nomeprof=?"+
+                ", forprod=?"+
+                ", catprod=?"+
+                ", descprod=?"+
+                ", compraprod=?"+
+                ", vendaprod=?"+
+                ", qtdprod=?"+
+                " WHERE idprod=?";
+        stmt = con.prepareStatement(sql);
+            stmt.setString(1, produto.getProduto());
+            stmt.setString(2, produto.getFornecedor());
+            stmt.setString(3, produto.getCategoria());
+            stmt.setString(4, produto.getDescricao());
+            stmt.setFloat(5, produto.getCompra());
+            stmt.setFloat(6, produto.getVenda());
+            stmt.setInt(7, produto.getQtd());
+            stmt.setInt(8, produto.getIdproduto());
+            stmt.executeUpdate();
+            close();
+    }
     
 }

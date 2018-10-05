@@ -158,9 +158,9 @@
                     <c:forEach var="produto" items="${listaProduto}">
                         <form action="confirmaproduto.html" method="POST" enctype="multipart/form-data">
                             <div class="form-group row">
-                                <label for="nprod" class="col-md-4 col-form-label">ID do produto:</label>
+                                <label for="idprod" class="col-md-4 col-form-label">ID do produto:</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="nprod" name="nprod" value="${produto.idproduto}" readonly/>
+                                    <input type="text" class="form-control" id="idprod" name="idprod" value="${produto.idproduto}" readonly/>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -220,26 +220,6 @@
                                 </div>
                             </div>
                             <div class="esp5"></div>
-                            <hr/>
-                            ​<div class="form-group row">
-                                <input type="file" class="form-control-file" name="foto01" id="foto01" value="${produto.foto1}" required/>
-                            </div>
-                            <div class="esp15"></div>
-                            <div class="form-group row">
-                                <input type="file" class="form-control-file" name="foto02" id="foto02" value="${produto.foto2}"/>
-                            </div>
-                            <div class="esp15"></div>
-                            <div class="form-group row">
-                                <input type="file" class="form-control-file" name="foto03" id="foto03" value="${produto.foto3}"/>
-                            </div>
-                            <div class="esp15"></div>
-                            <div class="form-group row">
-                                <input type="file" class="form-control-file" name="foto04" id="foto04" value="${produto.foto4}"/>
-                            </div>
-                            <div class="esp15"></div>
-                            <div class="form-group row">
-                                <input type="file" class="form-control-file" name="foto05" id="foto05" value="${produto.foto5}"/>
-                            </div>
                             <div class="esp15"></div>
                             <hr/>
                             <div class="esp15"></div>

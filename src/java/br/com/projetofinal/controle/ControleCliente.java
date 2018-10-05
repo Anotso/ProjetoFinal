@@ -1,10 +1,14 @@
 package br.com.projetofinal.controle;
 
 import br.com.projetofinal.dao.ClienteDao;
+import br.com.projetofinal.dao.FuncionarioDao;
 import br.com.projetofinal.entidade.Cliente;
+import br.com.projetofinal.entidade.Funcionario;
+import br.com.projetofinal.util.Crypt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author graci
  */
 @WebServlet(name = "ControleCliente", urlPatterns = {"/cadcliente.html",
-    "/buscacliente.html","/carregacliente.html"
+    "/buscacliente.html", "/carregacliente.html","/log.html","/logout.html"
 })
 public class ControleCliente extends HttpServlet {
 
@@ -55,6 +59,10 @@ public class ControleCliente extends HttpServlet {
                 //confirmar(request, response);
             } else if (url.equalsIgnoreCase("/excluirfuncionario.html")) {
                 //excluir(request, response);
+            } else if (url.equalsIgnoreCase("/log.html")) {
+                login(request, response);
+            } else if (url.equalsIgnoreCase("/logout.html")) {
+                //logout(request, response);
             } else {
                 throw new Exception("URL Inválida!!!");
             }
@@ -69,7 +77,8 @@ public class ControleCliente extends HttpServlet {
     private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
         String pessoa = request.getParameter("pessoa");
         String emailcli = request.getParameter("email");
-        String senha = request.getParameter("senha");
+        String senha = Crypt.md5(request.getParameter("senha"));
+        //String senha = request.getParameter("senha");
         /*MessageDigest algorithm = MessageDigest.getInstance("MD5");
         byte messageDigest[] = algorithm.digest("senha".getBytes("UTF-8"));*/
         String tel = request.getParameter("tel");
@@ -82,7 +91,7 @@ public class ControleCliente extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String cid = request.getParameter("cid");
         String est = request.getParameter("est");
-        
+
         //if (pfisica == true) {
         if (pessoa.trim().equalsIgnoreCase("pf")) {
             String nome = request.getParameter("nomecli");
@@ -137,7 +146,7 @@ public class ControleCliente extends HttpServlet {
             String insest = request.getParameter("insest");
             String telpj = request.getParameter("telpj");
             String celpj = request.getParameter("celpj");
-            
+
             /*System.out.println("Razão: "+razao);
             System.out.println("fantásia: "+fantasia);
             System.out.println("CNPJ: "+cnpj);
@@ -152,7 +161,6 @@ public class ControleCliente extends HttpServlet {
             System.out.println("Bairro: "+bairro);
             System.out.println("Cidade: "+cid);
             System.out.println("Estado: "+est);*/
-            
             Cliente cliente = new Cliente();
             cliente.setCliente(razao);
             cliente.setSnome(fantasia);
@@ -174,7 +182,7 @@ public class ControleCliente extends HttpServlet {
             cliente.setBairrocli(bairro);
             cliente.setCidcli(cid);
             cliente.setEstcli(est);
-            
+
             try {
                 cliente.validar();
                 ClienteDao dao = new ClienteDao();
@@ -185,33 +193,65 @@ public class ControleCliente extends HttpServlet {
                 request.getRequestDispatcher("/cadcliente.jsp").forward(request, response);
                 e.printStackTrace();
             }
-            
+
         }
     }
 
-    private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        try{
+    private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             String cpf = request.getParameter("bfunc");
             ClienteDao pd = new ClienteDao();
-            
+
             List<Cliente> lista = pd.listaCliente(cpf);
-            
+
             request.setAttribute("cpf", cpf);
             request.setAttribute("listaCliente", lista);
             request.getRequestDispatcher("/consultarcliente.jsp").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void carrega(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        try{
+    private void carrega(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
             ClienteDao pd = new ClienteDao();
             List<Cliente> lista = pd.carregacliente();
             request.setAttribute("listaCliente", lista);
             request.getRequestDispatcher("/consultarcliente.jsp").forward(request, response);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        int lvl = 0;
+        String login = request.getParameter("usuario");
+        String sen = Crypt.md5(request.getParameter("senha"));
+
+        Cliente cliente = new ClienteDao().logincli(login, sen);
+        Funcionario funcionario = new FuncionarioDao().loginfun(login, sen);
+
+        if (funcionario != null) {
+            lvl = 1;
+            request.getSession().setAttribute("funcionario", funcionario);
+            request.getSession().setAttribute("funcionario", lvl);
+            request.getSession().setAttribute("login", login);
+            request.getRequestDispatcher("/menufun.jsp").forward(request, response);
+        } else {
+            try {
+                if (cliente != null) {
+                    lvl = 2;
+                    request.getSession().setAttribute("cliente", cliente);
+                    request.getSession().setAttribute("cliente", lvl);
+                    request.getSession().setAttribute("login", login);
+                    request.getRequestDispatcher("/menucli.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/login.html").forward(request, response);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            }
         }
     }
 

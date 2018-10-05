@@ -121,5 +121,21 @@ public class ClienteDao extends Dao {
         close();
         return lista;
     }
+
+    public Cliente logincli(String login, String sen) throws SQLException {
+        open();
+        String sql = "SELECT emailcli, senhacli FROM cliente WHERE emailcli=? AND senhacli=? AND ativo = true";
+        stmt = con.prepareStatement(sql);
+        stmt.setString(1, login);
+        stmt.setString(2, sen);
+        rs = stmt.executeQuery();
+        Cliente cliente = null;
+        
+        if(rs.next()){
+            cliente = new Cliente(rs.getString(1), rs.getString(2));
+        }
+        close();
+        return cliente;
+    }
     
 }

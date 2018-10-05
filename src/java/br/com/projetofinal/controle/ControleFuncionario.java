@@ -2,6 +2,7 @@ package br.com.projetofinal.controle;
 
 import br.com.projetofinal.dao.FuncionarioDao;
 import br.com.projetofinal.entidade.Funcionario;
+import br.com.projetofinal.util.Crypt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
@@ -65,7 +66,8 @@ public class ControleFuncionario extends HttpServlet {
         
         String nome = request.getParameter("nfun");
         String emailfunc = request.getParameter("emailfun");
-        String senhafunc = request.getParameter("senhafun");
+        String senhafunc = Crypt.md5(request.getParameter("senhafun"));
+        //String senhafunc = request.getParameter("senhafun");
         /*MessageDigest algorithm = MessageDigest.getInstance("MD5");
         byte messageDigest[] = algorithm.digest("senhafun".getBytes("UTF-8"));*/
         String telfunc = request.getParameter("telfun");
@@ -142,14 +144,14 @@ public class ControleFuncionario extends HttpServlet {
 
     private void editar(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         try{
-            String id = request.getParameter("id");
+            int id = Integer.parseInt(request.getParameter("id"));
             
             FuncionarioDao pd = new FuncionarioDao();
             
-            List<Funcionario> lista = pd.editaFuncionario(id);
+            List<Funcionario> lista = pd.editafuncionario(id);
             
             request.setAttribute("id", id);
-            request.setAttribute("editaFuncionario", lista);
+            request.setAttribute("listaFuncionario", lista);
             request.getRequestDispatcher("/loadfuncao.html").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();
@@ -198,26 +200,12 @@ public class ControleFuncionario extends HttpServlet {
         funcionario.setBairrofunc(bairrofunc);
         funcionario.setCidfunc(cidfunc);
         funcionario.setEstfunc(estfunc);
-        
-        System.out.println("ID: "+id);
-        System.out.println("Nome: "+nome);
-        System.out.println("E-mail: "+emailfunc);
-        System.out.println("Tel: "+telfunc);
-        System.out.println("Cel: "+celfunc);
-        System.out.println("CPF: "+cpffunc);
-        System.out.println("Função: "+funcaofunc);
-        System.out.println("CEP: "+cepfunc);
-        System.out.println("End: "+endfunc);
-        System.out.println("Número: "+numfunc);
-        System.out.println("Complemento: "+complfunc);
-        System.out.println("Bairro: "+bairrofunc);
-        System.out.println("Cidade: "+cidfunc);
-        System.out.println("Estado: "+estfunc);
-        
+
         try{
             funcionario.validarAtt();
             FuncionarioDao dao = new FuncionarioDao();
             dao.editarfuncionario(funcionario);
+            request.getSession().setAttribute("funcionario", funcionario);
             response.sendRedirect("/ProjetoFinal/menufun.jsp");
         }catch(Exception e){
             request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));

@@ -21,8 +21,8 @@ import javax.servlet.http.Part;
 
 @MultipartConfig
 @WebServlet(name = "ControleProduto", urlPatterns = {"/cadproduto.html", "/carregacadprod.html",
-    "/buscaproduto.html","/carregaproduto.html","/editarproduto.html","/confirmaproduto.html",
-    "/pesquisaproduto.html","/telaprod.html"
+    "/buscaproduto.html", "/carregaproduto.html", "/editarproduto.html", "/confirmaproduto.html",
+    "/pesquisaproduto.html", "/telaprod.html"
 })
 public class ControleProduto extends HttpServlet {
 
@@ -63,7 +63,7 @@ public class ControleProduto extends HttpServlet {
                 confirmar(request, response);
             } else if (url.equalsIgnoreCase("/telaprod.html")) {
                 loadesp(request, response);
-            }else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
+            } else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
                 //excluir(request, response);
             } else if (url.equalsIgnoreCase("/carregacadprod.html")) {
                 carregacad(request, response);      //CHAMA A TELA DE CADASTRO
@@ -205,7 +205,7 @@ public class ControleProduto extends HttpServlet {
         }
     }
 
-    private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void buscar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String dado = request.getParameter("dado");
             ProdutoDao prod = new ProdutoDao();
@@ -218,7 +218,7 @@ public class ControleProduto extends HttpServlet {
         }
     }
 
-    private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
             ProdutoDao prod = new ProdutoDao();
@@ -231,8 +231,63 @@ public class ControleProduto extends HttpServlet {
         }
     }
 
-    private void confirmar(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void confirmar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        float nc = 0;
+        float nv = 0;
+        int qtd = 0;
+        
+        int id = Integer.parseInt(request.getParameter("idprod"));
+        String nome = request.getParameter("nprod");
+        String fornecedor = request.getParameter("forprod");
+        String categoria = request.getParameter("catprod");
+        String compra = request.getParameter("vcompprod");
+        String venda = request.getParameter("vvendprod");
+        String q = request.getParameter("qtdprod");
+        String desc = request.getParameter("descricao");
+
+        if (q.equals("")) {
+            qtd = 0;
+        } else {
+            qtd = parseInt(q);
+        }
+
+        if (compra.equals("")) {
+            nc = 0;
+        } else {
+            compra = compra.replace(".", "");
+            compra = compra.replace(",", ".");
+            nc = Float.parseFloat(compra);
+        }
+        if (venda.equals("")) {
+            nv = 0;
+        } else {
+            venda = venda.replace(".", "");
+            venda = venda.replace(",", ".");
+            nv = Float.parseFloat(venda);
+        }
+
+        Produto produto = new Produto();
+        produto.setIdproduto(id);
+        produto.setProduto(nome);
+        produto.setFornecedor(fornecedor);
+        produto.setCategoria(categoria);
+        produto.setDescricao(desc);
+        produto.setCompra(nc);
+        produto.setVenda(nv);
+        produto.setQtd(qtd);
+
+        try {
+            //produto.validar();
+            ProdutoDao dao = new ProdutoDao();
+            dao.editaproduto(produto);
+            request.getSession().setAttribute("produto", produto);
+            response.sendRedirect("/ProjetoFinal/menufun.jsp");
+        } catch (Exception e) {
+            request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
+            request.getRequestDispatcher("/carregacadprod.html").forward(request, response);
+            e.printStackTrace();
+        }
+
     }
 
     private void pesquisa(HttpServletRequest request, HttpServletResponse response) {
@@ -247,6 +302,7 @@ public class ControleProduto extends HttpServlet {
             e.printStackTrace();
         }
     }
+
     private void loadesp(HttpServletRequest request, HttpServletResponse response) {
         try {
             int dado = Integer.parseInt(request.getParameter("id"));

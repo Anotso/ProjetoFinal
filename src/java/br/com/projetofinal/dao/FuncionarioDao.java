@@ -107,10 +107,11 @@ public class FuncionarioDao extends Dao {
         return lista;
     }
 
-    public List<Funcionario> editaFuncionario(String id) throws SQLException {
+    public List<Funcionario> editafuncionario(int id) throws SQLException {
         open();
-        stmt = this.con.prepareStatement("SELECT * FROM funcionario WHERE ativo = true AND cpffunc like ?");
-        stmt.setString(1, id + "%");
+        System.out.println("Valor do ID no Dao: "+id);
+        stmt = this.con.prepareStatement("SELECT * FROM funcionario WHERE ativo = true AND idfunc = ?");
+        stmt.setInt(1, id);
         Funcionario funcionario = null;
         rs = stmt.executeQuery();
         List<Funcionario> lista = new ArrayList<Funcionario>();
@@ -133,6 +134,7 @@ public class FuncionarioDao extends Dao {
                     rs.getBoolean("ativo")
             );
             lista.add(funcionario);
+            System.out.println("Entrou no while do Dao");
         }
         close();
         return lista;
@@ -141,20 +143,20 @@ public class FuncionarioDao extends Dao {
     public void editarfuncionario(Funcionario funcionario) throws SQLException {
         open();
         //try{
-        String sql = "UPDATE funcionario SET nomefunc = ?,"
-                + " emailfunc = ?,"
-                + " telfunc = ?,"
-                + " celfunc = ?,"
-                + " cpffunc = ?,"
-                + " funcaofun = ?,"
-                + " cepfunc = ?,"
-                + " ruafunc = ?,"
-                + " numfunc = ?,"
-                + " bairrofunc = ?,"
-                + " cidadefunc = ?,"
-                + " estadofunc = ?,"
-                + " complfunc = ?,"
-                + " WHERE idfunc = ?";
+        String sql = "UPDATE funcionario SET nomefunc=?,"
+                + " emailfunc=?,"
+                + " telfunc=?,"
+                + " celfunc=?,"
+                + " cpffunc=?,"
+                + " funcaofun=?,"
+                + " cepfunc=?,"
+                + " ruafunc=?,"
+                + " numfunc=?,"
+                + " bairrofunc=?,"
+                + " cidadefunc=?,"
+                + " estadofunc=?,"
+                + " complfunc=?"
+                + " WHERE idfunc=?";
         stmt = con.prepareStatement(sql);
         stmt.setString(1, funcionario.getFuncionario());
         stmt.setString(2, funcionario.getEmailfunc());
@@ -170,7 +172,7 @@ public class FuncionarioDao extends Dao {
         stmt.setString(12, funcionario.getEstfunc());
         stmt.setString(13, funcionario.getComplfunc());
         stmt.setInt(14, funcionario.getIdfuncionario());
-
+        
         stmt.executeUpdate();
         close();
         //}catch(SQLException e){
@@ -191,6 +193,22 @@ public class FuncionarioDao extends Dao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Funcionario loginfun(String login, String sen) throws SQLException {
+        open();
+        String sql = "SELECT emailfunc, senhafunc FROM cliente WHERE emailfunc=? AND senhafunc=? AND ativo = true";
+        stmt = con.prepareStatement(sql);
+        stmt.setString(1, login);
+        stmt.setString(2, sen);
+        rs = stmt.executeQuery();
+        Funcionario funcionario = null;
+        
+        if(rs.next()){
+            funcionario = new Funcionario(rs.getString(1), rs.getString(2));
+        }
+        close();
+        return funcionario;
     }
 
 }
