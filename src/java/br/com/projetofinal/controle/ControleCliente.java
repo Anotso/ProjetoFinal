@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -239,7 +240,7 @@ public class ControleCliente extends HttpServlet {
                 request.getSession().setAttribute("login", login);
                 System.out.println("Valor de funcionario: " + funcionario);
                 System.out.println("Valor de cliente: " + cliente);
-                request.getRequestDispatcher("menufun.jsp").forward(request, response);
+                request.getRequestDispatcher("/ProjetoFinal/menufun.jsp").forward(request, response);
             } else {
 
                 if (cliente != null) {
@@ -247,7 +248,7 @@ public class ControleCliente extends HttpServlet {
                     request.getSession().setAttribute("cliente", cliente);
                     request.getSession().setAttribute("cliente", lvl);
                     request.getSession().setAttribute("login", login);
-                    response.sendRedirect("/menucli.jsp");
+                    response.sendRedirect("/ProjetoFinal/menucli.jsp");
                 } else {
                     request.getRequestDispatcher("/login.html").forward(request, response);
                 }
@@ -255,13 +256,18 @@ public class ControleCliente extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/ProjetoFinal/index.jsp").forward(request, response);
         }
     }
 
-    private void logout(HttpServletRequest request, HttpServletResponse response) {
-        request.getSession().invalidate();
-        request.getRequestDispatcher("/index.jsp");
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        /*HttpSession cliente = request.getSession();
+        HttpSession funcionario = request.getSession();
+        cliente.invalidate();
+        funcionario.invalidate();*/
+        request.getSession().setAttribute("cliente",null);
+        request.getSession().setAttribute("funcionario",null);
+        response.sendRedirect("/ProjetoFinal/index.jsp");
     }
 
 }

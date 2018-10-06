@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 logo"><a href="index.jsp">LOGO</a></div>
-            <div class="esp15 d-sm-block d-md-none"></div>
+            <div class="esp15"></div>
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-3 nav1">

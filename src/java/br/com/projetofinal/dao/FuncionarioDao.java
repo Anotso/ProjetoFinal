@@ -205,8 +205,8 @@ public class FuncionarioDao extends Dao {
         rs = stmt.executeQuery();
         Funcionario funcionario = null;
 
-        if (rs.next()) {
-            funcionario = new Funcionario(rs.getString(1), rs.getString(2));
+        if (rs.first()) {
+            funcionario = new Funcionario(rs.getString("emailfunc"), rs.getString("senhafunc"));
         }
         close();
         return funcionario;

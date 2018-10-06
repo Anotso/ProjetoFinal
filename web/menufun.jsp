@@ -19,21 +19,16 @@
     </head>
     <body>
         <nav>
-            <%
-                Object usuario = session.getAttribute("funcionario");
-                if (usuario == null) {
-            %><c:import url="include/navlogin.jsp"/>
-            <%
-            } else {
-            %><c:import url="include/navlogout.jsp"/>
-            <%
-                }
-            %>
+            <c:if test="${not empty funcionario}">
+                <c:import url="include/navlogout.jsp"/>
+            </c:if>
+            <c:if test="${empty funcionario}">
+                response.sendRedirect("index.jsp");
+            </c:if>
             <c:import url="include/menuprod.jsp"/>
         </nav>
-        <%
-            if (usuario == null) {
-        %>
+<c:if test="${not empty funcionario}">
+            
         <div class="esp50"></div>
         <div class="corpo">
             <div class="container">
@@ -45,11 +40,7 @@
                 <c:import url="include/teste.jsp"/>
             </div>
         </div>
-        <%
-            } else {
-                response.sendRedirect("index.jsp");
-            }
-        %>
+</c:if>
         <footer>
             <c:import url="include/rodape.jsp"/>
         </footer>

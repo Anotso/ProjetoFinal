@@ -19,7 +19,7 @@
     </head>
     <body>
         <nav>
-            <%
+            <%--
                 Object usuario1 = session.getAttribute("cliente");
                 Object usuario2 = session.getAttribute("funcionario");
                 if ((usuario1 == null) || ((usuario2 == null))) {
@@ -29,7 +29,13 @@
             %><c:import url="include/navlogout.jsp"/>
             <%
                 }
-            %>
+            --%>
+            <c:if test="${not empty funcionario or not empty cliente}">
+                <c:import url="include/navlogout.jsp"/>
+            </c:if>
+            <c:if test="${empty funcionario or not empty cliente}">
+                <c:import url="include/navlogin.jsp"/>
+            </c:if>
             <c:import url="include/menuprod.jsp"/>
         </nav>
         <div class="esp50"></div>

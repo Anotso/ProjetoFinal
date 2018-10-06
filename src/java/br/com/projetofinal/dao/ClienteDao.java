@@ -132,7 +132,8 @@ public class ClienteDao extends Dao {
         Cliente cliente = null;
 
         if (rs.next()) {
-            cliente = new Cliente(rs.getString(1), rs.getString(2));
+            cliente = new Cliente(rs.getString("emailcli"), rs.getString("senhacli"));
+            System.out.println("Entrou no if do login - ClienteDao");
         }
         close();
         return cliente;
