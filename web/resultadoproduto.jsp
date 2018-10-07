@@ -40,16 +40,23 @@
                         <a href="telaprod.html?id=${produto.idproduto}" class="linkprod">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <img src="recursos/imgprod/${produto.foto1}"/>
+                                    <img class="imgprod" src="recursos/imgprod/${produto.foto1}"/>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="card">
+                                    <div class="card imgprod">
                                         <div class="card-header">
-                                            <label><h5>Nome: ${produto.produto}</h5></label>
+                                            <label><h4>${produto.produto}</h4></label>
                                         </div>
                                         <div class="card-body">
                                             <p class="card-text">ID: ${produto.idproduto}</p>
-                                            <p class="card-text">R$ ${produto.venda}</p>
+                                            <p class="card-text">
+                                            <div class="esp15"></div>
+                                            R$ ${produto.venda}
+                                            </p>
+                                            <p class="card-text">
+                                            <div class="esp15"></div>
+                                            <button class="btn btn-success btn-block">COMPRAR</button>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -57,6 +64,14 @@
                         </a>
                         <div class="esp15"></div>
                     </c:forEach>
+                </c:if>
+                <c:if test="${empty listaProduto}">
+                    <div class="esp50"></div>
+                    <div class="alert alert-danger" role="alert">
+                        <center>Produto não localizado!</center>
+                        <div class="esp25"></div>
+                        <center><p>Por favor informe outros dados para melhorar o resultado da busca.</p></center>
+                    </div>
                 </c:if>
             </div>
         </div>

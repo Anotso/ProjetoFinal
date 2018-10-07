@@ -2,7 +2,7 @@
 <div class="barra">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 logo"><a href="index.jsp">LOGO</a></div>
+            <div class="col-md-4"><a href="index.jsp"><img class="logo" src="recursos/imagens/logo.png"/></a></div>
             <div class="esp15"></div>
             <div class="col-md-8 nav1">
                 <div class="row">

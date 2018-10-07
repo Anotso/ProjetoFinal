@@ -8,7 +8,7 @@
 /*  NAVBAR - PERSONALIZADA  */
 .barra{
     padding: 30px;
-    height: 100px;
+    height: 130px;
     color: white;
     background-color: rgb(187, 0, 0);
     /*background-color: rgb(84, 117, 161);*/
@@ -36,10 +36,16 @@
     text-decoration: none;
 }
     /*  TAMANHO DA IMAGEM DO PRODUTO    */
-    .imgprod{
-        width: 400px;
-        height: 400px;
-    }
+.imgprod{
+    width: 400px;
+    height: 400px;
+}
+.logo{
+    margin-top: 0;
+    padding: 0;
+    width: 250px;
+    height: 90px;
+}
 @media screen and (max-width: 315px){
     body{
         margin: auto;
@@ -69,6 +75,7 @@
 /*  RESPONSIVO  */
 @media screen and (min-width: 768px){
     .nav1{
+        margin-top: 20px;
         display: block;
         text-align: center;
     }
@@ -91,7 +98,7 @@
         display: inline;
     }
     .barra{
-        height: 150px;
+        height: 200px;
     }
     .imgprod{
         width: 290px;

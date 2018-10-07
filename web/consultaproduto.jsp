@@ -46,7 +46,7 @@
                         <form action="buscaproduto.html" method="post">
                             <div class="form-group row">
                                 <!---Sobre nome-->
-                                <label for="dado" class="col-md-4 col-form-label">Informe o CPF</label>
+                                <label for="dado" class="col-md-4 col-form-label">Informe o código</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="dado" name="dado"/>
                                 </div>

@@ -1,8 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<jsp:useBean id="dao" class="br.com.projetofinal.dao.ProdutoDao"/>
 <c:if test="${not empty listaProduto}">
     <div class="esp15"></div>
-    <c:forEach var="produto" items="${listaProduto}">
+    <c:forEach var="produto" items="${dao.destaque}">
         <a href="telaprod.html?id=${produto.idproduto}" class="linkprod">
             <div class="row">
                 <div class="col-md-6">

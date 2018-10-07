@@ -6,6 +6,7 @@ import br.com.projetofinal.entidade.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +17,6 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ControleVenda", urlPatterns = {"/addcarrinho.html"})
 public class ControleVenda extends HttpServlet {
-
-    private Object carrinho;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,17 +32,17 @@ public class ControleVenda extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        
+
         HttpSession carrinho = request.getSession(false);
-        
+
         System.out.println("Entoru no servlet Venda");
         try {
             String url = request.getServletPath();
 
             if (url.equalsIgnoreCase("/addcarrinho.html")) {
-                adicionar(request, response);
-            } else if (url.equalsIgnoreCase("/editarproduto.html")) {
-                //excluir(request, response);
+                chamavalor(request, response);
+            } else if (url.equalsIgnoreCase("/addcarrinho.html")) {
+                //AdicionaItensCarrinho(request, response);
             } else if (url.equalsIgnoreCase("/buscaproduto.html")) {
                 //finalizar(request, response);
             } else if (url.equalsIgnoreCase("/pesquisaproduto.html")) {
@@ -68,11 +67,40 @@ public class ControleVenda extends HttpServlet {
         }
     }
 
-    private void adicionar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException, SQLException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String qtd = request.getParameter("qtd");
-        
-        
+    private void chamavalor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            String qtd = request.getParameter("qtd");
+
+            ProdutoDao prod = new ProdutoDao();
+            List<Produto> lista = prod.carregaProduto(id);
+            request.setAttribute("carregaProduto", lista);
+
+            //String dado = String.join("_", id, qtd);
+            //System.out.println("Resultado do join: " + dado);
+            /*System.out.println("Resultado do nome: " + nome);
+            System.out.println("Resultado do venda: " + venda);
+            HttpSession carrinho = request.getSession(true);
+            ArrayList retornoLista = (ArrayList) carrinho.getAttribute("lista");
+            retornoLista = new AdicionaItensCarrinho().AdicionaItensCarrinho(produto, retornoLista);
+            carrinho.setAttribute("lista", retornoLista);*/
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private static class AdicionaItensCarrinho {
+
+        public ArrayList AdicionaItensCarrinho(Produto produto, ArrayList carrinho) {
+
+            if (carrinho == null) {
+                carrinho = new ArrayList();
+            }
+            carrinho.add(produto.getProduto());
+            return carrinho;
+        }
+
     }
 
 }

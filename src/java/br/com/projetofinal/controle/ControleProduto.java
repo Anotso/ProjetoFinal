@@ -23,7 +23,7 @@ import javax.servlet.http.Part;
 @MultipartConfig
 @WebServlet(name = "ControleProduto", urlPatterns = {"/cadproduto.html", "/carregacadprod.html",
     "/buscaproduto.html", "/carregaproduto.html", "/editarproduto.html", "/confirmaproduto.html",
-    "/pesquisaproduto.html", "/telaprod.html"
+    "/pesquisaproduto.html", "/telaprod.html","/pesqporcat.html","/excluirproduto.html"
 })
 public class ControleProduto extends HttpServlet {
 
@@ -58,14 +58,16 @@ public class ControleProduto extends HttpServlet {
                 buscar(request, response);
             } else if (url.equalsIgnoreCase("/pesquisaproduto.html")) {
                 pesquisa(request, response);
+            } else if (url.equalsIgnoreCase("/pesqporcat.html")) {
+                pesqcat(request, response);
             } else if (url.equalsIgnoreCase("/carregaproduto.html")) {
                 todos(request, response);
             } else if (url.equalsIgnoreCase("/confirmaproduto.html")) {
                 confirmar(request, response);
             } else if (url.equalsIgnoreCase("/telaprod.html")) {
                 loadesp(request, response);
-            } else if (url.equalsIgnoreCase("/excluirfornecedor.html")) {
-                //excluir(request, response);
+            } else if (url.equalsIgnoreCase("/excluirproduto.html")) {
+                excluir(request, response);
             } else if (url.equalsIgnoreCase("/carregacadprod.html")) {
                 carregacad(request, response);      //CHAMA A TELA DE CADASTRO
             } else {
@@ -83,9 +85,9 @@ public class ControleProduto extends HttpServlet {
 
         Arquivo arq = new Arquivo();
         //  CURSO
-        String caminhofoto = System.getProperty("user.home") + "" + "\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
+        //String caminhofoto = System.getProperty("user.home") + "" + "\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
         //  CASA
-        //String caminhofoto = System.getProperty("user.home") + "" + "\\Pictures\\imgprod\\";
+        String caminhofoto = "D:\\graci\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
         float nc = 0;
         float nv = 0;
         int qtd = 0;
@@ -316,6 +318,32 @@ public class ControleProduto extends HttpServlet {
             request.setAttribute("listaProduto", lista);
             request.getRequestDispatcher("/telaprod.jsp").forward(request, response);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void pesqcat(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String dado = request.getParameter("id");
+            System.out.println("valor do dado dentro do Servlet: "+dado);
+            ProdutoDao prod = new ProdutoDao();
+            List<Produto> lista = prod.catProduto(dado);
+            request.setAttribute("dado", dado);
+            request.setAttribute("listaProduto", lista);
+            request.getRequestDispatcher("/resultadoproduto.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void excluir(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt("id");
+        Produto produto = new Produto();
+        produto.setIdproduto(id);
+        try{
+            ProdutoDao dao = new ProdutoDao();
+            dao.excluir(id);
+        }catch(Exception e){
             e.printStackTrace();
         }
     }

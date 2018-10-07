@@ -142,4 +142,46 @@ public class ProdutoDao extends Dao {
         close();
     }
 
+    public List<Produto> catProduto(String dado) throws SQLException {
+        open();
+        System.out.println("valor do dado dentro do Dao: "+dado);
+        stmt = this.con.prepareStatement("SELECT * FROM produto WHERE catprod = ?");
+        stmt.setString(1, dado);
+        Produto produto = null;
+        rs = stmt.executeQuery();
+        List<Produto> lista = new ArrayList<Produto>();
+        while (rs.next()) {
+            System.out.println("Entrou no while do Dao");
+            produto = new Produto(rs.getInt("idprod"),
+                    rs.getString("nomeprod"),
+                    rs.getString("forprod"),
+                    rs.getString("catprod"),
+                    rs.getString("descprod"),
+                    rs.getFloat("compraprod"),
+                    rs.getFloat("vendaprod"),
+                    rs.getInt("qtdprod"),
+                    rs.getString("foto1prod"),
+                    rs.getString("foto2prod"),
+                    rs.getString("foto3prod"),
+                    rs.getString("foto4prod"),
+                    rs.getString("foto5prod")
+            );
+            lista.add(produto);
+        }
+        close();
+        return lista;
+    }
+
+    public void excluir(int id) {
+        try{
+            open();
+            stmt = con.prepareStatement("DELETE FROM produto WHERE idprod?");
+            stmt.setInt(1, id);
+            stmt.execute();
+            close();
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
 }

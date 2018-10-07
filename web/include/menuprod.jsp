@@ -9,17 +9,19 @@
         </button>
         <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
             <ul class="navbar-nav mr-auto">
-                <c:forEach var="lista" items="${dao.buscarsetor()}">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ${lista.setor}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <c:forEach var="lista" items="${dado.buscarcategoria()}">
-                            <a class="dropdown-item" href="pesqporcat.html?id=${lista.idcategoria}">${lista.categoria}</a>
-                        </c:forEach>
-                    </div>
-                </li>
+                <c:forEach var="a" items="${dao.buscarsetor()}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ${a.setor}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <c:forEach var="b" items="${dado.buscarcategoria()}">
+                                <c:if test="${a.idsetor == b.setor}">
+                                    <a class="dropdown-item" href="pesqporcat.html?id=${b.idcategoria}">${b.categoria}</a>
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                    </li>
                 </c:forEach>
             </ul>
             <form action="pesquisaproduto.html" method="post" class="form-inline my-2 my-lg-0">

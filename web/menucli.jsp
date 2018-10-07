@@ -29,18 +29,18 @@
             <div class="corpo">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3"><center>TESTE 01</center></div>
-                        <div class="col-md-3"><center>TESTE 02</center></div>
-                        <div class="col-md-3"><center>TESTE 03</center></div>
+                        <div class="col-md-6">
+                            <center><h4>Dados Pessoais:</h4></center>
+                        </div>
+                        <div class="col-md-6"><center><h4>Pedidos:</h4></center></div>
                     </div>
-                    <c:import url="include/teste.jsp"/>
                 </div>
             </div>
             <footer>
                 <c:import url="include/rodape.jsp"/>
             </footer>
         </c:if>
-        <c:if test="${empty cliente}">
+        <c:if test="${empty c}">
             <% response.sendRedirect("index.jsp");%>
         </c:if>
         <!--	JS Bootstrap	-->
