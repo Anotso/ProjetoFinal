@@ -18,48 +18,48 @@
     </head>
     <body>
         <nav>
-            <%
-                Object usuario1 = session.getAttribute("cliente");
-                Object usuario2 = session.getAttribute("funcionario");
-                if ((usuario1 == null)||((usuario2 == null))) {
-            %><c:import url="include/navlogin.jsp"/>
-            <%
-            } else {
-            %><c:import url="include/navlogout.jsp"/>
-            <%
-                }
-            %>
-            <c:import url="include/menuprod.jsp"/>
+            <c:if test="${not empty f or not empty c}">
+                <c:import url="include/navlogout.jsp"/>
+            </c:if>
+            <c:if test="${empty f and empty c}">
+                <c:import url="include/navlogin.jsp"/>
+            </c:if>
+            <c:if test="${not empty f}">
+                <c:import url="include/navfun.jsp"/>
+            </c:if>
+            <c:if test="${empty f}">
+                <c:import url="include/menuprod.jsp"/>
+            </c:if>
         </nav>
         <div class="esp50"></div>
         <div class="corpo">  
             <div class="container">
                 <c:forEach var="produto" items="${listaProduto}">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="quadradinho" id="zoomimage" >
+                    <form action="addcarrinho.html" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="row">
-                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                    <div id="carouselExampleControls" class="carousel slide imgprod" data-ride="carousel">
                                         <div class="carousel-inner">
                                             <div class="carousel-item active">
                                                 <!--<img class="d-block w-100"  src="recursos/imgprod/gx.jpg" alt="Primeiro slide">-->
-                                                <img class="d-block w-100"  src="c:/users/graci/pictures/imgprod/${produto.foto1}" alt="Primeiro slide">
+                                                <img class="d-block w-100"  src="recursos/imgprod/${produto.foto1}" alt="Primeiro slide">
                                             </div>
                                             <div class="carousel-item">
                                                 <!--<img class="d-block w-100"  src="recursos/imgprod/gx.jpg" alt="Primeiro slide">-->
-                                                <img class="d-block w-100"  src="c:/users/graci/pictures/imgprod/${produto.foto2}" alt="Segundo slide">
+                                                <img class="d-block w-100"  src="recursos/imgprod/${produto.foto2}" alt="Segundo slide">
                                             </div>
                                             <div class="carousel-item">
                                                 <!--<img class="d-block w-100"  src="recursos/imgprod/gx.jpg" alt="Primeiro slide">-->
-                                                <img class="d-block w-100"  src="c:/users/graci/pictures/imgprod/${produto.foto3}" alt="Terceiro slide">
+                                                <img class="d-block w-100"  src="recursos/imgprod/${produto.foto3}" alt="Terceiro slide">
                                             </div>
                                             <div class="carousel-item">
                                                 <!--<img class="d-block w-100"  src="recursos/imgprod/gx.jpg" alt="Primeiro slide">-->
-                                                <img class="d-block w-100"  src="c:/users/graci/pictures/imgprod/${produto.foto4}" alt="Quarto slide">
+                                                <img class="d-block w-100"  src="recursos/imgprod/${produto.foto4}" alt="Quarto slide">
                                             </div>
                                             <div class="carousel-item">
                                                 <!--<img class="d-block w-100"  src="recursos/imgprod/gx.jpg" alt="Primeiro slide">-->
-                                                <img class="d-block w-100"  src="c:/users/graci/pictures/imgprod/${produto.foto5}" alt="Quinto slide">
+                                                <img class="d-block w-100"  src="recursos/imgprod/${produto.foto5}" alt="Quinto slide">
                                             </div>
                                         </div>
                                         <a class="carousel-control-prev btnmudafoto" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -73,43 +73,49 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6" >
-                            <div class="coluninha">
-                                <div class="tlcod">
-                                    <strong id="cod" title="codigo do produto">Codígo: </strong>
-                                    <span title="numero do produto">${produto.idproduto}</span>
-                                </div>
-                                <c:if test="${produto.qtd}>0">
-                                    <div class="tldisp">
-                                        <strong>Disponibilidade:</strong>
-                                        <span id="em"> Em estoque</span>
+                            <div class="col-md-6" >
+                                <div class="coluninha">
+                                    <div class="tlcod">
+                                        <h4 >${produto.produto}</h4>
                                     </div>
-                                </c:if>
-                                <hr>
-                                <div class="preco">
-                                    <strong>Valor á vista:</strong>
-                                    <span id="vis">R$ ${produto.venda}</span>
-                                </div>
-                                <div class="col-md-10">
-                                    <label>quantidade</label>
-                                    <input min="1" max="${produto.qtd}" type="number"/>
-                                </div>
-                                <hr>
-                                <div>
-                                    <img  id="imagemcart" src="recursos/imagens/0028110001523475662.png" />
-                                </div>
-                                <div class="section"  style="padding-bottom:20px;">
-                                    <c:if test="${produto.qtd}>0">
-                                        <button class="btn btn-success " id="botao">Adicionar ao carrinho </button>
+                                    <div class="tlcod">
+                                        <strong id="cod" title="codigo do produto">Codígo: </strong>
+                                        <input type="text" name="id" value="${produto.idproduto}" readonly/>
+                                    </div>
+                                    <c:if test="${produto.qtd >0}">
+                                        <div class="tldisp">
+                                            <strong>Disponibilidade:</strong>
+                                            <span id="em"> Em estoque</span>
+                                        </div>
                                     </c:if>
-                                    <c:if test="${produto.qtd}= 0">
-                                        <h5>Produto indisponível</h5>
+                                    <c:if test="${produto.qtd == 0 or produto.qtd<0}">
+                                        <div class="tldisp">
+                                            <strong>Disponibilidade:</strong>
+                                            <h5>Produto indisponível</h5>
+                                        </div>
                                     </c:if>
+                                    <hr>
+                                    <div class="preco">
+                                        <strong>Valor:</strong>
+                                        <label id="vis">R$ ${produto.venda}</label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label>quantidade</label>
+                                        <input min="1" max="${produto.qtd}" type="number" name="qtd" value="1"/>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <img  id="imagemcart" src="recursos/imagens/0028110001523475662.png" />
+                                    </div>
+                                    <div class="section"  style="padding-bottom:20px;">
+                                        <c:if test="${produto.qtd>0}">
+                                            <input type="submit" class="btn btn-success " id="botao" value="Adicionar ao carrinho"/>
+                                        </c:if>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-8">

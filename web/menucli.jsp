@@ -16,15 +16,15 @@
     </head>
     <body>
         <nav>
-            <c:if test="${not empty cliente}">
+            <c:if test="${not empty c}">
                 <c:import url="include/navlogout.jsp"/>
             </c:if>
-            <c:if test="${empty cliente}">
+            <c:if test="${empty c}">
                 <c:import url="include/navlogin.jsp"/>
             </c:if>
             <c:import url="include/menuprod.jsp"/>
         </nav>
-        <c:if test="${not empty cliente}">
+        <c:if test="${not empty c}">
             <div class="esp50"></div>
             <div class="corpo">
                 <div class="container">
@@ -41,7 +41,7 @@
             </footer>
         </c:if>
         <c:if test="${empty cliente}">
-            response.sendRedirect("index.jsp");
+            <% response.sendRedirect("index.jsp");%>
         </c:if>
         <!--	JS Bootstrap	-->
         <script type="text/javascript" src="bootstrap/jquery/jquery-3.3.1.slim.min.js"></script>

@@ -10,9 +10,6 @@
         <link rel="stylesheet" type="text/css" href="recursos/estilo/estilo.css"/>
         <!--	Bootstrap	-->
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-        <script type="text/javascript" src="bootstrap/jquery/jquery-3.3.1.slim.min.js"></script>
-        <script type="text/javascript" src="bootstrap/popper/popper.min.js"></script>
-        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <!--	Font Awesome -->
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
         <!--    Codificação própria -->
@@ -21,21 +18,17 @@
     </head>
     <body>
         <nav>
-            <%
-                Object usuario = session.getAttribute("funcionario");
-                if (usuario == null) {
-            %><c:import url="include/navlogin.jsp"/>
-            <%
-            } else {
-            %><c:import url="include/navlogout.jsp"/>
-            <%
-                }
-            %>
-            <c:import url="include/menuprod.jsp"/>
+                        <c:if test="${not empty f}">
+                <c:import url="include/navlogout.jsp"/>
+            </c:if>
+            <c:if test="${empty f}">
+                <% response.sendRedirect("index.jsp");%>
+            </c:if>
+            <c:if test="${not empty f}">
+                <c:import url="include/navfun.jsp"/>
+            </c:if>
         </nav>
-        <%
-            if (usuario == null) {
-        %>
+        <c:if test="${not empty f}">
         <div class="corpo">
             <div class="esp50"></div>
             <div class="container">
@@ -101,13 +94,13 @@
                 </c:if>
             </div>
         </div>
-        <%
-            } else {
-                response.sendRedirect("index.jsp");
-            }
-        %>
+        </c:if>
         <footer>
             <c:import url="include/rodape.jsp"/>
         </footer>
+        <!--	JS Bootstrap	-->
+        <script type="text/javascript" src="bootstrap/jquery/jquery-3.3.1.slim.min.js"></script>
+        <script type="text/javascript" src="bootstrap/popper/popper.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>

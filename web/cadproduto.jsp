@@ -18,16 +18,17 @@
     </head>
     <body onload="CarregaCadProd()">
         <nav>
-            <c:if test="${not empty funcionario}">
+                        <c:if test="${not empty f}">
                 <c:import url="include/navlogout.jsp"/>
             </c:if>
-            <c:if test="${empty funcionario}">
-                response.sendRedirect("index.jsp");
+            <c:if test="${empty f}">
+                <% response.sendRedirect("index.jsp");%>
             </c:if>
-            <c:import url="include/menuprod.jsp"/>
-            <c:import url="include/menuprod.jsp"/>
+            <c:if test="${not empty f}">
+                <c:import url="include/navfun.jsp"/>
+            </c:if>
         </nav>
-        <c:if test="${not empty funcionario}">
+        <c:if test="${not empty f}">
 
             <div class="esp50"></div>
             <div class="corpo">
@@ -190,7 +191,7 @@
                                 <div class="form-row">
                                     <label class="form-group col-md-4" for="descricao">Descrição do produto:</label>
                                     <div class="col-md-7">
-                                        <textarea class="form-control" name="descricao" id="descricao" rows="4" value="${produto.descricao}"></textarea>
+                                        <textarea class="form-control" name="descricao" id="descricao" rows="4" value="${produto.descricao}">${produto.descricao}</textarea>
                                     </div>
                                     <label class="form-group col-md-1">Exemplo de textarea</label>
                                 </div>

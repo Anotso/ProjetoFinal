@@ -121,7 +121,7 @@ public class ProdutoDao extends Dao {
 
     public void editaproduto(Produto produto) throws SQLException {
         open();
-        String sql = "UPDATE produto SET nomeprof=?"
+        String sql = "UPDATE produto SET nomeprod=?"
                 + ", forprod=?"
                 + ", catprod=?"
                 + ", descprod=?"

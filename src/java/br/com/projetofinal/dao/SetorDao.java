@@ -27,7 +27,6 @@ public class SetorDao extends Dao {
         rs = stmt.executeQuery();
         List<Setor> lista = new ArrayList<Setor>();
         while (rs.next()) {
-            System.out.println("Entrou no while do Setor");
             setor = new Setor(rs.getInt("idsetor"), rs.getString("nomesetor"));
             lista.add(setor);
         }

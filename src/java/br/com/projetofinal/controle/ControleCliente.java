@@ -229,26 +229,22 @@ public class ControleCliente extends HttpServlet {
         String login = request.getParameter("usuario");
         String sen = Crypt.md5(request.getParameter("senha"));
 
-        Cliente cliente = new ClienteDao().logincli(login, sen);
-        Funcionario funcionario = new FuncionarioDao().loginfun(login, sen);
+        Cliente c = new ClienteDao().logincli(login, sen);
+        Funcionario f = new FuncionarioDao().loginfun(login, sen);
         try {
-            if (funcionario != null) {
-                System.out.println("Entrou no funcionário");
-                lvl = 1;
-                request.getSession().setAttribute("funcionario", funcionario);
-                request.getSession().setAttribute("funcionario", lvl);
+            if (c != null) {
+                lvl = 2;
+                request.getSession().setAttribute("c", c);
+                request.getSession().setAttribute("c", lvl);
                 request.getSession().setAttribute("login", login);
-                System.out.println("Valor de funcionario: " + funcionario);
-                System.out.println("Valor de cliente: " + cliente);
-                request.getRequestDispatcher("/ProjetoFinal/menufun.jsp").forward(request, response);
+                response.sendRedirect("/ProjetoFinal/menucli.jsp");
             } else {
-
-                if (cliente != null) {
-                    lvl = 2;
-                    request.getSession().setAttribute("cliente", cliente);
-                    request.getSession().setAttribute("cliente", lvl);
+                if (f != null) {
+                    lvl = 1;
+                    request.getSession().setAttribute("f", f);
+                    request.getSession().setAttribute("f", lvl);
                     request.getSession().setAttribute("login", login);
-                    response.sendRedirect("/ProjetoFinal/menucli.jsp");
+                    response.sendRedirect("/ProjetoFinal/menufun.jsp");
                 } else {
                     request.getRequestDispatcher("/login.html").forward(request, response);
                 }
@@ -265,8 +261,8 @@ public class ControleCliente extends HttpServlet {
         HttpSession funcionario = request.getSession();
         cliente.invalidate();
         funcionario.invalidate();*/
-        request.getSession().setAttribute("cliente",null);
-        request.getSession().setAttribute("funcionario",null);
+        request.getSession().setAttribute("c", null);
+        request.getSession().setAttribute("f", null);
         response.sendRedirect("/ProjetoFinal/index.jsp");
     }
 

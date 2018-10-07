@@ -100,7 +100,7 @@ public class ControleFuncionario extends HttpServlet {
         funcionario.setCidfunc(cidfunc);
         funcionario.setEstfunc(estfunc);
 
-        System.out.println("Nome: "+nome);
+        /*System.out.println("Nome: "+nome);
         System.out.println("E-mail: "+emailfunc);
         System.out.println("Senha: "+senhafunc);
         System.out.println("Tel: "+telfunc);
@@ -113,7 +113,7 @@ public class ControleFuncionario extends HttpServlet {
         System.out.println("Complemento: "+complfunc);
         System.out.println("Bairro: "+bairrofunc);
         System.out.println("Cidade: "+cidfunc);
-        System.out.println("Estado: "+estfunc);
+        System.out.println("Estado: "+estfunc);*/
         try {
             funcionario.validar();
             FuncionarioDao dao = new FuncionarioDao();

@@ -18,18 +18,18 @@
     </head>
     <body>
         <nav>
-            <%
-                Object usuario1 = session.getAttribute("cliente");
-                Object usuario2 = session.getAttribute("funcionario");
-                if ((usuario1 == null)||((usuario2 == null))){
-            %><c:import url="include/navlogin.jsp"/>
-            <%
-            } else {
-            %><c:import url="include/navlogout.jsp"/>
-            <%
-                }
-            %>
-            <c:import url="include/menuprod.jsp"/>
+            <c:if test="${not empty f or not empty c}">
+                <c:import url="include/navlogout.jsp"/>
+            </c:if>
+            <c:if test="${empty f and empty c}">
+                <c:import url="include/navlogin.jsp"/>
+            </c:if>
+            <c:if test="${not empty f}">
+                <c:import url="include/navfun.jsp"/>
+            </c:if>
+            <c:if test="${empty f}">
+                <c:import url="include/menuprod.jsp"/>
+            </c:if>
         </nav>
         <div class="corpo">
             <div class="esp50"></div>
@@ -40,7 +40,7 @@
                         <a href="telaprod.html?id=${produto.idproduto}" class="linkprod">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <img src="C:/Users/graci/Pictures/imgprod/${produto.foto1}"/>
+                                    <img src="recursos/imgprod/${produto.foto1}"/>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="card">

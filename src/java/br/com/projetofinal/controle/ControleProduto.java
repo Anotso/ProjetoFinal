@@ -9,6 +9,7 @@ import br.com.projetofinal.entidade.Produto;
 import br.com.projetofinal.util.Arquivo;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Float.toString;
 import static java.lang.Integer.parseInt;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -82,7 +83,7 @@ public class ControleProduto extends HttpServlet {
 
         Arquivo arq = new Arquivo();
         //  CURSO
-        String caminhofoto = System.getProperty("user.home")+""+"\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
+        String caminhofoto = System.getProperty("user.home") + "" + "\\Documents\\NetBeansProjects\\ProjetoFinal\\web\\recursos\\imgprod\\";
         //  CASA
         //String caminhofoto = System.getProperty("user.home") + "" + "\\Pictures\\imgprod\\";
         float nc = 0;
@@ -250,19 +251,22 @@ public class ControleProduto extends HttpServlet {
         } else {
             qtd = parseInt(q);
         }
-
         if (compra.equals("")) {
             nc = 0;
         } else {
-            compra = compra.replace(".", "");
-            compra = compra.replace(",", ".");
+            if (compra.contains(",")) {
+                compra = compra.replace(".", "");
+                compra = compra.replace(",", ".");
+            }
             nc = Float.parseFloat(compra);
         }
         if (venda.equals("")) {
             nv = 0;
         } else {
-            venda = venda.replace(".", "");
-            venda = venda.replace(",", ".");
+            if (venda.contains(",")) {
+                venda = venda.replace(".", "");
+                venda = venda.replace(",", ".");
+            }
             nv = Float.parseFloat(venda);
         }
 

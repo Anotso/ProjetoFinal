@@ -3,20 +3,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 logo"><a href="index.jsp">LOGO</a></div>
-            <div class="esp15 d-sm-block d-md-none"></div>
-            <div class="col-md-8">
+            <div class="esp15"></div>
+            <div class="col-md-8 nav1">
                 <div class="row">
-                    <div class="col-md-3 nav1">
-                        <a href="login.html"><i class="fas fa-sign-in-alt"></i><span class="d-sm-none d-md-block"> Login</span></a>
+                    <div class="col-md-3">
+                        <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
                     </div>
-                    <div class="col-md-3 nav1">
-                        <a href="cadcliente.jsp"><i class="fas fa-plus"></i><span class="d-sm-none d-md-block"> Cadastre-se</span></a>
+                    <div class="col-md-3">
+                        <a href="cadcliente.jsp"><i class="fas fa-plus"></i> Cadastre-se</a>
                     </div>
-                    <div class="col-md-3 nav1">
-                        <a href="#"><i class="fas fa-cart-arrow-down"></i><span class="d-sm-none d-md-block"> Meu Carrinho</span></a>
+                    <div class="col-md-3">
+                        <a href="carrinho.jsp"><i class="fas fa-cart-arrow-down"></i> Meu Carrinho</a>
                     </div>
-                    <div class="col-md-3 nav1">
-                        <a href="#"><i class="fas fa-phone"></i><span class="d-sm-none d-md-block"> Fale Conosco</span></a>
+                    <div class="col-md-3">
+                        <a href="#"><i class="fas fa-phone"></i> Fale Conosco</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 nav2">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="login.html"><i class="fas fa-sign-in-alt"></i></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="cadcliente.jsp"><i class="fas fa-plus"></i></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#"><i class="fas fa-cart-arrow-down"></i></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
             </div>

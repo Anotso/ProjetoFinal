@@ -16,7 +16,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <c:forEach var="lista" items="${dado.buscarcategoria()}">
-                            <a class="dropdown-item" href="pesqporcat.html?id=${lista.idcategoria}">${lista.categoria}</a>>
+                            <a class="dropdown-item" href="pesqporcat.html?id=${lista.idcategoria}">${lista.categoria}</a>
                         </c:forEach>
                     </div>
                 </li>

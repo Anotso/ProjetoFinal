@@ -19,28 +19,30 @@
     </head>
     <body>
         <nav>
-            <c:if test="${not empty funcionario}">
+            <c:if test="${not empty f}">
                 <c:import url="include/navlogout.jsp"/>
             </c:if>
-            <c:if test="${empty funcionario}">
-                response.sendRedirect("index.jsp");
+            <c:if test="${empty f}">
+                <% response.sendRedirect("index.jsp");%>
             </c:if>
-            <c:import url="include/menuprod.jsp"/>
+            <c:if test="${not empty f}">
+                <c:import url="include/navfun.jsp"/>
+            </c:if>
         </nav>
-<c:if test="${not empty funcionario}">
-            
-        <div class="esp50"></div>
-        <div class="corpo">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3"><center>TESTE 01</center></div>
-                    <div class="col-md-3"><center>TESTE 02</center></div>
-                    <div class="col-md-3"><center>TESTE 03</center></div>
+        <c:if test="${not empty f}">
+
+            <div class="esp50"></div>
+            <div class="corpo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3"><center>TESTE 01</center></div>
+                        <div class="col-md-3"><center>TESTE 02</center></div>
+                        <div class="col-md-3"><center>TESTE 03</center></div>
+                    </div>
+                    <c:import url="include/teste.jsp"/>
                 </div>
-                <c:import url="include/teste.jsp"/>
             </div>
-        </div>
-</c:if>
+        </c:if>
         <footer>
             <c:import url="include/rodape.jsp"/>
         </footer>

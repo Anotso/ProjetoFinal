@@ -35,6 +35,11 @@
 .linkprod:hover{
     text-decoration: none;
 }
+    /*  TAMANHO DA IMAGEM DO PRODUTO    */
+    .imgprod{
+        width: 400px;
+        height: 400px;
+    }
 @media screen and (max-width: 315px){
     body{
         margin: auto;
@@ -77,9 +82,19 @@
     }
     .nav2{
         display: block;
+        margin-top: 25px;
         text-align: center;
+    }
+    .nav2 div{
+        font-size: 24px;
+        width: 30px;
+        display: inline;
     }
     .barra{
         height: 150px;
+    }
+    .imgprod{
+        width: 290px;
+        height: 290px;
     }
 }
