@@ -72,7 +72,8 @@ CREATE TABLE produto(
     foto2prod		VARCHAR(40),
     foto3prod		VARCHAR(40),
     foto4prod		VARCHAR(40),
-    foto5prod		VARCHAR(40)
+    foto5prod		VARCHAR(40),
+    destaque            boolean
 );
 
 
@@ -108,11 +109,4 @@ CREATE TABLE cliente(
     cidcli		VARCHAR(25) NOT NULL,
     estcli		VARCHAR(2) NOT NULL,
     ativo		BOOLEAN NOT NULL
-);
-
-
-
-CREATE TABLE destaque(
-    iddesq		INT AUTO_INCREMENT PRIMARY KEY,
-    idprod		VARCHAR(12) UNIQUE NOT NULL
 );

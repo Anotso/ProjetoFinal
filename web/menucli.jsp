@@ -61,7 +61,7 @@
                                             </div>
                                         </c:if>
                                         <div class="esp15"></div>
-                                        <form action="cadcliente.html" method="POST">
+                                        <form action="editarcliente.html" method="POST">
                                             <div class="form-group row">
                                                 <label for="email" class="col-md-4 col-form-label">E-mail:</label>
                                                 <div class="col-md-8">
@@ -239,7 +239,8 @@
                                             <div class="esp15"></div>
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <button type="button" class="btn btn-danger btn-block">Excluir Cadastro</button>
+                                                    <a href="/excluircliente.html?id=${cliente.idcli}" type="button" id="excluir" class="btn btn-danger btn-block">Excluir Cadastro</a>
+                                                    <button type="button" id="cancelar" class="btn btn-danger btn-block" onclick="CancelarEditar()">Cancelar</button>
                                                 </div>
                                                 <div class="col-md-2 esp5"></div>
                                                 <div class="col-md-5">
@@ -261,6 +262,11 @@
                             </div>
                         </div>
                         <div class="esp50"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            
+                        </div>
                     </div>
                 </div>
             </div>

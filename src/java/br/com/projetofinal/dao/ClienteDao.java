@@ -176,4 +176,58 @@ public class ClienteDao extends Dao {
         return lista;
     }
 
+    public void atualizarcliente(Cliente cliente) throws SQLException {
+        open();
+        String sql = "UPDATE cliente SET"
+                +" cliente=?,"
+                +" snome=?,"
+                +" dtnasc=?,"
+                +" sexo=?,"
+                +" cadfed=?,"
+                +" cadest=?,"
+                +" emailcli=?,"
+                +" telcli=?,"
+                +" celcli=?,"
+                +" cepcli=?,"
+                +" endcli=?,"
+                +" numcli=?,"
+                +" complcli=?,"
+                +" refcli=?,"
+                +" bairrocli=?,"
+                +" cidcli=?,"
+                +" estcli=?,"
+                +" WHERE idcli=? AND ativo = TRUE";
+        stmt = con.prepareStatement(sql);
+        stmt.setString(1, cliente.getCliente());
+        stmt.setString(2, cliente.getSnome());
+        stmt.setString(3, cliente.getDtnasc());
+        stmt.setString(4, cliente.getSexo());
+        stmt.setString(5, cliente.getTipocli());
+        stmt.setString(6, cliente.getCadfed());
+        stmt.setString(7, cliente.getCadest());
+        stmt.setString(8, cliente.getEmailcli());
+        stmt.setString(9, cliente.getTelcli());
+        stmt.setString(10, cliente.getCelcli());
+        stmt.setString(11, cliente.getCepcli());
+        stmt.setString(12, cliente.getEndcli());
+        stmt.setString(13, cliente.getNumcli());
+        stmt.setString(14, cliente.getComplcli());
+        stmt.setString(15, cliente.getRefcli());
+        stmt.setString(16, cliente.getBairrocli());
+        stmt.setString(17, cliente.getCidcli());
+        stmt.setString(18, cliente.getEstcli());
+        stmt.executeQuery();
+        close();
+    }
+
+    public void excluircliente(Cliente cliente) throws SQLException {
+        open();
+        String sql = "UPDATE cliente SET ativo=? WHERE idcli=?";
+        stmt = con.prepareStatement(sql);
+        stmt.setBoolean(1, cliente.isAtivo());
+        stmt.setInt(2, cliente.getIdcli());
+        stmt.executeQuery();
+        close();
+    }
+
 }

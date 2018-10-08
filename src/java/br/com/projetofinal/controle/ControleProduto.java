@@ -23,8 +23,8 @@ import javax.servlet.http.Part;
 @MultipartConfig
 @WebServlet(name = "ControleProduto", urlPatterns = {"/cadproduto.html", "/carregacadprod.html",
     "/buscaproduto.html", "/carregaproduto.html", "/editarproduto.html", "/confirmaproduto.html",
-    "/pesquisaproduto.html", "/telaprod.html","/pesqporcat.html","/excluirproduto.html",
-    "/destaque.html","/adddestaque.html"
+    "/pesquisaproduto.html", "/telaprod.html", "/pesqporcat.html", "/excluirproduto.html",
+    "/destaque.html", "/adddestaque.html","/exdestaque.html"
 })
 public class ControleProduto extends HttpServlet {
 
@@ -70,10 +70,12 @@ public class ControleProduto extends HttpServlet {
             } else if (url.equalsIgnoreCase("/excluirproduto.html")) {
                 excluir(request, response);
             } else if (url.equalsIgnoreCase("/destaque.html")) {
-                //destaque(request, response);
+                destaque(request, response);
             } else if (url.equalsIgnoreCase("/adddestaque.html")) {
                 adddestaque(request, response);
-            } else if (url.equalsIgnoreCase("/carregacadprod.html")) {
+            } else if (url.equalsIgnoreCase("/exdestaque.html")) {
+                exdestaque(request, response);
+            }else if (url.equalsIgnoreCase("/carregacadprod.html")) {
                 carregacad(request, response);      //CHAMA A TELA DE CADASTRO
             } else {
                 throw new Exception("URL Inválida!!!");
@@ -330,7 +332,7 @@ public class ControleProduto extends HttpServlet {
     private void pesqcat(HttpServletRequest request, HttpServletResponse response) {
         try {
             int dado = Integer.parseInt(request.getParameter("id"));
-            System.out.println("valor do dado dentro do Servlet: "+dado);
+            System.out.println("valor do dado dentro do Servlet: " + dado);
             ProdutoDao prod = new ProdutoDao();
             List<Produto> lista = prod.catProduto(dado);
             request.setAttribute("dado", dado);
@@ -343,34 +345,64 @@ public class ControleProduto extends HttpServlet {
 
     private void excluir(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        System.out.println("Valor de ID: "+id);
+        System.out.println("Valor de ID: " + id);
         Produto produto = new Produto();
         produto.setIdproduto(id);
-        try{
+        try {
             ProdutoDao dao = new ProdutoDao();
             dao.excluir(id);
             response.sendRedirect("/menufun.jsp");
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private void adddestaque(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        
+
         Produto produto = new Produto();
         produto.setIdproduto(id);
+        produto.setDestaque(true);
         try {
-                //produto.validar();
-                ProdutoDao dao = new ProdutoDao();
-                dao.cadastrardestaque(produto);
-                response.sendRedirect("/ProjetoFinal/menufun.jsp");
-            } catch (Exception e) {
-                request.setAttribute("erros", e.getMessage());
-                request.getRequestDispatcher("/menufun.html").forward(request, response);
-                e.printStackTrace();
-            }
-        
+            //produto.validar();
+            ProdutoDao dao = new ProdutoDao();
+            dao.cadastrardestaque(produto);
+            response.sendRedirect("/ProjetoFinal/menufun.jsp");
+        } catch (Exception e) {
+            request.setAttribute("erros", e.getMessage());
+            request.getRequestDispatcher("/menufun.html").forward(request, response);
+            e.printStackTrace();
+        }
+
+    }
+
+    private void destaque(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            ProdutoDao pd = new ProdutoDao();
+            List<Produto> lista = pd.destaque();
+            request.setAttribute("listaSetor", lista);
+            request.getRequestDispatcher("reldestaque.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void exdestaque(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        Produto produto = new Produto();
+        produto.setIdproduto(id);
+        produto.setDestaque(false);
+        try {
+            //produto.validar();
+            ProdutoDao dao = new ProdutoDao();
+            dao.excluirdestaque(produto);
+            response.sendRedirect("/ProjetoFinal/menufun.jsp");
+        } catch (Exception e) {
+            request.setAttribute("erros", e.getMessage());
+            request.getRequestDispatcher("/menufun.html").forward(request, response);
+            e.printStackTrace();
+        }
     }
 
 }

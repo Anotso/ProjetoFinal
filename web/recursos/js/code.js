@@ -73,17 +73,21 @@ function EnviaSetor() {
 //MENU CLIENTE - ÁREA RESTRITA
 
 function Dados() {
-    document.getElementById("dados").style.display = "block";
-    document.getElementById("pedidos").style.display = "none";
+    document.getElementById("edc1").style.display = "block";
     document.getElementById("edc2").style.display = "none";
+    document.getElementById("excluir").style.display = "block";
+    document.getElementById("cancelar").style.display = "none";
+    document.getElementById("pedidos").style.display = "none";
 }
 function Pedidos() {
     document.getElementById("dados").style.display = "none";
     document.getElementById("pedidos").style.display = "block";
 }
 function EditarCliente() {
-    document.getElementById("edc1").style.display = "none";
-    document.getElementById("edc2").style.display = "block";
+    document.getElementById("edc1").style.display = "block";
+    document.getElementById("edc2").style.display = "none";
+    document.getElementById("excluir").style.display = "block";
+    document.getElementById("cancelar").style.display = "none";
     //PF
     //document.getElementById("nomecli").readOnly = false;
     //document.getElementById("sobrenome").readOnly = false;
@@ -107,4 +111,33 @@ function EditarCliente() {
     document.getElementById("numero").readOnly = false;
     document.getElementById("comp").readOnly = false;
     document.getElementById("ref").readOnly = false;
+}
+function CancelarEditar(){
+    document.getElementById("edc1").style.display = "none";
+    document.getElementById("edc2").style.display = "block";
+    document.getElementById("excluir").style.display = "none";
+    document.getElementById("cancelar").style.display = "block";
+    //PF
+    //document.getElementById("nomecli").readOnly = true;
+    //document.getElementById("sobrenome").readOnly = true;
+    //document.getElementById("sexo").readOnly = true;
+    //document.getElementById("cpf").readOnly = true;
+    //document.getElementById("rg").readOnly = true;
+    //document.getElementById("nasc").readOnly = true;
+    //document.getElementById("tel").readOnly = true;
+    //document.getElementById("cel").readOnly = true;
+    //document.getElementById("cel").readOnly = true;
+    //PF
+    //document.getElementById("rsocial").readOnly = true;
+    //document.getElementById("fantasia").readOnly = true;
+    //document.getElementById("cnpj").readOnly = true;
+    //document.getElementById("insest").readOnly = true;
+    //document.getElementById("telpj").readOnly = true;
+    //document.getElementById("celpj").readOnly = true;
+
+    //DADOS COMUNS DO ENDEREÇO 
+    document.getElementById("cep").readOnly = true;
+    document.getElementById("numero").readOnly = true;
+    document.getElementById("comp").readOnly = true;
+    document.getElementById("ref").readOnly = true;
 }

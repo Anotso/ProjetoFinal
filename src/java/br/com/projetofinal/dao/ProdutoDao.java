@@ -12,8 +12,8 @@ public class ProdutoDao extends Dao {
         open();
         try {
             String sql = "INSERT INTO"
-                    + " produto(nomeprod,forprod,catprod,descprod,compraprod,vendaprod,qtdprod,foto1prod,foto2prod,foto3prod,foto4prod,foto5prod)"
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + " produto(nomeprod,forprod,catprod,descprod,compraprod,vendaprod,qtdprod,foto1prod,foto2prod,foto3prod,foto4prod,foto5prod,destaque)"
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             stmt = con.prepareStatement(sql);
             stmt.setString(1, produto.getProduto());
             stmt.setString(2, produto.getFornecedor());
@@ -27,6 +27,7 @@ public class ProdutoDao extends Dao {
             stmt.setString(10, produto.getFoto3());
             stmt.setString(11, produto.getFoto4());
             stmt.setString(12, produto.getFoto5());
+            stmt.setBoolean(13, produto.isDestaque());
             stmt.execute();
             close();
         } catch (SQLException e) {
@@ -54,7 +55,8 @@ public class ProdutoDao extends Dao {
                     rs.getString("foto2prod"),
                     rs.getString("foto3prod"),
                     rs.getString("foto4prod"),
-                    rs.getString("foto5prod")
+                    rs.getString("foto5prod"),
+                    rs.getBoolean("destaque")
             );
             lista.add(produto);
         }
@@ -83,7 +85,8 @@ public class ProdutoDao extends Dao {
                     rs.getString("foto2prod"),
                     rs.getString("foto3prod"),
                     rs.getString("foto4prod"),
-                    rs.getString("foto5prod")
+                    rs.getString("foto5prod"),
+                    rs.getBoolean("destaque")
             );
             lista.add(produto);
         }
@@ -111,7 +114,8 @@ public class ProdutoDao extends Dao {
                     rs.getString("foto2prod"),
                     rs.getString("foto3prod"),
                     rs.getString("foto4prod"),
-                    rs.getString("foto5prod")
+                    rs.getString("foto5prod"),
+                    rs.getBoolean("destaque")
             );
             lista.add(produto);
         }
@@ -164,7 +168,8 @@ public class ProdutoDao extends Dao {
                     rs.getString("foto2prod"),
                     rs.getString("foto3prod"),
                     rs.getString("foto4prod"),
-                    rs.getString("foto5prod")
+                    rs.getString("foto5prod"),
+                    rs.getBoolean("destaque")
             );
             lista.add(produto);
         }
@@ -184,26 +189,22 @@ public class ProdutoDao extends Dao {
         }
     }
 
-    public void cadastrardestaque(Produto produto) {
+    public void cadastrardestaque(Produto produto) throws SQLException {
         open();
-        try {
-            String sql = "INSERT INTO"
-                    + " destaque(idprod)"
-                    + "VALUES(?)";
-            stmt = con.prepareStatement(sql);
-            stmt.setInt(1, produto.getIdproduto());
-            stmt.execute();
-            close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        String sql = "UPDATE produto SET destaque=? WHERE idprod=?";
+        stmt = con.prepareStatement(sql);
+        stmt.setBoolean(1, produto.isDestaque());
+        stmt.setInt(2, produto.getIdproduto());
+        stmt.executeUpdate();
+        close();
     }
 
     public List<Produto> destaque() throws SQLException {
         System.out.println("Entrou no destaque");
         open();
         Produto produto = null;
-        String sql = "SELECT * FROM produto WHERE catprod = (SELECT * FROM destaque)";
+        //String sql = "SELECT * FROM produto WHERE catprod = (SELECT * FROM destaque)";
+        String sql = "SELECT * FROM produto WHERE destaque = TRUE";
         stmt = con.prepareStatement(sql);
         rs = stmt.executeQuery();
         List<Produto> lista = new ArrayList<Produto>();
@@ -221,12 +222,23 @@ public class ProdutoDao extends Dao {
                     rs.getString("foto2prod"),
                     rs.getString("foto3prod"),
                     rs.getString("foto4prod"),
-                    rs.getString("foto5prod")
+                    rs.getString("foto5prod"),
+                    rs.getBoolean("destaque")
             );
             lista.add(produto);
         }
         close();
         return lista;
+    }
+
+    public void excluirdestaque(Produto produto) throws SQLException {
+        open();
+        String sql = "UPDATE produto SET destaque=? WHERE idprod=?";
+        stmt = con.prepareStatement(sql);
+        stmt.setBoolean(1, produto.isDestaque());
+        stmt.setInt(2, produto.getIdproduto());
+        stmt.executeUpdate();
+        close();
     }
 
 }

@@ -81,6 +81,14 @@
                 <a class="btn btn-success btn-block" href="consultarcliente.jsp">Consultar Cliente</a>
             </div>
         </div>
+        <div class="esp15"></div>
+        <div class="row">
+            <div class="col-12">
+                <form action="destaque.html" method="POST">
+                    <button class="btn btn-success btn-block" type="submit">Consultar Destaques</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <div class="esp50"></div>

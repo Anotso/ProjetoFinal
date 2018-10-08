@@ -16,7 +16,16 @@ public class Produto {
     private String foto4;
     private String foto5;
 
-    public Produto(int idproduto, String produto, String fornecedor, int categoria, String descricao, float compra, float venda, int qtd, String foto1, String foto2, String foto3, String foto4, String foto5) {
+    public boolean isDestaque() {
+        return destaque;
+    }
+
+    public void setDestaque(boolean destaque) {
+        this.destaque = destaque;
+    }
+    private boolean destaque = false;
+
+    public Produto(int idproduto, String produto, String fornecedor, int categoria, String descricao, float compra, float venda, int qtd, String foto1, String foto2, String foto3, String foto4, String foto5, boolean destaque) {
         super();
         this.idproduto = idproduto;
         this.produto = produto;
@@ -31,6 +40,7 @@ public class Produto {
         this.foto3 = foto3;
         this.foto4 = foto4;
         this.foto5 = foto5;
+        this.destaque = destaque;
     }
 
     public Produto() {

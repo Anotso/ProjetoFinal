@@ -7,6 +7,7 @@ import br.com.projetofinal.entidade.Funcionario;
 import br.com.projetofinal.util.Crypt;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.security.MessageDigest;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ControleCliente", urlPatterns = {"/cadcliente.html",
     "/buscacliente.html", "/carregacliente.html", "/log.html", "/logout.html",
-    "/menucli.html"
+    "/menucli.html","/excluircliente.html","/editarcliente.html"
 })
 public class ControleCliente extends HttpServlet {
 
@@ -52,11 +53,11 @@ public class ControleCliente extends HttpServlet {
             } else if (url.equalsIgnoreCase("/buscacliente.html")) {
                 buscar(request, response);
             } else if (url.equalsIgnoreCase("/editarcliente.html")) {
-                //editar(request, response);
+                editar(request, response);
             } else if (url.equalsIgnoreCase("/confirmarcliente.html")) {
                 //confirmar(request, response);
             } else if (url.equalsIgnoreCase("/excluircliente.html")) {
-                //excluir(request, response);
+                excluir(request, response);
             } else if (url.equalsIgnoreCase("/menucli.html")) {
                 menucli(request, response);
             }else if (url.equalsIgnoreCase("/log.html")) {
@@ -291,6 +292,146 @@ public class ControleCliente extends HttpServlet {
             request.getRequestDispatcher("/menucli.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private void excluir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = parseInt(request.getParameter("id"));
+        Cliente cliente = new Cliente();
+
+        cliente.setIdcli(id);
+        cliente.setAtivo(false);
+
+        try {
+            ClienteDao dao = new ClienteDao();
+            dao.excluircliente(cliente);
+            response.sendRedirect("/ProjetoFinal/index.jsp");
+        } catch (Exception e) {
+            //request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
+            request.getRequestDispatcher("/index.html").forward(request, response);
+            e.printStackTrace();
+        }
+    }
+
+    private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String pessoa = request.getParameter("pessoa");
+        String emailcli = request.getParameter("email");
+        String senha = Crypt.md5(request.getParameter("senha"));
+        //String senha = request.getParameter("senha");
+        /*MessageDigest algorithm = MessageDigest.getInstance("MD5");
+        byte messageDigest[] = algorithm.digest("senha".getBytes("UTF-8"));*/
+        String tel = request.getParameter("tel");
+        String cel = request.getParameter("cel");
+        String cep = request.getParameter("cep");
+        String end = request.getParameter("end");
+        String num = request.getParameter("numero");
+        String compl = request.getParameter("comp");
+        String ref = request.getParameter("ref");
+        String bairro = request.getParameter("bairro");
+        String cid = request.getParameter("cid");
+        String est = request.getParameter("est");
+
+        //if (pfisica == true) {
+        if (pessoa.trim().equalsIgnoreCase("pf")) {
+            String nome = request.getParameter("nomecli");
+            String snome = request.getParameter("sobrenome");
+            String sexo = request.getParameter("sexo");
+            String cpf = request.getParameter("cpf");
+            String rg = request.getParameter("rg");
+            String nasc = request.getParameter("nasc");
+            //Calendar c = Calendar.getInstance();
+            //SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
+            //Date nasc = dt.parse(request.getParameter("nasc"));
+
+            Cliente cliente = new Cliente();
+            cliente.setCliente(nome);
+            cliente.setSnome(snome);
+            cliente.setDtnasc(nasc);
+            cliente.setSexo(sexo);
+            cliente.setTipocli(pessoa);
+            cliente.setCadfed(cpf);
+            cliente.setCadest(rg);
+            cliente.setEmailcli(emailcli);
+            //cliente.setSenhacli(messageDigest);
+            cliente.setSenhacli(senha);
+            cliente.setTelcli(tel);
+            cliente.setCelcli(cel);
+            cliente.setCepcli(cep);
+            cliente.setEndcli(end);
+            cliente.setNumcli(num);
+            cliente.setComplcli(compl);
+            cliente.setRefcli(ref);
+            cliente.setBairrocli(bairro);
+            cliente.setCidcli(cid);
+            cliente.setEstcli(est);
+
+            try {
+                cliente.validar();
+                ClienteDao dao = new ClienteDao();
+                dao.cadastrar(cliente);
+                response.sendRedirect("/ProjetoFinal/index.jsp");
+            } catch (Exception e) {
+                request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
+                //request.getRequestDispatcher("/cadcliente.jsp").forward(request, response);
+                e.printStackTrace();
+            }
+        }
+        //if (pjuridica == true) {
+        if (pessoa.trim().equalsIgnoreCase("pj")) {
+            //System.out.println("Entrou no IF PJ - Controle");
+            String razao = request.getParameter("rsocial");
+            String fantasia = request.getParameter("fantasia");
+            String cnpj = request.getParameter("cnpj");
+            String insest = request.getParameter("insest");
+            String telpj = request.getParameter("telpj");
+            String celpj = request.getParameter("celpj");
+
+            /*System.out.println("Razão: "+razao);
+            System.out.println("fantásia: "+fantasia);
+            System.out.println("CNPJ: "+cnpj);
+            System.out.println("Inscrição: "+insest);
+            System.out.println("E-mail: "+emailcli);
+            System.out.println("Telefone: "+telpj);
+            System.out.println("Celular: "+celpj);
+            System.out.println("CEP: "+cep);
+            System.out.println("Número: "+num);
+            System.out.println("Complemento: "+compl);
+            System.out.println("Referência: "+ref);
+            System.out.println("Bairro: "+bairro);
+            System.out.println("Cidade: "+cid);
+            System.out.println("Estado: "+est);*/
+            Cliente cliente = new Cliente();
+            cliente.setCliente(razao);
+            cliente.setSnome(fantasia);
+            cliente.setDtnasc("-");
+            cliente.setSexo("-");
+            cliente.setTipocli(pessoa);
+            cliente.setCadfed(cnpj);
+            cliente.setCadest(insest);
+            cliente.setEmailcli(emailcli);
+            //cliente.setSenhacli(messageDigest);
+            cliente.setSenhacli(senha);
+            cliente.setTelcli(telpj);
+            cliente.setCelcli(celpj);
+            cliente.setCepcli(cep);
+            cliente.setEndcli(end);
+            cliente.setNumcli(num);
+            cliente.setComplcli(compl);
+            cliente.setRefcli(ref);
+            cliente.setBairrocli(bairro);
+            cliente.setCidcli(cid);
+            cliente.setEstcli(est);
+
+            try {
+            ClienteDao dao = new ClienteDao();
+            dao.atualizarcliente(cliente);
+            response.sendRedirect("/ProjetoFinal/menucli.jsp");
+        } catch (Exception e) {
+            //request.setAttribute("erros", e.getMessage().replace("\n", "<br>"));
+            request.getRequestDispatcher("/ProjetoFinal/menucli.jsp").forward(request, response);
+            e.printStackTrace();
+        }
+
         }
     }
 

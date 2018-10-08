@@ -1,5 +1,6 @@
 package br.com.projetofinal.dao;
 
+import br.com.projetofinal.entidade.Cliente;
 import br.com.projetofinal.entidade.Funcionario;
 import java.sql.*;
 import java.util.ArrayList;
@@ -210,6 +211,10 @@ public class FuncionarioDao extends Dao {
         }
         close();
         return funcionario;
+    }
+
+    public void excluircliente(Cliente cliente) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
