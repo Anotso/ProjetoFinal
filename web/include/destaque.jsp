@@ -7,7 +7,7 @@
         <a href="telaprod.html?id=${produto.idproduto}" class="linkprod">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="C:/Users/graci/Pictures/imgprod/${produto.foto1}"/>
+                    <img src="recursos/imgprod/${produto.foto1}"/>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
