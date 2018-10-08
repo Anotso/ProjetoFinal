@@ -13,13 +13,13 @@ public class Dao {
     String USER = "profinal";
     String PASS = "adminroot";*/
     //House
-    String URL = "jdbc:mysql://127.0.0.1:3306/projetofinalweb";
+    /*String URL = "jdbc:mysql://127.0.0.1:3306/projetofinalweb";
     String USER = "root";
-    String PASS = "";
+    String PASS = "";*/
     //USBServer
-    /*String URL = "jdbc:mysql://127.0.0.1:3307/projetofinalweb";
+    String URL = "jdbc:mysql://127.0.0.1:3307/projetofinalweb";
     String USER = "root";
-    String PASS = "usbw";*/
+    String PASS = "usbw";
 
     protected void open() {
         try {

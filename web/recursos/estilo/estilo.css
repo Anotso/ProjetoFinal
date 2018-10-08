@@ -46,6 +46,12 @@
     width: 250px;
     height: 90px;
 }
+.logorp{
+    margin-top: 0;
+    padding: 0;
+    width: 180px;
+    height: 50px;
+}
 @media screen and (max-width: 315px){
     body{
         margin: auto;
@@ -54,9 +60,10 @@
     }
 }
 .rodape{
+    height: auto;
     text-align: center;
     padding: 30px;
-    height: 350px;
+    
     color: white;
     background-color: rgb(187, 0, 0);
     /*background-color: rgb(84, 117, 161);*/
