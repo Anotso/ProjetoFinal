@@ -75,6 +75,7 @@
                                 <p class="card-text">R$ ${produto.venda}</p>
                                 <a href="excluirproduto.html?id=${produto.idproduto}" class="btn btn-primary">Excluir</a>
                                 <a href="editarproduto.html?id=${produto.idproduto}" class="btn btn-primary">Editar</a>
+                                <a href="adddestaque.html?id=${produto.idproduto}" class="btn btn-primary">Destaque</a>
                             </div>
                         </div>
                         <div class="esp15"></div>

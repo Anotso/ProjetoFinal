@@ -35,11 +35,6 @@
         <div class="esp50"></div>
         <div class="corpo">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3"><center>TESTE 01</center></div>
-                    <div class="col-md-3"><center>TESTE 02</center></div>
-                    <div class="col-md-3"><center>TESTE 03</center></div>
-                </div>
                 <c:import url="include/destaque.jsp"/>
             </div>
         </div>

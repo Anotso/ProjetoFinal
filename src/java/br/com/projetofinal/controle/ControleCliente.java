@@ -21,12 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author graci
- */
 @WebServlet(name = "ControleCliente", urlPatterns = {"/cadcliente.html",
-    "/buscacliente.html", "/carregacliente.html", "/log.html", "/logout.html"
+    "/buscacliente.html", "/carregacliente.html", "/log.html", "/logout.html",
+    "/menucli.html"
 })
 public class ControleCliente extends HttpServlet {
 
@@ -54,13 +51,15 @@ public class ControleCliente extends HttpServlet {
                 carrega(request, response);
             } else if (url.equalsIgnoreCase("/buscacliente.html")) {
                 buscar(request, response);
-            } else if (url.equalsIgnoreCase("/editarfuncionario.html")) {
+            } else if (url.equalsIgnoreCase("/editarcliente.html")) {
                 //editar(request, response);
-            } else if (url.equalsIgnoreCase("/confirmarfornecedor.html")) {
+            } else if (url.equalsIgnoreCase("/confirmarcliente.html")) {
                 //confirmar(request, response);
-            } else if (url.equalsIgnoreCase("/excluirfuncionario.html")) {
+            } else if (url.equalsIgnoreCase("/excluircliente.html")) {
                 //excluir(request, response);
-            } else if (url.equalsIgnoreCase("/log.html")) {
+            } else if (url.equalsIgnoreCase("/menucli.html")) {
+                menucli(request, response);
+            }else if (url.equalsIgnoreCase("/log.html")) {
                 login(request, response);
             } else if (url.equalsIgnoreCase("/logout.html")) {
                 logout(request, response);
@@ -237,13 +236,23 @@ public class ControleCliente extends HttpServlet {
                 request.getSession().setAttribute("c", c);
                 request.getSession().setAttribute("c", lvl);
                 request.getSession().setAttribute("login", login);
-                response.sendRedirect("/ProjetoFinal/menucli.jsp");
+                
+                /*HttpSession c = request.getSession(true);
+                c.setAttribute("login", login);*/
+                
+                //response.sendRedirect("/menucli.html");
+                request.getRequestDispatcher("/menucli.html").forward(request, response);
             } else {
                 if (f != null) {
                     lvl = 1;
                     request.getSession().setAttribute("f", f);
                     request.getSession().setAttribute("f", lvl);
                     request.getSession().setAttribute("login", login);
+                    
+                    /*HttpSession f = request.getSession(true);
+                    f.setAttribute("login", login);*/
+                    System.out.println("Valor de f: "+f);
+                    
                     response.sendRedirect("/ProjetoFinal/menufun.jsp");
                 } else {
                     request.getRequestDispatcher("/login.html").forward(request, response);
@@ -259,11 +268,30 @@ public class ControleCliente extends HttpServlet {
     private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         /*HttpSession cliente = request.getSession();
         HttpSession funcionario = request.getSession();
-        cliente.invalidate();
-        funcionario.invalidate();*/
+        HttpSession c = request.getSession();
+        HttpSession f = request.getSession();
+        c.invalidate();
+        f.invalidate();*/
         request.getSession().setAttribute("c", null);
         request.getSession().setAttribute("f", null);
         response.sendRedirect("/ProjetoFinal/index.jsp");
+    }
+
+    private void menucli(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String login = (String) request.getSession().getAttribute("login");
+            ClienteDao pd = new ClienteDao();
+
+            List<Cliente> lista = pd.carCliente(login);
+            System.out.println("Valor de login: "+login);
+
+            request.setAttribute("login", login);
+            request.setAttribute("listaCliente", lista);
+            System.out.println("Valor de lista: "+lista);
+            request.getRequestDispatcher("/menucli.jsp").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

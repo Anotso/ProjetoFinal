@@ -63,7 +63,7 @@ CREATE TABLE produto(
     idprod			INT AUTO_INCREMENT PRIMARY KEY,
     nomeprod		VARCHAR(30),
     forprod			VARCHAR(4),
-    catprod			VARCHAR(4),
+    catprod			INT(4),
     descprod		VARCHAR(1200),
     compraprod		FLOAT(8,2),
     vendaprod		FLOAT(8,2),
@@ -108,4 +108,11 @@ CREATE TABLE cliente(
     cidcli		VARCHAR(25) NOT NULL,
     estcli		VARCHAR(2) NOT NULL,
     ativo		BOOLEAN NOT NULL
+);
+
+
+
+CREATE TABLE destaque(
+    iddesq		INT AUTO_INCREMENT PRIMARY KEY,
+    idprod		VARCHAR(12) UNIQUE NOT NULL
 );

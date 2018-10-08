@@ -7,7 +7,7 @@
             <div class="col-md-8 nav1">
                 <div class="row">
                     <div class="col-md-3 ">
-                        <a href="/ProjetoFinal/menucli.jsp"><i class="fas fa-user-circle"></i><span class="d-sm-none d-md-block"> Perfil</span></a>
+                        <a href="/ProjetoFinal/menucli.html"><i class="fas fa-user-circle"></i><span class="d-sm-none d-md-block"> Perfil</span></a>
                     </div>
                     <div class="col-md-3">
                         <a href="/ProjetoFinal/carrinho.jsp"><i class="fas fa-cart-arrow-down"></i><span class="d-sm-none d-md-block"> Meu Carrinho</span></a>

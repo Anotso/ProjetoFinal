@@ -17,7 +17,7 @@ public class ProdutoDao extends Dao {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, produto.getProduto());
             stmt.setString(2, produto.getFornecedor());
-            stmt.setString(3, produto.getCategoria());
+            stmt.setInt(3, produto.getCategoria());
             stmt.setString(4, produto.getDescricao());
             stmt.setFloat(5, produto.getCompra());
             stmt.setFloat(6, produto.getVenda());
@@ -45,7 +45,7 @@ public class ProdutoDao extends Dao {
             produto = new Produto(rs.getInt("idprod"),
                     rs.getString("nomeprod"),
                     rs.getString("forprod"),
-                    rs.getString("catprod"),
+                    rs.getInt("catprod"),
                     rs.getString("descprod"),
                     rs.getFloat("compraprod"),
                     rs.getFloat("vendaprod"),
@@ -74,7 +74,7 @@ public class ProdutoDao extends Dao {
             produto = new Produto(rs.getInt("idprod"),
                     rs.getString("nomeprod"),
                     rs.getString("forprod"),
-                    rs.getString("catprod"),
+                    rs.getInt("catprod"),
                     rs.getString("descprod"),
                     rs.getFloat("compraprod"),
                     rs.getFloat("vendaprod"),
@@ -102,7 +102,7 @@ public class ProdutoDao extends Dao {
             produto = new Produto(rs.getInt("idprod"),
                     rs.getString("nomeprod"),
                     rs.getString("forprod"),
-                    rs.getString("catprod"),
+                    rs.getInt("catprod"),
                     rs.getString("descprod"),
                     rs.getFloat("compraprod"),
                     rs.getFloat("vendaprod"),
@@ -132,7 +132,7 @@ public class ProdutoDao extends Dao {
         stmt = con.prepareStatement(sql);
         stmt.setString(1, produto.getProduto());
         stmt.setString(2, produto.getFornecedor());
-        stmt.setString(3, produto.getCategoria());
+        stmt.setInt(3, produto.getCategoria());
         stmt.setString(4, produto.getDescricao());
         stmt.setFloat(5, produto.getCompra());
         stmt.setFloat(6, produto.getVenda());
@@ -142,11 +142,11 @@ public class ProdutoDao extends Dao {
         close();
     }
 
-    public List<Produto> catProduto(String dado) throws SQLException {
+    public List<Produto> catProduto(int dado) throws SQLException {
         open();
         System.out.println("valor do dado dentro do Dao: "+dado);
         stmt = this.con.prepareStatement("SELECT * FROM produto WHERE catprod = ?");
-        stmt.setString(1, dado);
+        stmt.setInt(1, dado);
         Produto produto = null;
         rs = stmt.executeQuery();
         List<Produto> lista = new ArrayList<Produto>();
@@ -155,7 +155,7 @@ public class ProdutoDao extends Dao {
             produto = new Produto(rs.getInt("idprod"),
                     rs.getString("nomeprod"),
                     rs.getString("forprod"),
-                    rs.getString("catprod"),
+                    rs.getInt("catprod"),
                     rs.getString("descprod"),
                     rs.getFloat("compraprod"),
                     rs.getFloat("vendaprod"),
@@ -175,13 +175,58 @@ public class ProdutoDao extends Dao {
     public void excluir(int id) {
         try{
             open();
-            stmt = con.prepareStatement("DELETE FROM produto WHERE idprod?");
+            stmt = con.prepareStatement("DELETE FROM produto WHERE idprod = ?");
             stmt.setInt(1, id);
             stmt.execute();
             close();
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
+    }
+
+    public void cadastrardestaque(Produto produto) {
+        open();
+        try {
+            String sql = "INSERT INTO"
+                    + " destaque(idprod)"
+                    + "VALUES(?)";
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, produto.getIdproduto());
+            stmt.execute();
+            close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Produto> destaque() throws SQLException {
+        System.out.println("Entrou no destaque");
+        open();
+        Produto produto = null;
+        String sql = "SELECT * FROM produto WHERE catprod = (SELECT * FROM destaque)";
+        stmt = con.prepareStatement(sql);
+        rs = stmt.executeQuery();
+        List<Produto> lista = new ArrayList<Produto>();
+        while (rs.next()) {
+            System.out.println("Entrou no while do destaque");
+            produto = new Produto(rs.getInt("idprod"),
+                    rs.getString("nomeprod"),
+                    rs.getString("forprod"),
+                    rs.getInt("catprod"),
+                    rs.getString("descprod"),
+                    rs.getFloat("compraprod"),
+                    rs.getFloat("vendaprod"),
+                    rs.getInt("qtdprod"),
+                    rs.getString("foto1prod"),
+                    rs.getString("foto2prod"),
+                    rs.getString("foto3prod"),
+                    rs.getString("foto4prod"),
+                    rs.getString("foto5prod")
+            );
+            lista.add(produto);
+        }
+        close();
+        return lista;
     }
 
 }

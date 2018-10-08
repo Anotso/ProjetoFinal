@@ -11,9 +11,6 @@
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
         <!--	Font Awesome -->
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
-        <!--    Codificação própria -->
-        <script type="text/javascript" src="recursos/js/cep.js"></script>
-        <script type="text/javascript" src="recursos/js/code.js"></script>
         <title>JSP Page</title>
     </head>
     <body onload="CarPesFisica()">
@@ -274,5 +271,8 @@
         <script type="text/javascript" src="bootstrap/jquery/jquery-3.3.1.slim.min.js"></script>
         <script type="text/javascript" src="bootstrap/popper/popper.min.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <!--    Codificação própria -->
+        <script type="text/javascript" src="recursos/js/cep.js"></script>
+        <script type="text/javascript" src="recursos/js/code.js"></script>
     </body>
 </html>

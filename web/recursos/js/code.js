@@ -1,70 +1,110 @@
-        //CADASTRO DE CLIENTE
+//CADASTRO DE CLIENTE
 //HABILITA A DIV RESPONSÁVEL PELOS CAMPOS DA PESSOA FÍSICA
-function CarPesFisica(){
-    document.getElementById("pesfisica").style.display="block";
-    document.getElementById("pesjuridica").style.display="none";
+function CarPesFisica() {
+    document.getElementById("pesfisica").style.display = "block";
+    document.getElementById("pesjuridica").style.display = "none";
 }
 //HABILITA A DIV RESPONSÁVEL PELOS CAMPOS DA PESSOA JURÍDICA
-function CarPesJuridica(){
-    document.getElementById("pesfisica").style.display="none";
-    document.getElementById("pesjuridica").style.display="block";
+function CarPesJuridica() {
+    document.getElementById("pesfisica").style.display = "none";
+    document.getElementById("pesjuridica").style.display = "block";
 }
 
 
-        //CHAMA CADFUNCIONARIO
-function CarregaCadFuncionario(){
+//CHAMA CADFUNCIONARIO
+function CarregaCadFuncionario() {
     /*loadfuncao.submit;
-    alert("??");
-    document.location.href = "loadfuncao.html";*/
+     alert("??");
+     document.location.href = "loadfuncao.html";*/
     window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadfuncionario.jsp");
 }
-        //CHAMA CADCATEGORIA
-function CarregaCadSetor(){
+//CHAMA CADCATEGORIA
+function CarregaCadSetor() {
     window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadcategoria.jsp");
 }
-        //CHAMA MENUPROD
-function ChamaSetor(){
+//CHAMA MENUPROD
+function ChamaSetor() {
     window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/menuprod.html");
 }
-        //CHAMA CADPRODUTO
-function CarregaCadProd(){
+//CHAMA CADPRODUTO
+function CarregaCadProd() {
     window.history.pushState('Object', 'Categoria JavaScript', "/ProjetoFinal/cadproduto.jsp");
 }
 
 
-        //CADASTRO DE FORNECEDOR
-function EnvioFornecedor(){
+//CADASTRO DE FORNECEDOR
+function EnvioFornecedor() {
     cadfornecedor.submit();
 }
 
-        //CADASTRO DE FUNÇÕES
-function EnvioFuncao(){
+//CADASTRO DE FUNÇÕES
+function EnvioFuncao() {
     var fun = "";
     fun = document.getElementById("funcao").value;
-    if ((fun == "")||(fun == null)){
+    if ((fun == "") || (fun == null)) {
         alert("            Campo vazio ou inválido!\n\nVerifique os dados e tente novamente.")
-    }else{
+    } else {
         cadfuncao.submit();
     }
 }
 
-        //CADASTRO DE FUNCIONÁRIO
-function EnviaFuncionario(){
+//CADASTRO DE FUNCIONÁRIO
+function EnviaFuncionario() {
     var comp = "";
     comp = document.getElementById("complfu").value;
-    if((comp == "")||(comp == null)){
+    if ((comp == "") || (comp == null)) {
         document.getElementById("complfu").value = (" - ");
     }
     cadfuncionario.submit();
 }
 
-        //CADASTRO DE SETOR
-function EnviaSetor(){
+//CADASTRO DE SETOR
+function EnviaSetor() {
     var set = "";
     set = document.getElementById("setor").value;
-    if ((set == "")||(set== null)){
+    if ((set == "") || (set == null)) {
         alert("Setor não informado! Informe o nome do setor antes de confirmar.")
-    }else{
+    } else {
         cadcategoria.submit();
     }
+}
+
+
+//MENU CLIENTE - ÁREA RESTRITA
+
+function Dados() {
+    document.getElementById("dados").style.display = "block";
+    document.getElementById("pedidos").style.display = "none";
+    document.getElementById("edc2").style.display = "none";
+}
+function Pedidos() {
+    document.getElementById("dados").style.display = "none";
+    document.getElementById("pedidos").style.display = "block";
+}
+function EditarCliente() {
+    document.getElementById("edc1").style.display = "none";
+    document.getElementById("edc2").style.display = "block";
+    //PF
+    //document.getElementById("nomecli").readOnly = false;
+    //document.getElementById("sobrenome").readOnly = false;
+    //document.getElementById("sexo").readOnly = false;
+    //document.getElementById("cpf").readOnly = false;
+    //document.getElementById("rg").readOnly = false;
+    //document.getElementById("nasc").readOnly = false;
+    //document.getElementById("tel").readOnly = false;
+    //document.getElementById("cel").readOnly = false;
+    //document.getElementById("cel").readOnly = false;
+    //PF
+    //document.getElementById("rsocial").readOnly = false;
+    //document.getElementById("fantasia").readOnly = false;
+    //document.getElementById("cnpj").readOnly = false;
+    //document.getElementById("insest").readOnly = false;
+    //document.getElementById("telpj").readOnly = false;
+    //document.getElementById("celpj").readOnly = false;
+
+    //DADOS COMUNS DO ENDEREÇO 
+    document.getElementById("cep").readOnly = false;
+    document.getElementById("numero").readOnly = false;
+    document.getElementById("comp").readOnly = false;
+    document.getElementById("ref").readOnly = false;
 }

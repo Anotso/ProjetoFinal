@@ -5,7 +5,7 @@ public class Produto {
     private int idproduto;
     private String produto;
     private String fornecedor;
-    private String categoria;
+    private int categoria;
     private String descricao;
     private float compra;
     private float venda;
@@ -16,7 +16,7 @@ public class Produto {
     private String foto4;
     private String foto5;
 
-    public Produto(int idproduto, String produto, String fornecedor, String categoria, String descricao, float compra, float venda, int qtd, String foto1, String foto2, String foto3, String foto4, String foto5) {
+    public Produto(int idproduto, String produto, String fornecedor, int categoria, String descricao, float compra, float venda, int qtd, String foto1, String foto2, String foto3, String foto4, String foto5) {
         super();
         this.idproduto = idproduto;
         this.produto = produto;
@@ -60,11 +60,11 @@ public class Produto {
         this.fornecedor = fornecedor;
     }
 
-    public String getCategoria() {
+    public int getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
 
@@ -150,7 +150,7 @@ public class Produto {
         if (fornecedor.equals("")) {
             erros += "Fornecedor em branco. \n";
         }
-        if (categoria.equals("")) {
+        if (categoria==0) {
             erros += "Categoria em branco. \n";
         }
         if (descricao.equals("")) {

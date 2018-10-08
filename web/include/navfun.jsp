@@ -51,6 +51,11 @@
                     </div>
                 </li>
             </ul>
+            <ul class="navbar-nav mr-auto">
+                <a class="nav-link" href="/ProjetoFinal/menufun.jsp" id="navbarDropdown">
+                    Menu
+                </a>
+            </ul>
             <form action="pesquisaproduto.html" method="post" class="form-inline my-2 my-lg-0">
                 <input id="dado" name="dado" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar"/>
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>

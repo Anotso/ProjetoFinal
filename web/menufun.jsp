@@ -34,13 +34,7 @@
             <div class="esp50"></div>
             <div class="corpo">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <center><h4>Dados Pessoais:</h4></center>
-                        </div>
-                        <div class="col-md-6"><center><h4>Pedidos:</h4></center></div>
-                    </div>
-                    <c:import url="include/teste.jsp"/>
+                    <c:import url="include/painel.jsp"/>
                 </div>
             </div>
         </c:if>

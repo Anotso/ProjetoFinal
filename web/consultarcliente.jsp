@@ -18,7 +18,7 @@
     </head>
     <body>
         <nav>
-                        <c:if test="${not empty f}">
+            <c:if test="${not empty f}">
                 <c:import url="include/navlogout.jsp"/>
             </c:if>
             <c:if test="${empty f}">
@@ -29,72 +29,72 @@
             </c:if>
         </nav>
         <c:if test="${not empty f}">
-        <div class="corpo">
-            <div class="esp50"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <center><h3>Pesquisar Cliente</h3></center>
+            <div class="corpo">
+                <div class="esp50"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <center><h3>Pesquisar Cliente</h3></center>
+                        </div>
                     </div>
-                </div>
-                <div class="esp15"></div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
-                        <form action="buscacliente.html" method="post">
-                            <div class="form-group row">
-                                <!---Sobre nome-->
-                                <label for="bfunc" class="col-md-4 col-form-label">Informe o CPF</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="bfunc" name="bfunc"/>
+                    <div class="esp15"></div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <form action="buscacliente.html" method="post">
+                                <div class="form-group row">
+                                    <!---Sobre nome-->
+                                    <label for="bfunc" class="col-md-4 col-form-label">Informe o CPF</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="bfunc" name="bfunc"/>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-danger btn-block">Pesquisar</button>
+                            </form>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div class="esp15"></div>
+                    <div class="row">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-4">
+                            <a href="carregacliente.html">Carregar todos os Clientes</a>
+                        </div>
+                    </div>
+                    <c:if test="${not empty listaCliente}">
+                        <div class="esp15"></div>
+                        <c:forEach var="cliente" items="${listaCliente}">
+                            <div class="card">
+                                <div class="card-header">
+                                    <label><h5>Nome: ${cliente.cliente}</h5></label>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">ID: ${cliente.idcli}</p>
+                                    <c:if test="${not empty cliente.telcli}">
+                                        <p class="card-text">Telefone.: ${cliente.telcli}</p>
+                                    </c:if>
+                                    <c:if test="${not empty cliente.celcli}">
+                                        <p class="card-text">Celular.: ${cliente.celcli}</p>
+                                    </c:if>
+                                    <p class="card-text">CEP.: ${cliente.cepcli}</p>
+                                    <p class="card-text">Endereço: ${cliente.endcli}</p>
+                                    <p class="card-text">Número: ${cliente.numcli}</p>
+                                    <c:if test="${not empty cliente.complcli}">
+                                        <p class="card-text">Complemento: ${cliente.complcli}</p>
+                                    </c:if>
+                                    <c:if test="${not empty cliente.refcli}">
+                                        <p class="card-text">Referência ${cliente.refcli}</p>
+                                    </c:if>
+                                    <p class="card-text">Bairro: ${cliente.bairrocli}</p>
+                                    <p class="card-text">Cidade: ${cliente.cidcli}</p>
+                                    <p class="card-text">Estado: ${cliente.estcli}</p>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-danger btn-block">Pesquisar</button>
-                        </form>
-                    </div>
-                    <div class="col-md-3"></div>
+                            <div class="esp15"></div>
+                        </c:forEach>
+                    </c:if>
                 </div>
-                <div class="esp15"></div>
-                <div class="row">
-                    <div class="col-md-8"></div>
-                    <div class="col-md-4">
-                        <a href="carregacliente.html">Carregar todos os Clientes</a>
-                    </div>
-                </div>
-                <c:if test="${not empty listaCliente}">
-                    <div class="esp15"></div>
-                    <c:forEach var="cliente" items="${listaCliente}">
-                        <div class="card">
-                            <div class="card-header">
-                                <label><h5>Nome: ${cliente.cliente}</h5></label>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">ID: ${cliente.idcli}</p>
-                                <c:if test="${not empty cliente.telcli}">
-                                    <p class="card-text">Telefone.: ${cliente.telcli}</p>
-                                </c:if>
-                                <c:if test="${not empty cliente.celcli}">
-                                    <p class="card-text">Celular.: ${cliente.celcli}</p>
-                                </c:if>
-                                <p class="card-text">CEP.: ${cliente.cepcli}</p>
-                                <p class="card-text">Endereço: ${cliente.endcli}</p>
-                                <p class="card-text">Número: ${cliente.numcli}</p>
-                                <c:if test="${not empty cliente.complcli}">
-                                    <p class="card-text">Complemento: ${cliente.complcli}</p>
-                                </c:if>
-                                <c:if test="${not empty cliente.refcli}">
-                                    <p class="card-text">Referência ${cliente.refcli}</p>
-                                </c:if>
-                                <p class="card-text">Bairro: ${cliente.bairrocli}</p>
-                                <p class="card-text">Cidade: ${cliente.cidcli}</p>
-                                <p class="card-text">Estado: ${cliente.estcli}</p>
-                            </div>
-                        </div>
-                        <div class="esp15"></div>
-                    </c:forEach>
-                </c:if>
             </div>
-        </div>
         </c:if>
         <footer>
             <c:import url="include/rodape.jsp"/>

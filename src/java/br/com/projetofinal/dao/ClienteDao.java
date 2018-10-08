@@ -52,8 +52,8 @@ public class ClienteDao extends Dao {
 
     public List<Cliente> listaCliente(String cpf) throws SQLException {
         open();
-        stmt = this.con.prepareStatement("SELECT * FROM cliente WHERE ativo = true AND cadfed like ?");
-        stmt.setString(1, cpf + "%");
+        stmt = this.con.prepareStatement("SELECT * FROM cliente WHERE ativo = true AND cadfed = ?");
+        stmt.setString(1, cpf);
         Cliente cliente = null;
         rs = stmt.executeQuery();
         List<Cliente> lista = new ArrayList<Cliente>();
@@ -137,6 +137,43 @@ public class ClienteDao extends Dao {
         }
         close();
         return cliente;
+    }
+
+    public List<Cliente> carCliente(String login) throws SQLException {
+        open();
+        stmt = this.con.prepareStatement("SELECT * FROM cliente WHERE ativo = true AND emailcli = ?");
+        stmt.setString(1, login);
+        Cliente cliente = null;
+        rs = stmt.executeQuery();
+        List<Cliente> lista = new ArrayList<Cliente>();
+        while (rs.next()) {
+            System.out.println("Entrou no while carCliente");
+            cliente = new Cliente(rs.getInt("idcli"),
+                    rs.getString("cliente"),
+                    rs.getString("snome"),
+                    rs.getString("dtnasc"),
+                    rs.getString("sexo"),
+                    rs.getString("tipocli"),
+                    rs.getString("cadfed"),
+                    rs.getString("cadest"),
+                    rs.getString("emailcli"),
+                    rs.getString("senhacli"),
+                    rs.getString("telcli"),
+                    rs.getString("celcli"),
+                    rs.getString("cepcli"),
+                    rs.getString("endcli"),
+                    rs.getString("numcli"),
+                    rs.getString("complcli"),
+                    rs.getString("refcli"),
+                    rs.getString("bairrocli"),
+                    rs.getString("cidcli"),
+                    rs.getString("estcli"),
+                    rs.getBoolean("ativo")
+            );
+            lista.add(cliente);
+        }
+        close();
+        return lista;
     }
 
 }

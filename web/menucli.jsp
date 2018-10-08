@@ -14,7 +14,7 @@
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
         <title>JSP Page</title>
     </head>
-    <body>
+    <body onload="Dados()">
         <nav>
             <c:if test="${not empty c}">
                 <c:import url="include/navlogout.jsp"/>
@@ -28,12 +28,21 @@
             <div class="esp50"></div>
             <div class="corpo">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-12"><center><h4>Dados Pessoais:</h4></center></div>
-                            </div>
-                            <div class="row">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" onclick="Dados()">Dados Pessoais</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="Pedidos()">Pedidos</a>
+                        </li>
+                    </ul>
+                    <div id="dados">
+                        <div class="row">
+                            <div class="col-md-12"><center><h4>Dados Pessoais:</h4></center></div>
+                        </div>
+                        <div class="row">
+                            <c:if test="${not empty listaCliente}">
+                                <div class="esp15"></div>
                                 <c:forEach var="cliente" items="${listaCliente}">
                                     <div class="col-md-12">
                                         <c:if test="${not empty avisos}">
@@ -57,39 +66,36 @@
                                                 <label for="email" class="col-md-4 col-form-label">E-mail:</label>
                                                 <div class="col-md-8">
                                                     <input type="email" class="form-control" id="email" name="email" placeholder="Ex.: exemplo@exemplo.com" value="${cliente.emailcli}"/>
-                                                    </div>
                                                 </div>
-                                                <div class="esp5"></div>
-                                                <hr/>
-                                                <div class="esp5"></div>
-                                                <div class="esp5"></div>
-                                                <hr/>
-                                                <div class="esp5"></div>
-                                                <div class="form-row">
-                                                    <div class="col-md-6">
-                                                        <!-- PESSOA FÍSICA -->
+                                            </div>
+                                            <div class="esp5"></div>
+                                            <hr/>
+                                            <div class="esp5"></div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-12"><center><h4>Dados cadastrais</h4></center></div>
+                                                    </div>
+                                                    <div class="row"><div class="col-md-12 esp5"></div></div>
+                                                    <!-- PESSOA FÍSICA -->
+                                                    <c:if test="${cliente.tipocli == PF}">
                                                         <div id="pesfisica">
-                                                            <div class="row">
-                                                                <div class="col-md-12"><center><h4>Dados cadastrais</h4></center></div>
-                                                            </div>
-                                                            <div class="row"><div class="col-md-12 esp5"></div></div>
-                                                            <c:if test="${cliente.tipocli == 'PF'}">
                                                             <div class="form-group row">
                                                                 <label for="nomecli" class="col-md-4 col-form-label">Nome:</label>
                                                                 <div class="col-md-8">
-                                                                    <input type="text" class="form-control" id="nomecli" name="nomecli" value="${cliente.cliente}"/>
+                                                                    <input type="text" class="form-control" id="nomecli" name="nomecli" value="${cliente.cliente}" readonly/>
                                                                 </div>
                                                             </div>	
                                                             <div class="form-group row">
                                                                 <label for="sobrenome" class="col-md-4 col-form-label">Sobrenome:</label>
                                                                 <div class="col-md-8">
-                                                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome" value="${cliente.snome}"/>
+                                                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome" value="${cliente.snome}" readonly/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-md-4 col-form-label" for="sexo">Sexo</label>
                                                                 <div class="col-md-8">
-                                                                    <select class="custom-select form-control" id="sexo" name="sexo" value="${cliente.sexo}">
+                                                                    <select class="custom-select form-control" id="sexo" name="sexo" value="${cliente.sexo}" readonly>
                                                                         <option value="M">Masculino</option>
                                                                         <option value="F">Feminino</option>
                                                                     </select>
@@ -98,36 +104,37 @@
                                                             <div class="form-group row">
                                                                 <label for="cpf" class="col-md-4 col-form-label">CPF:</label>
                                                                 <div class="col-md-8">
-                                                                    <input type="text" class="form-control" id="cpf" name="cpf" value="${cliente.cadfed}"/>
+                                                                    <input type="text" class="form-control" id="cpf" name="cpf" value="${cliente.cadfed}" readonly/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="rg" class="col-md-4 col-form-label">Identidade:</label>
                                                                 <div class="col-md-8">
-                                                                    <input type="text" class="form-control" id="rg" name="rg" value="${cliente.cadest}"/>
+                                                                    <input type="text" class="form-control" id="rg" name="rg" value="${cliente.cadest}" readonly/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="nasc" class="col-md-4 col-form-label">Data de Nascimento:</label>
                                                                 <div class="col-md-8">
-                                                                    <input type="text" class="form-control" id="nasc" name="nasc" value="${cliente.dtnasc}"/>
+                                                                    <input type="text" class="form-control" id="nasc" name="nasc" value="${cliente.dtnasc}" readonly/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="tel" class="col-md-4 col-form-label">Telefone:</label>
                                                                 <div class="col-md-8">
-                                                                    <input type="text" class="form-control" id="tel" name="tel" value="${cliente.telcli}"/>
+                                                                    <input type="text" class="form-control" id="tel" name="tel" value="${cliente.telcli}" readonly/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label for="cel" class="col-md-4 col-form-label">Celular:</label>
                                                                 <div class="col-md-8">
-                                                                    <input type="text" class="form-control" id="cel" name="cel" value="${cliente.cadfed}"/>
+                                                                    <input type="text" class="form-control" id="cel" name="cel" value="${cliente.cadfed}" readonly/>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </c:if>
-                                                    <c:if test="${cliente.tipocli == 'PJ'}">
+                                                    <!-- PESSOA JURÍDICA -->
+                                                    <c:if test="${cliente.tipocli == PJ}">
                                                         <div id="pesjuridica">
                                                             <div class="row">
                                                                 <div class="col-md-12"><center><h4>Dados cadastrais</h4></center></div>
@@ -136,40 +143,40 @@
                                                             <div class="form-group row">
                                                                 <label for="rsocial" class="col-md-4 col-form-label">Razão Social:</label>
                                                                 <div class="col-md-8">
-                                                                    <input type="text" class="form-control" id="rsocial" name="rsocial" value="${cliente.cliente}"/>
-                                                                    </div>
-                                                                </div>	
-                                                                <div class="form-group row">
-                                                                    <label for="fantasia" class="col-md-4 col-form-label">Nome Fantasia:</label>
-                                                                    <div class="col-md-8">
-                                                                        <input type="text" class="form-control" id="fantasia" name="fantasia" value="${cliente.snome}"/>
-                                                                    </div>
+                                                                    <input type="text" class="form-control" id="rsocial" name="rsocial" value="${cliente.cliente}" readonly/>
                                                                 </div>
-                                                                <div class="form-group row">
-                                                                    <label for="cnpj" class="col-md-4 col-form-label">CNPJ:</label>
-                                                                    <div class="col-md-8">
-                                                                        <input type="text" class="form-control" id="cnpj" name="cnpj" value="${cliente.cadfed}"/>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="insest" class="col-md-4 col-form-label">Inscrição Estadual:</label>
-                                                                    <div class="col-md-8">
-                                                                        <input type="text" class="form-control" id="insest" name="insest" value="${cliente.cadest}"/>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="telpj" class="col-md-4 col-form-label">Telefone:</label>
-                                                                    <div class="col-md-8">
-                                                                        <input type="text" class="form-control" id="telpj" name="telpj" value="${cliente.telcli}"/>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label for="celpj" class="col-md-4 col-form-label">Celular:</label>
-                                                                    <div class="col-md-8">
-                                                                        <input type="text" class="form-control" id="celpj" name="celpj" value="${cliente.celcli}"/>
-                                                                    </div>
+                                                            </div>	
+                                                            <div class="form-group row">
+                                                                <label for="fantasia" class="col-md-4 col-form-label">Nome Fantasia:</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control" id="fantasia" name="fantasia" value="${cliente.snome}" readonly/>
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+                                                                <label for="cnpj" class="col-md-4 col-form-label">CNPJ:</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control" id="cnpj" name="cnpj" value="${cliente.cadfed}" readonly/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="insest" class="col-md-4 col-form-label">Inscrição Estadual:</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control" id="insest" name="insest" value="${cliente.cadest}" readonly/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="telpj" class="col-md-4 col-form-label">Telefone:</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control" id="telpj" name="telpj" value="${cliente.telcli}" readonly/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="celpj" class="col-md-4 col-form-label">Celular:</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" class="form-control" id="celpj" name="celpj" value="${cliente.celcli}" readonly/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </c:if>
                                                 </div>
                                                 <div class="col-md-6">
@@ -180,7 +187,7 @@
                                                     <div class="form-group row">
                                                         <label for="cep" class="col-md-4 col-form-label">CEP:</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control" id="cep" name="cep" onblur="pesquisacep(this.value)" value="${cliente.cepcli}"/>
+                                                            <input type="text" class="form-control" id="cep" name="cep" onblur="pesquisacep(this.value)" value="${cliente.cepcli}" readonly/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -192,19 +199,19 @@
                                                     <div class="form-group row">
                                                         <label for="numero" class="col-md-4 col-form-label">Número:</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control" id="numero" name="numero" value="${cliente.numcli}"/>
+                                                            <input type="text" class="form-control" id="numero" name="numero" value="${cliente.numcli}" readonly/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="comp" class="col-md-4 col-form-label">Complemento:</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control" id="comp" name="comp" value="${cliente.complcli}"/>
+                                                            <input type="text" class="form-control" id="comp" name="comp" value="${cliente.complcli}" readonly/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="ref" class="col-md-4 col-form-label">Referência:</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control" id="ref" name="ref" value="${cliente.refcli}"/>
+                                                            <input type="text" class="form-control" id="ref" name="ref" value="${cliente.refcli}" readonly/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -232,22 +239,32 @@
                                             <div class="esp15"></div>
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <button type="button" class="btn btn-danger btn-block">Cancelar</button>
+                                                    <button type="button" class="btn btn-danger btn-block">Excluir Cadastro</button>
                                                 </div>
                                                 <div class="col-md-2 esp5"></div>
                                                 <div class="col-md-5">
-                                                    <button type="submit" class="btn btn-danger btn-block">Cadastrar</button>
+                                                    <button type="button" id="edc1" class="btn btn-danger btn-block" onclick="EditarCliente()">Editar Cadastro</button>
+                                                    <button type="submit" id="edc2" class="btn btn-danger btn-block" onclick="EditarCliente()">Editar Cadastro</button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </c:forEach>
+                            </c:if>
+                        </div>
+                    </div>
+                    <div id="pedidos">
+                        <div class="esp50"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <center><h4>Pedidos</h4></center>
                             </div>
                         </div>
-                        <div class="col-md-6"><center><h4>Pedidos:</h4></center></div>
+                        <div class="esp50"></div>
                     </div>
                 </div>
             </div>
+            <div class="esp25"></div>
             <footer>
                 <c:import url="include/rodape.jsp"/>
             </footer>
@@ -259,5 +276,8 @@
         <script type="text/javascript" src="bootstrap/jquery/jquery-3.3.1.slim.min.js"></script>
         <script type="text/javascript" src="bootstrap/popper/popper.min.js"></script>
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <!--    Codificação própria -->
+        <script type="text/javascript" src="recursos/js/cep.js"></script>
+        <script type="text/javascript" src="recursos/js/code.js"></script>
     </body>
 </html>

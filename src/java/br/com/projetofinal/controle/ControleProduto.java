@@ -23,7 +23,8 @@ import javax.servlet.http.Part;
 @MultipartConfig
 @WebServlet(name = "ControleProduto", urlPatterns = {"/cadproduto.html", "/carregacadprod.html",
     "/buscaproduto.html", "/carregaproduto.html", "/editarproduto.html", "/confirmaproduto.html",
-    "/pesquisaproduto.html", "/telaprod.html","/pesqporcat.html","/excluirproduto.html"
+    "/pesquisaproduto.html", "/telaprod.html","/pesqporcat.html","/excluirproduto.html",
+    "/destaque.html","/adddestaque.html"
 })
 public class ControleProduto extends HttpServlet {
 
@@ -68,6 +69,10 @@ public class ControleProduto extends HttpServlet {
                 loadesp(request, response);
             } else if (url.equalsIgnoreCase("/excluirproduto.html")) {
                 excluir(request, response);
+            } else if (url.equalsIgnoreCase("/destaque.html")) {
+                //destaque(request, response);
+            } else if (url.equalsIgnoreCase("/adddestaque.html")) {
+                adddestaque(request, response);
             } else if (url.equalsIgnoreCase("/carregacadprod.html")) {
                 carregacad(request, response);      //CHAMA A TELA DE CADASTRO
             } else {
@@ -94,7 +99,7 @@ public class ControleProduto extends HttpServlet {
 
         String nome = request.getParameter("nprod");
         String fornecedor = request.getParameter("forprod");
-        String categoria = request.getParameter("catprod");
+        int categoria = Integer.parseInt(request.getParameter("catprod"));
         String compra = request.getParameter("vcompprod");
         String venda = request.getParameter("vvendprod");
         String q = request.getParameter("qtdprod");
@@ -242,7 +247,7 @@ public class ControleProduto extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("idprod"));
         String nome = request.getParameter("nprod");
         String fornecedor = request.getParameter("forprod");
-        String categoria = request.getParameter("catprod");
+        int categoria = Integer.parseInt(request.getParameter("catprod"));
         String compra = request.getParameter("vcompprod");
         String venda = request.getParameter("vvendprod");
         String q = request.getParameter("qtdprod");
@@ -324,7 +329,7 @@ public class ControleProduto extends HttpServlet {
 
     private void pesqcat(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String dado = request.getParameter("id");
+            int dado = Integer.parseInt(request.getParameter("id"));
             System.out.println("valor do dado dentro do Servlet: "+dado);
             ProdutoDao prod = new ProdutoDao();
             List<Produto> lista = prod.catProduto(dado);
@@ -337,15 +342,35 @@ public class ControleProduto extends HttpServlet {
     }
 
     private void excluir(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt("id");
+        int id = Integer.parseInt(request.getParameter("id"));
+        System.out.println("Valor de ID: "+id);
         Produto produto = new Produto();
         produto.setIdproduto(id);
         try{
             ProdutoDao dao = new ProdutoDao();
             dao.excluir(id);
+            response.sendRedirect("/menufun.jsp");
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void adddestaque(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        Produto produto = new Produto();
+        produto.setIdproduto(id);
+        try {
+                //produto.validar();
+                ProdutoDao dao = new ProdutoDao();
+                dao.cadastrardestaque(produto);
+                response.sendRedirect("/ProjetoFinal/menufun.jsp");
+            } catch (Exception e) {
+                request.setAttribute("erros", e.getMessage());
+                request.getRequestDispatcher("/menufun.html").forward(request, response);
+                e.printStackTrace();
+            }
+        
     }
 
 }
