@@ -13,7 +13,7 @@
         <!--	Font Awesome -->
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
         <!--    Codificação própria -->
-        <title>JSP Page</title>
+        <title>SenTec</title>
     </head>
     <body>
         <nav>

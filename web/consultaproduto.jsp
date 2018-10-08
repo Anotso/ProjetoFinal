@@ -14,7 +14,7 @@
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
         <!--    Codificação própria -->
         <link href="recursos/estilo/estilo.css" rel="stylesheet"/>
-        <title>JSP Page</title>
+        <title>SenTec</title>
     </head>
     <body>
         <nav>

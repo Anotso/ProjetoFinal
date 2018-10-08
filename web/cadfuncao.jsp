@@ -17,7 +17,7 @@
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
         <!--    Codificação própria -->
         <script type="text/javascript" src="recursos/js/code.js"></script>
-        <title>JSP Page</title>
+        <title>SenTec</title>
     </head>
     <body>
         <nav>

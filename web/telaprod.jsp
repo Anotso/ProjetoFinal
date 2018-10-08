@@ -14,7 +14,7 @@
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="recursos/estilo/telaprod.css"/>
         <script type="text/javascript" src="recursos/js/functop.js"></script>
-        <title>JSP Page</title>
+        <title>SenTec</title>
     </head>
     <body>
         <nav>

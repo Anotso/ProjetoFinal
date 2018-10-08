@@ -15,7 +15,7 @@
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <!--	Font Awesome -->
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
-        <title>JSP Page</title>
+        <title>SenTec</title>
     </head>
     <body>
         <nav>

@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
         <!--	Font Awesome -->
         <link href="recursos/fontawesome/css/all.css" rel="stylesheet"/>
-        <title>JSP Page</title>
+        <title>SenTec</title>
     </head>
     <body onload="CarregaCadFuncionario()">
         <nav>
