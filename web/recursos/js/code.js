@@ -84,27 +84,27 @@ function Pedidos() {
     document.getElementById("pedidos").style.display = "block";
 }
 function EditarCliente() {
-    document.getElementById("edc1").style.display = "block";
-    document.getElementById("edc2").style.display = "none";
-    document.getElementById("excluir").style.display = "block";
-    document.getElementById("cancelar").style.display = "none";
+    document.getElementById("edc1").style.display = "none";
+    document.getElementById("edc2").style.display = "block";
+    document.getElementById("excluir").style.display = "none";
+    document.getElementById("cancelar").style.display = "block";
     //PF
-    //document.getElementById("nomecli").readOnly = false;
-    //document.getElementById("sobrenome").readOnly = false;
-    //document.getElementById("sexo").readOnly = false;
-    //document.getElementById("cpf").readOnly = false;
-    //document.getElementById("rg").readOnly = false;
-    //document.getElementById("nasc").readOnly = false;
-    //document.getElementById("tel").readOnly = false;
-    //document.getElementById("cel").readOnly = false;
-    //document.getElementById("cel").readOnly = false;
+    document.getElementById("nomecli").readOnly = false;
+    document.getElementById("sobrenome").readOnly = false;
+    document.getElementById("sexo").readOnly = false;
+    document.getElementById("cpf").readOnly = false;
+    document.getElementById("rg").readOnly = false;
+    document.getElementById("nasc").readOnly = false;
+    document.getElementById("tel").readOnly = false;
+    document.getElementById("cel").readOnly = false;
+    document.getElementById("cel").readOnly = false;
     //PF
-    //document.getElementById("rsocial").readOnly = false;
-    //document.getElementById("fantasia").readOnly = false;
-    //document.getElementById("cnpj").readOnly = false;
-    //document.getElementById("insest").readOnly = false;
-    //document.getElementById("telpj").readOnly = false;
-    //document.getElementById("celpj").readOnly = false;
+    document.getElementById("rsocial").readOnly = false;
+    document.getElementById("fantasia").readOnly = false;
+    document.getElementById("cnpj").readOnly = false;
+    document.getElementById("insest").readOnly = false;
+    document.getElementById("telpj").readOnly = false;
+    document.getElementById("celpj").readOnly = false;
 
     //DADOS COMUNS DO ENDEREÇO 
     document.getElementById("cep").readOnly = false;
@@ -113,27 +113,27 @@ function EditarCliente() {
     document.getElementById("ref").readOnly = false;
 }
 function CancelarEditar(){
-    document.getElementById("edc1").style.display = "none";
-    document.getElementById("edc2").style.display = "block";
-    document.getElementById("excluir").style.display = "none";
-    document.getElementById("cancelar").style.display = "block";
+    document.getElementById("edc1").style.display = "block";
+    document.getElementById("edc2").style.display = "none";
+    document.getElementById("excluir").style.display = "block";
+    document.getElementById("cancelar").style.display = "none";
     //PF
-    //document.getElementById("nomecli").readOnly = true;
-    //document.getElementById("sobrenome").readOnly = true;
-    //document.getElementById("sexo").readOnly = true;
-    //document.getElementById("cpf").readOnly = true;
-    //document.getElementById("rg").readOnly = true;
-    //document.getElementById("nasc").readOnly = true;
-    //document.getElementById("tel").readOnly = true;
-    //document.getElementById("cel").readOnly = true;
-    //document.getElementById("cel").readOnly = true;
+    document.getElementById("nomecli").readOnly = true;
+    document.getElementById("sobrenome").readOnly = true;
+    document.getElementById("sexo").readOnly = true;
+    document.getElementById("cpf").readOnly = true;
+    document.getElementById("rg").readOnly = true;
+    document.getElementById("nasc").readOnly = true;
+    document.getElementById("tel").readOnly = true;
+    document.getElementById("cel").readOnly = true;
+    document.getElementById("cel").readOnly = true;
     //PF
-    //document.getElementById("rsocial").readOnly = true;
-    //document.getElementById("fantasia").readOnly = true;
-    //document.getElementById("cnpj").readOnly = true;
-    //document.getElementById("insest").readOnly = true;
-    //document.getElementById("telpj").readOnly = true;
-    //document.getElementById("celpj").readOnly = true;
+    document.getElementById("rsocial").readOnly = true;
+    document.getElementById("fantasia").readOnly = true;
+    document.getElementById("cnpj").readOnly = true;
+    document.getElementById("insest").readOnly = true;
+    document.getElementById("telpj").readOnly = true;
+    document.getElementById("celpj").readOnly = true;
 
     //DADOS COMUNS DO ENDEREÇO 
     document.getElementById("cep").readOnly = true;

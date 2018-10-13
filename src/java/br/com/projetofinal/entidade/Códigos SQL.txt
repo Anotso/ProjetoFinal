@@ -5,7 +5,7 @@ CREATE TABLE fornecedor(
     sitefor		VARCHAR(30),
     telfor		VARCHAR(13),
     cnpjfor		VARCHAR(14),
-    cepfor		VARCHAR(8),
+    cepfor		VARCHAR(9),
     ruafor		VARCHAR(40),
     numfor		VARCHAR(6),
     complfor	VARCHAR(40),
@@ -25,7 +25,7 @@ CREATE TABLE funcionario(
     celfunc		VARCHAR(14),
     cpffunc		VARCHAR(13) UNIQUE,
     funcaofun	VARCHAR(2),
-    cepfunc		VARCHAR(8),
+    cepfunc		VARCHAR(9),
     ruafunc		VARCHAR(40),
     numfunc		VARCHAR(6),
     bairrofunc	VARCHAR(25),
@@ -76,14 +76,6 @@ CREATE TABLE produto(
     destaque            boolean
 );
 
-
-
-CREATE TABLE login(
-    idlog		INT AUTO_INCREMENT PRIMARY KEY,
-    usuario		VARCHAR(40),
-    pass 		VARCHAR(40),
-    tacess		VARCHAR(2)
-);
 
 
 

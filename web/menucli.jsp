@@ -78,7 +78,7 @@
                                                     </div>
                                                     <div class="row"><div class="col-md-12 esp5"></div></div>
                                                     <!-- PESSOA FÍSICA -->
-                                                    <c:if test="${cliente.tipocli == PF}">
+                                                    <c:if test="${cliente.tipocli == 'pf'}">
                                                         <div id="pesfisica">
                                                             <div class="form-group row">
                                                                 <label for="nomecli" class="col-md-4 col-form-label">Nome:</label>
@@ -134,7 +134,7 @@
                                                         </div>
                                                     </c:if>
                                                     <!-- PESSOA JURÍDICA -->
-                                                    <c:if test="${cliente.tipocli == PJ}">
+                                                    <c:if test="${cliente.tipocli == 'pj'}">
                                                         <div id="pesjuridica">
                                                             <div class="row">
                                                                 <div class="col-md-12"><center><h4>Dados cadastrais</h4></center></div>
@@ -245,7 +245,7 @@
                                                 <div class="col-md-2 esp5"></div>
                                                 <div class="col-md-5">
                                                     <button type="button" id="edc1" class="btn btn-danger btn-block" onclick="EditarCliente()">Editar Cadastro</button>
-                                                    <button type="submit" id="edc2" class="btn btn-danger btn-block" onclick="EditarCliente()">Editar Cadastro</button>
+                                                    <button type="submit" id="edc2" class="btn btn-danger btn-block">Editar Cadastro</button>
                                                 </div>
                                             </div>
                                         </form>
